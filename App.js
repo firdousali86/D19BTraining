@@ -15,7 +15,11 @@ function App() {
   return (
     <SafeAreaView style={{flex: 1}}>
       <View style={{flex: 1}}>
-        <TestClassComponent />
+        <TestClassComponent
+          myfirstprops={'this is prop value'}
+          mynumber={12345678}
+          mydata={['blue', 'green', 'red', 'white']}
+        />
         <TestFunctionalComponent />
       </View>
     </SafeAreaView>
