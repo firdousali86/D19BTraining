@@ -1,9 +1,19 @@
 import React from 'react';
-import {Text} from 'react-native';
+import {Text, Button, View} from 'react-native';
 
 class TestClassComponent extends React.Component {
   render() {
-    return <Text>this is my first class component</Text>;
+    return (
+      <View>
+        <Text>this is my first class component</Text>
+        <Button
+          title="Class Button"
+          onPress={() => {
+            console.log('button was clicked');
+          }}
+        />
+      </View>
+    );
   }
 }
 
