@@ -6,7 +6,7 @@
  */
 
 import React, {useState} from 'react';
-import {SafeAreaView, View, Text, Button} from 'react-native';
+import {SafeAreaView, View, Button} from 'react-native';
 
 import TestClassComponent from './src/components/ClassComponents/TestClassComponent';
 import TestFunctionalComponent from './src/components/TestFunctionalComponent';
@@ -14,21 +14,21 @@ import UserProfileClassComponent from './src/components/ClassComponents/UserProf
 
 const userObject = {
   basicInfo: {
-    firstName: 'Firdous',
-    lastName: 'Ali',
+    firstName: 'Prakash',
+    lastName: 'Malviya',
     gender: 'Male',
-    DOB: 'Dec 3',
+    DOB: 'Jan 1',
   },
   contactInfo: {
-    cell: '123456789',
-    email: 'firdous@firdous.com',
+    cell: '9898989898',
+    email: 'prakash@tes.om',
     address: '123 street',
-    city: 'Karachi',
-    country: 'Pakistan',
+    city: 'Ahd',
+    country: 'Ind',
   },
   educationInfo: {
     lastDegree: 'MS',
-    university: 'NEDUET',
+    university: 'Scet',
   },
 };
 
