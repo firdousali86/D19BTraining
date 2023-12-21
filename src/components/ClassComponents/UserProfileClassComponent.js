@@ -8,11 +8,35 @@ export default class UserProfileClassComponent extends Component {
   render() {
     const {basicInfo, contactInfo, educationInfo} = this.props.userObject;
 
+    renderBasicInfo = () => {
+      if (basicInfo !== undefined) {
+        return <UserBasicInfo basicInfo={basicInfo} />;
+      }
+
+      return null;
+    };
+
+    renderContactInfo = () => {
+      if (contactInfo !== undefined) {
+        return <UserContactInfo contactInfo={contactInfo} />;
+      }
+
+      return null;
+    };
+
+    renderEducationInfo = () => {
+      if (educationInfo !== undefined) {
+        return <UserEducationInfo educationInfo={educationInfo} />;
+      }
+
+      return null;
+    };
+
     return (
       <View style={{backgroundColor: 'pink'}}>
-        <UserBasicInfo basicInfo={basicInfo} />
-        <UserContactInfo contactInfo={contactInfo} />
-        <UserEducationInfo educationInfo={educationInfo} />
+        {renderBasicInfo()}
+        {renderContactInfo()}
+        {renderEducationInfo()}
       </View>
     );
   }
