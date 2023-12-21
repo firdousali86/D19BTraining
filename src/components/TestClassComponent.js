@@ -5,14 +5,31 @@ class TestClassComponent extends React.Component {
   constructor(props) {
     super(props);
 
-    this.state = {newText: 'this is initial new text'};
+    this.state = {newText: 'this is initial new text', bgColor: props.bgColor};
+
+    console.log(props);
+  }
+
+  componentDidUpdate(prevProps, prevState) {
+    console.log('i am getting update calls');
+
+    console.log(prevProps); //previous
+    console.log(this.props); //new props
+
+    if (prevProps.bgColor !== this.props.bgColor) {
+      this.setState({bgColor: this.props.bgColor});
+
+      // this.state.bgColor = this.props.bgColor;
+
+      // this.forceUpdate()
+    }
   }
 
   render() {
-    console.log('render was rerun');
+    const {bgColor} = this.state;
 
     return (
-      <View style={{backgroundColor: this.state.bgColor}}>
+      <View style={{backgroundColor: bgColor}}>
         <Text>this is my first class component</Text>
         <Text>{this.state.newText}</Text>
         <Button
@@ -29,13 +46,13 @@ class TestClassComponent extends React.Component {
         <Button
           title="Class Button: change BG to Yellow"
           onPress={() => {
-            this.setState({bgColor: 'yellow'});
+            this.setState({bgColor: 'red'});
           }}
         />
         <Button
           title="Class Button: change BG to White"
           onPress={() => {
-            this.setState({bgColor: 'white'});
+            this.setState({bgColor: 'blue'});
           }}
         />
       </View>
