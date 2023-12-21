@@ -7,7 +7,7 @@
 
 import React, {useState} from 'react';
 import {SafeAreaView, View, Text, Button} from 'react-native';
-
+// import {Button as btn} from 'react-bootstrap/Button';
 import TestClassComponent from './src/components/ClassComponents/TestClassComponent';
 import TestFunctionalComponent from './src/components/TestFunctionalComponent';
 import UserProfileClassComponent from './src/components/ClassComponents/UserProfileClassComponent';
@@ -38,6 +38,7 @@ function App() {
   return (
     <SafeAreaView style={{flex: 1}}>
       <View style={{flex: 1}}>
+
         <TestClassComponent
           bgColor={parentBGColor}
           myfirstprops={'this is prop value'}

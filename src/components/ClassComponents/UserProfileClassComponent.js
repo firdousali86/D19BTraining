@@ -1,4 +1,4 @@
-import {Text, StyleSheet, View} from 'react-native';
+import {Text, StyleSheet, View, ScrollView} from 'react-native';
 import React, {Component} from 'react';
 import UserBasicInfo from './UserBasicInfo';
 import UserContactInfo from './UserContactInfo';
@@ -33,7 +33,9 @@ export default class UserProfileClassComponent extends Component {
     };
 
     return (
-      <View style={{backgroundColor: 'pink'}}>
+      <View
+        scrollIndicatorInsets={{right: 1}}
+        style={{backgroundColor: '#e8f0fe'}}>
         {renderBasicInfo()}
         {renderContactInfo()}
         {renderEducationInfo()}
@@ -41,5 +43,3 @@ export default class UserProfileClassComponent extends Component {
     );
   }
 }
-
-const styles = StyleSheet.create({});

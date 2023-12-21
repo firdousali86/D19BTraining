@@ -7,20 +7,24 @@ class UserBasicInfo extends React.Component {
 
     this.state = {
       firstName: props.basicInfo?.firstName,
+      DOB: props.basicInfo?.DOB,
+      gender: props.basicInfo?.gender,
+      lastName: props.basicInfo?.lastName,
+      custom_margin: 2,
+      custom_padding: 2,
     };
   }
 
   render() {
     const {basicInfo} = this.props;
 
-    const {firstName} = this.state;
-
+    const {firstName, lastName, gender, DOB} = this.state;
     return (
-      <View>
-        <View style={{flexDirection: 'row'}}>
-          <Text>First Name: </Text>
+      <View style={styles.container}>
+        <View style={styles.row}>
+          <Text style={styles.label}>First Name:</Text>
           <TextInput
-            style={{backgroundColor: 'grey', marginHorizontal: 10, flex: 1}}
+            style={styles.input}
             placeholder="First Name"
             value={firstName}
             onChangeText={changedText => {
@@ -28,13 +32,71 @@ class UserBasicInfo extends React.Component {
             }}
           />
         </View>
-
-        <Text>Last Name: {basicInfo?.lastName}</Text>
-        <Text>Gender: {basicInfo?.gender}</Text>
-        <Text>DOB: {basicInfo?.DOB}</Text>
+        <View style={styles.row}>
+          <Text style={styles.label}>Last Name:</Text>
+          <TextInput
+            style={styles.input}
+            placeholder="Last Name"
+            value={lastName}
+            onChangeText={changedText => {
+              this.setState({lastName: changedText});
+            }}
+          />
+        </View>
+        <View style={styles.row}>
+          <Text style={styles.label}>DOB:</Text>
+          <TextInput
+            style={styles.input}
+            placeholder="DOB"
+            value={DOB}
+            onChangeText={changedText => {
+              this.setState({DOB: changedText});
+            }}
+          />
+        </View>
+        <View style={styles.row}>
+          <Text style={styles.label}>Gender:</Text>
+          <TextInput
+            style={styles.input}
+            placeholder="Gender"
+            value={gender}
+            onChangeText={changedText => {
+              this.setState({gender: changedText});
+            }}
+          />
+        </View>
       </View>
     );
   }
 }
+
+const styles = {
+  container: {
+    backgroundColor: '#fff',
+    borderColor: '#ddd',
+    borderWidth: 1,
+    borderRadius: 10,
+    padding: 10,
+    margin: 10,
+  },
+  row: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    marginBottom: 10,
+  },
+  label: {
+    flex: 1,
+    padding: 10,
+    fontSize: 16,
+  },
+  input: {
+    flex: 2,
+    backgroundColor: '#f2f2f2',
+    borderRadius: 20,
+    padding: 10,
+    marginHorizontal: 10,
+    fontSize: 16,
+  },
+};
 
 export default UserBasicInfo;
