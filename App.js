@@ -14,21 +14,21 @@ import UserProfileClassComponent from './src/components/ClassComponents/UserProf
 
 const userObject = {
   basicInfo: {
-    firstName: 'Firdous',
-    lastName: 'Ali',
+    firstName: 'Naresh',
+    lastName: 'Malaviya',
     gender: 'Male',
-    DOB: 'Dec 3',
+    DOB: 'Nov 18',
   },
   contactInfo: {
     cell: '123456789',
-    email: 'firdous@firdous.com',
-    address: '123 street',
-    city: 'Karachi',
-    country: 'Pakistan',
+    email: 'naresh@gmail.com',
+    address: '856 jivanvadi',
+    city: 'AHmedabd',
+    country: 'India',
   },
   educationInfo: {
-    lastDegree: 'MS',
-    university: 'NEDUET',
+    lastDegree: 'MCA',
+    university: 'Gujrat University',
   },
 };
 
