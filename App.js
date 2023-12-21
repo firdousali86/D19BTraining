@@ -9,7 +9,7 @@ import React, {useState} from 'react';
 import {SafeAreaView, View, Text, Button} from 'react-native';
 
 import TestClassComponent from './src/components/ClassComponents/TestClassComponent';
-import TestFunctionalComponent from './src/components/TestFunctionalComponent';
+import TestFunctionalComponent from './src/components/FunctionalComponents/TestFunctionalComponent';
 import UserProfileClassComponent from './src/components/ClassComponents/UserProfileClassComponent';
 
 const userObject = {
