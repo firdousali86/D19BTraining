@@ -8,8 +8,29 @@
 import React, {useState} from 'react';
 import {SafeAreaView, View, Text, Button} from 'react-native';
 
-import TestClassComponent from './src/components/TestClassComponent';
+import TestClassComponent from './src/components/ClassComponents/TestClassComponent';
 import TestFunctionalComponent from './src/components/TestFunctionalComponent';
+import UserProfileClassComponent from './src/components/ClassComponents/UserProfileClassComponent';
+
+const userObject = {
+  basicInfo: {
+    firstName: 'Firdous',
+    lastName: 'Ali',
+    gender: 'Male',
+    DOB: 'Dec 3',
+  },
+  contactInfo: {
+    cell: '123456789',
+    email: 'firdous@firdous.com',
+    address: '123 street',
+    city: 'Karachi',
+    country: 'Pakistan',
+  },
+  educationInfo: {
+    lastDegree: 'MS',
+    university: 'NEDUET',
+  },
+};
 
 function App() {
   const [parentBGColor, setParentBGColor] = useState('yellow');
@@ -37,6 +58,7 @@ function App() {
             setParentBGColor('grey');
           }}
         />
+        <UserProfileClassComponent userObject={userObject} />
       </View>
     </SafeAreaView>
   );

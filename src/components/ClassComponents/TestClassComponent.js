@@ -10,23 +10,26 @@ class TestClassComponent extends React.Component {
     console.log(props);
   }
 
-  componentDidUpdate(prevProps, prevState) {
-    console.log('i am getting update calls');
+  // componentDidUpdate(prevProps, prevState) {
+  //   console.log('i am getting update calls');
+  //   console.log('COMPONENTDIDUPDATE');
 
-    console.log(prevProps); //previous
-    console.log(this.props); //new props
+  //   console.log(prevProps); //previous
+  //   console.log(this.props); //new props
 
-    if (prevProps.bgColor !== this.props.bgColor) {
-      this.setState({bgColor: this.props.bgColor});
+  //   if (prevProps.bgColor !== this.props.bgColor) {
+  //     this.setState({bgColor: this.props.bgColor});
 
-      // this.state.bgColor = this.props.bgColor;
+  //     // this.state.bgColor = this.props.bgColor;
 
-      // this.forceUpdate()
-    }
-  }
+  //     // this.forceUpdate()
+  //   }
+  // }
 
   render() {
     const {bgColor} = this.state;
+
+    console.log('test class component rerendered');
 
     return (
       <View style={{backgroundColor: bgColor}}>
