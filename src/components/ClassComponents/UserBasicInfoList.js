@@ -1,6 +1,6 @@
 // plop-templates/component.hbs
 import React from 'react';
-import {Text, View, ScrollView, StyleSheet} from "react-native";
+import {Text, View, ScrollView, StyleSheet} from 'react-native';
 
 class UserBasicInfoList extends React.Component {
   constructor(props) {
