@@ -8,7 +8,7 @@ export default class UserProfileClassComponent extends Component {
   render() {
     const {basicInfo, contactInfo, educationInfo} = this.props.userObject;
 
-    renderBasicInfo = () => {
+    const renderBasicInfo = () => {
       if (basicInfo !== undefined) {
         return <UserBasicInfo basicInfo={basicInfo} />;
       }
@@ -16,7 +16,7 @@ export default class UserProfileClassComponent extends Component {
       return null;
     };
 
-    renderContactInfo = () => {
+    const renderContactInfo = () => {
       if (contactInfo !== undefined) {
         return <UserContactInfo contactInfo={contactInfo} />;
       }
@@ -24,7 +24,7 @@ export default class UserProfileClassComponent extends Component {
       return null;
     };
 
-    renderEducationInfo = () => {
+    const renderEducationInfo = () => {
       if (educationInfo !== undefined) {
         return <UserEducationInfo educationInfo={educationInfo} />;
       }
@@ -33,13 +33,15 @@ export default class UserProfileClassComponent extends Component {
     };
 
     return (
-      <View
-        scrollIndicatorInsets={{right: 1}}
-        style={{backgroundColor: '#e8f0fe'}}>
-        {renderBasicInfo()}
-        {renderContactInfo()}
-        {renderEducationInfo()}
-      </View>
+      <ScrollView>
+        <View
+          scrollIndicatorInsets={{right: 1}}
+          style={{backgroundColor: '#e8f0fe'}}>
+          {renderBasicInfo()}
+          {renderContactInfo()}
+          {renderEducationInfo()}
+        </View>
+      </ScrollView>
     );
   }
 }
