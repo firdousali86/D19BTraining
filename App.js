@@ -6,12 +6,14 @@
  */
 
 import React, {useState} from 'react';
-import {SafeAreaView, View, Button, StyleSheet} from 'react-native';
+import {SafeAreaView, View, Button, StyleSheet, ScrollView} from 'react-native';
 
 import TestClassComponent from './src/components/ClassComponents/TestClassComponent';
-import TestFunctionalComponent from './src/components/TestFunctionalComponent';
 import UserProfileClassComponent from './src/components/ClassComponents/UserProfileClassComponent';
 import MyFirstClassComponent from './src/components/ClassComponents/MyFirstClassComponent';
+
+import TestFunctionalComponent from './src/components/FunctionalComponent/TestFunctionalComponent';
+import UserProfileFunctionalComponent from './src/components/FunctionalComponent/UserProfileFunctionalComponent';
 
 const userObject = {
   basicInfo: {
@@ -29,7 +31,7 @@ const userObject = {
   },
   educationInfo: {
     lastDegree: 'MS',
-    university: 'Scet',
+    university: 'SCET',
   },
 };
 
@@ -38,11 +40,13 @@ function App() {
 
   return (
     <SafeAreaView style={style.flex}>
-      <View style={style.flex}>
+      <ScrollView style={style.flex}>
+        <TestClassComponent />
         <MyFirstClassComponent />
 
-        <UserProfileClassComponent userObject={userObject} />
-      </View>
+        {/* <UserProfileClassComponent userObject={userObject} /> */}
+        <UserProfileFunctionalComponent userObject={userObject} />
+      </ScrollView>
     </SafeAreaView>
   );
 }

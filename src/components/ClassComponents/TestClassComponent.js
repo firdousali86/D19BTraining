@@ -6,7 +6,6 @@ class TestClassComponent extends React.Component {
     super(props);
 
     this.state = {newText: 'this is initial new text', bgColor: props.bgColor};
-
   }
 
   // componentDidUpdate(prevProps, prevState) {
@@ -32,6 +31,12 @@ class TestClassComponent extends React.Component {
       <View style={{backgroundColor: bgColor}}>
         <Text>this is my first class component</Text>
         <Text>{this.state.newText}</Text>
+        <Button
+          title="Test Button"
+          onPress={() => {
+            this.setState({bgColor: 'black'});
+          }}
+        />
         <Button
           title="Class Button"
           onPress={() => {

@@ -13,6 +13,9 @@ class UserBasicInfo extends React.Component {
       DOB: props.basicInfo?.DOB,
     };
   }
+  componentDidUpdate() {
+    console.log('i am getting updated');
+  }
 
   render() {
     const {firstName} = this.state;
