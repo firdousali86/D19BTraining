@@ -6,11 +6,12 @@
  */
 
 import React, {useState} from 'react';
-import {SafeAreaView, View, Text, Button} from 'react-native';
+import {SafeAreaView, View, Text, Button, ScrollView} from 'react-native';
 
 import TestClassComponent from './src/components/ClassComponents/TestClassComponent';
 import TestFunctionalComponent from './src/components/FunctionalComponents/TestFunctionalComponent';
 import UserProfileClassComponent from './src/components/ClassComponents/UserProfileClassComponent';
+import UserProfileFunctionalComponent from './src/components/FunctionalComponents/UserProfileFunctionalComponent';
 
 const userObject = {
   basicInfo: {
@@ -37,7 +38,7 @@ function App() {
 
   return (
     <SafeAreaView style={{flex: 1}}>
-      <View style={{flex: 1}}>
+      <ScrollView style={{flex: 1}}>
         <TestClassComponent
           bgColor={parentBGColor}
           myfirstprops={'this is prop value'}
@@ -59,7 +60,8 @@ function App() {
           }}
         />
         <UserProfileClassComponent userObject={userObject} />
-      </View>
+        <UserProfileFunctionalComponent userObject={userObject} />
+      </ScrollView>
     </SafeAreaView>
   );
 }
