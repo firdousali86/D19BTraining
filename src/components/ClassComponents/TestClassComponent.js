@@ -1,11 +1,11 @@
 import React from 'react';
-import {Text, Button, View} from 'react-native';
+import { Text, Button, View } from 'react-native';
 
 class TestClassComponent extends React.Component {
   constructor(props) {
     super(props);
 
-    this.state = {newText: 'this is initial new text', bgColor: props.bgColor};
+    this.state = { newText: 'this is initial new text', bgColor: props.bgColor };
 
     console.log(props);
   }
@@ -27,12 +27,12 @@ class TestClassComponent extends React.Component {
   // }
 
   render() {
-    const {bgColor} = this.state;
+    const { bgColor } = this.state;
 
     console.log('test class component rerendered');
 
     return (
-      <View style={{backgroundColor: bgColor}}>
+      <View style={{ backgroundColor: bgColor }}>
         <Text>this is my first class component</Text>
         <Text>{this.state.newText}</Text>
         <Button
@@ -40,7 +40,7 @@ class TestClassComponent extends React.Component {
           onPress={() => {
             console.log('button was clicked');
 
-            this.setState({newText: 'hey this button was tapped'});
+            this.setState({ newText: 'hey this button was tapped' });
 
             console.log(this.props);
           }}
@@ -49,13 +49,13 @@ class TestClassComponent extends React.Component {
         <Button
           title="Class Button: change BG to Yellow"
           onPress={() => {
-            this.setState({bgColor: 'red'});
+            this.setState({ bgColor: 'red' });
           }}
         />
         <Button
           title="Class Button: change BG to White"
           onPress={() => {
-            this.setState({bgColor: 'blue'});
+            this.setState({ bgColor: 'blue' });
           }}
         />
       </View>
