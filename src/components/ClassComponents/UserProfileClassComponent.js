@@ -33,7 +33,7 @@ export default class UserProfileClassComponent extends Component {
     };
 
     return (
-      <View style={{backgroundColor: 'pink'}}>
+      <View>
         {renderBasicInfo()}
         {renderContactInfo()}
         {renderEducationInfo()}

@@ -11,6 +11,7 @@ import {SafeAreaView, View, Button, StyleSheet} from 'react-native';
 import TestClassComponent from './src/components/ClassComponents/TestClassComponent';
 import TestFunctionalComponent from './src/components/TestFunctionalComponent';
 import UserProfileClassComponent from './src/components/ClassComponents/UserProfileClassComponent';
+import MyFirstClassComponent from './src/components/ClassComponents/MyFirstClassComponent';
 
 const userObject = {
   basicInfo: {
@@ -38,27 +39,8 @@ function App() {
   return (
     <SafeAreaView style={style.flex}>
       <View style={style.flex}>
-        <TestClassComponent
-          bgColor={parentBGColor}
-          myfirstprops={'this is prop value'}
-          mynumber={12345678}
-          mydata={['blue', 'green', 'red', 'white']}
-        />
+        <MyFirstClassComponent />
 
-        <TestFunctionalComponent />
-
-        <Button
-          title="Change to black"
-          onPress={() => {
-            setParentBGColor('black');
-          }}
-        />
-        <Button
-          title="Change to grey"
-          onPress={() => {
-            setParentBGColor('grey');
-          }}
-        />
         <UserProfileClassComponent userObject={userObject} />
       </View>
     </SafeAreaView>
