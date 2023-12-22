@@ -1,5 +1,5 @@
 import React from 'react';
-import {View, Text, TextInput} from 'react-native';
+import { View, Text, TextInput } from 'react-native';
 
 class UserContactInfo extends React.Component {
   constructor(props) {
@@ -16,8 +16,8 @@ class UserContactInfo extends React.Component {
     };
   }
   render() {
-    const {contactInfo} = this.props;
-    const {cell, email, address, city, country} = this.state;
+    const { contactInfo } = this.props;
+    const { cell, email, address, city, country } = this.state;
 
     return (
       <View style={styles.container}>
@@ -28,7 +28,7 @@ class UserContactInfo extends React.Component {
             placeholder="Cell"
             value={cell}
             onChangeText={changedText => {
-              this.setState({cell: changedText});
+              this.setState({ cell: changedText });
             }}
           />
         </View>
@@ -39,7 +39,7 @@ class UserContactInfo extends React.Component {
             placeholder="Cell"
             value={email}
             onChangeText={changedText => {
-              this.setState({email: changedText});
+              this.setState({ email: changedText });
             }}
           />
         </View>
@@ -50,7 +50,7 @@ class UserContactInfo extends React.Component {
             placeholder="Cell"
             value={address}
             onChangeText={changedText => {
-              this.setState({address: changedText});
+              this.setState({ address: changedText });
             }}
           />
         </View>
@@ -61,7 +61,7 @@ class UserContactInfo extends React.Component {
             placeholder="Cell"
             value={cell}
             onChangeText={changedText => {
-              this.setState({cell: changedText});
+              this.setState({ cell: changedText });
             }}
           />
         </View>
@@ -72,7 +72,7 @@ class UserContactInfo extends React.Component {
             placeholder="Cell"
             value={country}
             onChangeText={changedText => {
-              this.setState({country: changedText});
+              this.setState({ country: changedText });
             }}
           />
         </View>

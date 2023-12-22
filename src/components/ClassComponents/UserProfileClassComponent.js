@@ -16,7 +16,7 @@ export default class UserProfileClassComponent extends Component {
       return null;
     };
 
-    const renderContactInfo = () => {
+    renderContactInfo = () => {
       if (contactInfo !== undefined) {
         return <UserContactInfo contactInfo={contactInfo} />;
       }
