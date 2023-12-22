@@ -55,17 +55,6 @@ class UserContactInfo extends React.Component {
           />
         </View>
         <View style={styles.row}>
-          <Text style={styles.label}>Phone: </Text>
-          <TextInput
-            style={styles.input}
-            placeholder="Cell"
-            value={cell}
-            onChangeText={changedText => {
-              this.setState({ cell: changedText });
-            }}
-          />
-        </View>
-        <View style={styles.row}>
           <Text style={styles.label}>Country: </Text>
           <TextInput
             style={styles.input}
