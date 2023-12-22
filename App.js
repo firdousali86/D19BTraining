@@ -6,7 +6,7 @@
  */
 
 import React, {useState} from 'react';
-import {SafeAreaView, View, Button} from 'react-native';
+import {SafeAreaView, View, Button, StyleSheet} from 'react-native';
 
 import TestClassComponent from './src/components/ClassComponents/TestClassComponent';
 import TestFunctionalComponent from './src/components/TestFunctionalComponent';
@@ -36,14 +36,15 @@ function App() {
   const [parentBGColor, setParentBGColor] = useState('yellow');
 
   return (
-    <SafeAreaView style={{flex: 1}}>
-      <View style={{flex: 1}}>
+    <SafeAreaView style={style.flex}>
+      <View style={style.flex}>
         <TestClassComponent
           bgColor={parentBGColor}
           myfirstprops={'this is prop value'}
           mynumber={12345678}
           mydata={['blue', 'green', 'red', 'white']}
         />
+
         <TestFunctionalComponent />
 
         <Button
@@ -63,5 +64,11 @@ function App() {
     </SafeAreaView>
   );
 }
+
+const style = StyleSheet.create({
+  flex: {
+    flex: 1,
+  },
+});
 
 export default App;
