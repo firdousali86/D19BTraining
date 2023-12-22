@@ -14,17 +14,17 @@ import UserProfileClassComponent from './src/components/ClassComponents/UserProf
 
 const userObject = {
   basicInfo: {
-    firstName: 'Firdous',
-    lastName: 'Ali',
+    firstName: 'Nt',
+    lastName: 'boss',
     gender: 'Male',
     DOB: 'Dec 3',
   },
   contactInfo: {
     cell: '123456789',
-    email: 'firdous@firdous.com',
+    email: 'ntboss@gmail.com',
     address: '123 street',
-    city: 'Karachi',
-    country: 'Pakistan',
+    city: 'AH',
+    country: 'Bharat',
   },
   educationInfo: {
     lastDegree: 'MS',
