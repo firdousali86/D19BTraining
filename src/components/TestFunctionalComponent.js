@@ -9,10 +9,12 @@ const TestFunctionalComponent = () => {
         title="Functional Button"
         onPress={() => {
           console.log('functional buttton was tapped');
-        }}
+        }}  
       />
     </View>
   );
 };
+
+
 
 export default TestFunctionalComponent;

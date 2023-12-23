@@ -6,15 +6,17 @@
  */
 
 import React, {useState} from 'react';
-import {SafeAreaView, View, Text, Button} from 'react-native';
+import {SafeAreaView, View, Text, Button, StyleSheet} from 'react-native';
 
 import TestClassComponent from './src/components/ClassComponents/TestClassComponent';
 import TestFunctionalComponent from './src/components/TestFunctionalComponent';
 import UserProfileClassComponent from './src/components/ClassComponents/UserProfileClassComponent';
 
+import UserInfoComponent from './src/components/Component/UserProfileComponent';
+
 const userObject = {
   basicInfo: {
-    firstName: 'Nt',
+    firstName: 't',
     lastName: 'boss',
     gender: 'Male',
     DOB: 'Dec 3',
@@ -37,7 +39,7 @@ function App() {
 
   return (
     <SafeAreaView style={{flex: 1}}>
-      <View style={{flex: 1}}>
+      {/* <View style={{flex: 1}}>
         <TestClassComponent
           bgColor={parentBGColor}
           myfirstprops={'this is prop value'}
@@ -57,11 +59,31 @@ function App() {
           onPress={() => {
             setParentBGColor('grey');
           }}
+          
         />
         <UserProfileClassComponent userObject={userObject} />
+      </View> */}
+      <View style={{flex: 1}}>
+        <Text style={styles.head}>Functional Component</Text>
+        <UserInfoComponent userObject={userObject} />
       </View>
     </SafeAreaView>
   );
 }
+
+const styles = StyleSheet.create({
+  head: {
+    paddingVertical: 10,
+    marginVertical: 10,
+    fontSize: 20,
+    color: '#1e90ff',
+    backgroundColor: '#add8e6',
+    textAlign: 'center',
+    fontWeight: 'bold',
+    borderTopWidth: 5,
+    borderBottomWidth: 5,
+    borderColor: '#483d8b',
+  },
+});
 
 export default App;
