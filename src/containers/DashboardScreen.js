@@ -28,10 +28,15 @@ const userObject = {
 
 function DashboardScreen(props) {
   const [parentBGColor, setParentBGColor] = useState('yellow');
+  const [expState, setExpState] = useState(userObject.basicInfo.firstName);
 
   return (
     <SafeAreaView style={{flex: 1}}>
       <ScrollView style={{flex: 1}}>
+        <Text style={{backgroundColor: 'blue', color: 'white'}}>
+          {expState}
+        </Text>
+
         <TestClassComponent
           bgColor={parentBGColor}
           myfirstprops={'this is prop value'}
@@ -59,7 +64,12 @@ function DashboardScreen(props) {
           }}
         />
         <UserProfileClassComponent userObject={userObject} />
-        <UserProfileFunctionalComponent userObject={userObject} />
+        <UserProfileFunctionalComponent
+          userObject={userObject}
+          onNameChange={changedName => {
+            setExpState(changedName);
+          }}
+        />
         <TestCoreComponents />
       </ScrollView>
     </SafeAreaView>

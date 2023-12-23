@@ -15,6 +15,8 @@ const UserBasicInfoF = props => {
           placeholder="First Name"
           onChangeText={changedText => {
             setFirstName(changedText);
+
+            props.onNameChange(changedText);
           }}
           style={{backgroundColor: 'grey'}}
         />

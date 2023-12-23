@@ -5,7 +5,9 @@ import UserContactInfoF from './UserContactInfoF';
 
 const UserProfileFunctionalComponent = props => {
   renderBasicInfo = basicInfo => {
-    return <UserBasicInfoF basicInfo={basicInfo} />;
+    return (
+      <UserBasicInfoF basicInfo={basicInfo} onNameChange={props.onNameChange} />
+    );
   };
 
   renderContactInfo = contactInfo => {
