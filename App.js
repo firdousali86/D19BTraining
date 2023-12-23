@@ -5,19 +5,12 @@
  * @format
  */
 
-import React, {useState} from 'react';
-import {SafeAreaView, View, Text, Button, ScrollView} from 'react-native';
+import React from 'react';
 
-import TestClassComponent from './src/components/ClassComponents/TestClassComponent';
-import TestFunctionalComponent from './src/components/FunctionalComponents/TestFunctionalComponent';
-import UserProfileClassComponent from './src/components/ClassComponents/UserProfileClassComponent';
-import UserProfileFunctionalComponent from './src/components/FunctionalComponents/UserProfileFunctionalComponent';
-import TestCoreComponents from './src/components/FunctionalComponents/TestCoreComponents';
 import {NavigationContainer} from '@react-navigation/native';
 import {createNativeStackNavigator} from '@react-navigation/native-stack';
 
-import DashboardScreen from './src/containers/DashboardScreen';
-import SettingsScreen from './src/containers/SettingsScreen';
+import {DashboardScreen, SettingsScreen} from './src/containers';
 
 const Stack = createNativeStackNavigator();
 
