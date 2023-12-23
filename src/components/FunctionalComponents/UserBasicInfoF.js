@@ -1,5 +1,5 @@
 import {StyleSheet, Text, View, TextInput} from 'react-native';
-import React, {useState} from 'react';
+import React, {useState, useEffect} from 'react';
 
 const UserBasicInfoF = props => {
   const [firstName, setFirstName] = useState(props.basicInfo?.firstName);

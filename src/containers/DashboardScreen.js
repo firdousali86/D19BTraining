@@ -63,6 +63,13 @@ function DashboardScreen(props) {
             props.navigation.navigate('Settings');
           }}
         />
+
+        <Button
+          title={'push settings'}
+          onPress={() => {
+            props.navigation.push('Settings');
+          }}
+        />
         <UserProfileClassComponent userObject={userObject} />
         <UserProfileFunctionalComponent
           userObject={userObject}
