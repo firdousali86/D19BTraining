@@ -12,6 +12,7 @@ import TestClassComponent from './src/components/ClassComponents/TestClassCompon
 import TestFunctionalComponent from './src/components/FunctionalComponents/TestFunctionalComponent';
 import UserProfileClassComponent from './src/components/ClassComponents/UserProfileClassComponent';
 import UserProfileFunctionalComponent from './src/components/FunctionalComponents/UserProfileFunctionalComponent';
+import TestCoreComponents from './src/components/FunctionalComponents/TestCoreComponents';
 
 const userObject = {
   basicInfo: {
@@ -61,6 +62,7 @@ function App() {
         />
         <UserProfileClassComponent userObject={userObject} />
         <UserProfileFunctionalComponent userObject={userObject} />
+        <TestCoreComponents />
       </ScrollView>
     </SafeAreaView>
   );
