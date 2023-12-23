@@ -1,33 +1,59 @@
 import React, {Component} from 'react';
-import {View, Text, TextInput, Image, StyleSheet} from 'react-native';
+import {AccessAlarm, ThreeDRotation} from '@mui/icons-material';
+
+import {
+  View,
+  Text,
+  TextInput,
+  Image,
+  StyleSheet,
+  Button,
+  Switch,
+} from 'react-native';
+import {Tooltip} from 'react-native-elements';
 
 class UserBasicInfo extends Component {
   constructor(props) {
     super(props);
-
+    console.log('asd');
     this.state = {
       firstName: props.basicInfo?.firstName,
       lastName: props.basicInfo?.lastName,
       gender: props.basicInfo?.gender,
       DOB: props.basicInfo?.DOB,
+      isEnabled: false,
     };
   }
 
   render() {
     const {firstName, lastName, gender, DOB} = this.state;
-
+    console.log(this.state);
     return (
       <View style={styles.container}>
+        <View style={styles.row}>
+
+          <Tooltip popover={<Text>Info here</Text>}>
+            <Text>Press me</Text>
+          </Tooltip>
+          <Switch
+            trackColor={{false: '#767577', true: '#81b0ff'}}
+            // thumbColor={this.state.isEnabled ? '#f5dd4b' : '#f4f3f4'}
+            ios_backgroundColor="#3e3e3e"
+            onValueChange={bool => this.setState({isEnabled: bool})}
+            value={this.state.isEnabled}
+            style={{transform: [{scaleX: 0.4}, {scaleY: 0.4}]}}
+          />
+        </View>
+
         <View style={styles.imageRow}>
           <Image
             style={styles.image}
             source={{uri: 'https://reactnative.dev/img/tiny_logo.png'}}
           />
-          <Image
-            style={styles.image}
-            source={{uri: 'https://reactnative.dev/img/tiny_logo.png'}}
-          />
         </View>
+
+        <Button title="BTN" />
+
         <View style={styles.row}>
           <Text style={styles.label}>First Name:</Text>
           <TextInput
@@ -98,7 +124,7 @@ const styles = StyleSheet.create({
   },
   imageRow: {
     flexDirection: 'row',
-    justifyContent: 'space-between',
+    justifyContent: 'center',
     marginBottom: 20,
   },
   image: {
