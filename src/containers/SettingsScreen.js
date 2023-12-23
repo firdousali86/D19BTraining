@@ -1,35 +1,40 @@
 import React from 'react';
 import {View, Text, Button} from 'react-native';
 
-function SettingsScreen(props) {
+function SettingsScreen({navigation, route}) {
+  const {city, country} = route.params;
+
   return (
     <View>
       <Text>this is very simple settings screen</Text>
+
+      <Text>{city}</Text>
+      <Text>{country}</Text>
       <Button
         title="again navigate to settings"
         onPress={() => {
-          props.navigation.push('Settings');
+          navigation.push('Settings');
         }}
       />
 
       <Button
         title={'pop to top'}
         onPress={() => {
-          props.navigation.popToTop();
+          navigation.popToTop();
         }}
       />
 
       <Button
         title={'push dashboard'}
         onPress={() => {
-          props.navigation.push('Dashboard');
+          navigation.push('Dashboard');
         }}
       />
 
       <Button
         title={'pop to top'}
         onPress={() => {
-          props.navigation.popToTop();
+          navigation.popToTop();
         }}
       />
 

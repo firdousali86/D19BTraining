@@ -60,7 +60,10 @@ function DashboardScreen(props) {
         <Button
           title={'Goto settings'}
           onPress={() => {
-            props.navigation.navigate('Settings');
+            props.navigation.navigate('Settings', {
+              city: 'Karachi',
+              country: 'Pakistan',
+            });
           }}
         />
 

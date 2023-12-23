@@ -21,7 +21,11 @@ function App() {
         <Stack.Screen name="Dashboard" component={DashboardScreen} />
         <Stack.Screen name="TestHOCScreen" component={TestHOCScreen} />
 
-        <Stack.Screen name="Settings" component={SettingsScreen} />
+        <Stack.Screen
+          name="Settings"
+          component={SettingsScreen}
+          initialParams={{city: 'London', country: 'UK'}}
+        />
       </Stack.Navigator>
     </NavigationContainer>
   );
