@@ -13,6 +13,8 @@ import TestFunctionalComponent from './src/components/FunctionalComponents/TestF
 import UserProfileClassComponent from './src/components/ClassComponents/UserProfileClassComponent';
 import UserProfileFunctionalComponent from './src/components/FunctionalComponents/UserProfileFunctionalComponent';
 import TestCoreComponents from './src/components/FunctionalComponents/TestCoreComponents';
+import {NavigationContainer} from '@react-navigation/native';
+import {createNativeStackNavigator} from '@react-navigation/native-stack';
 
 const userObject = {
   basicInfo: {
@@ -34,7 +36,7 @@ const userObject = {
   },
 };
 
-function App() {
+function DashboardScreen(props) {
   const [parentBGColor, setParentBGColor] = useState('yellow');
 
   return (
@@ -60,11 +62,38 @@ function App() {
             setParentBGColor('grey');
           }}
         />
+        <Button
+          title={'Goto settings'}
+          onPress={() => {
+            props.navigation.navigate('Settings');
+          }}
+        />
         <UserProfileClassComponent userObject={userObject} />
         <UserProfileFunctionalComponent userObject={userObject} />
         <TestCoreComponents />
       </ScrollView>
     </SafeAreaView>
+  );
+}
+
+function SettingsScreen(props) {
+  return (
+    <View>
+      <Text>this is very simple settings screen</Text>
+    </View>
+  );
+}
+
+const Stack = createNativeStackNavigator();
+
+function App() {
+  return (
+    <NavigationContainer>
+      <Stack.Navigator>
+        <Stack.Screen name="Dashboard" component={DashboardScreen} />
+        <Stack.Screen name="Settings" component={SettingsScreen} />
+      </Stack.Navigator>
+    </NavigationContainer>
   );
 }
 
