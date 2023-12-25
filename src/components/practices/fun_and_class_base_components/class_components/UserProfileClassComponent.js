@@ -1,12 +1,11 @@
-import {Text, StyleSheet, View} from 'react-native';
-import React, {Component} from 'react';
+import { View } from 'react-native';
+import React, { Component } from 'react';
 import UserBasicInfo from './UserBasicInfo';
 import UserContactInfo from './UserContactInfo';
-import UserEducationInfo from './UserEducationInfo';
 
 export default class UserProfileClassComponent extends Component {
   render() {
-    const {basicInfo, contactInfo, educationInfo} = this.props.userObject;
+    const { basicInfo, contactInfo } = this.props.userObject;
 
     const renderBasicInfo = () => {
       if (basicInfo !== undefined) {
@@ -16,7 +15,7 @@ export default class UserProfileClassComponent extends Component {
       return null;
     };
 
-    const renderContactInfo = () => {
+    renderContactInfo = () => {
       if (contactInfo !== undefined) {
         return <UserContactInfo contactInfo={contactInfo} />;
       }
@@ -24,22 +23,13 @@ export default class UserProfileClassComponent extends Component {
       return null;
     };
 
-    const renderEducationInfo = () => {
-      if (educationInfo !== undefined) {
-        return <UserEducationInfo educationInfo={educationInfo} />;
-      }
-
-      return null;
-    };
-
     return (
-      <View>
+
+      <View scrollIndicatorInsets={{ right: 1 }} >
         {renderBasicInfo()}
         {renderContactInfo()}
-        {renderEducationInfo()}
       </View>
+
     );
   }
 }
-
-const styles = StyleSheet.create({});
