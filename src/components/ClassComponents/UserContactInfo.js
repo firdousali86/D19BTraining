@@ -13,31 +13,31 @@ class UserContactInfo extends React.Component {
                 <View style={{flexDirection: 'row', marginTop: 5}}>
                     <Text style={styles.textCommon}>Email: </Text>
                     <Text
-                        style={{...styles.textInputCommon, paddingVertical: 12, paddingHorizontal: 4}}
+                        style={{...styles.textInputCommon, paddingVertical: 5, paddingHorizontal: 4}}
                     >{contactInfo?.email}</Text>
                 </View>
                 <View style={{flexDirection: 'row', marginTop: 5}}>
                     <Text style={styles.textCommon}>Address:</Text>
                     <Text
-                        style={{...styles.textInputCommon, paddingVertical: 12, paddingHorizontal: 4}}
+                        style={{...styles.textInputCommon, paddingVertical: 5, paddingHorizontal: 4}}
                     >{contactInfo?.address}</Text>
                 </View>
                 <View style={{flexDirection: 'row', marginTop: 5}}>
                     <Text style={styles.textCommon}>Email: </Text>
                     <Text
-                        style={{...styles.textInputCommon, paddingVertical: 12, paddingHorizontal: 4}}
+                        style={{...styles.textInputCommon, paddingVertical: 5, paddingHorizontal: 4}}
                     >{contactInfo?.email}</Text>
                 </View>
                 <View style={{flexDirection: 'row', marginTop: 5}}>
                     <Text style={styles.textCommon}>City: </Text>
                     <Text
-                        style={{...styles.textInputCommon, paddingVertical: 12, paddingHorizontal: 4}}
+                        style={{...styles.textInputCommon, paddingVertical: 5, paddingHorizontal: 4}}
                     >{contactInfo?.city}</Text>
                 </View>
                 <View style={{flexDirection: 'row', marginTop: 5}}>
                     <Text style={styles.textCommon}>Country: </Text>
                     <Text
-                        style={{...styles.textInputCommon, paddingVertical: 12, paddingHorizontal: 4}}
+                        style={{...styles.textInputCommon, paddingVertical: 5, paddingHorizontal: 4}}
                     >{contactInfo?.country}</Text>
                 </View>
             </View>

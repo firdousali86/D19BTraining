@@ -81,7 +81,7 @@ const styles = StyleSheet.create({
     },
     textCommon: {
         fontWeight: 'bold',
-        fontSize: 16,
+        fontSize: 15,
         textAlignVertical: 'center', width: '30%',
         textAlign: 'center',
     }
@@ -89,7 +89,7 @@ const styles = StyleSheet.create({
         fontSize: 20, fontWeight: 'bold', backgroundColor: '#8fbc8f', textAlign: 'center',
         marginVertical: 10,
         borderRadius: 10,
-        paddingVertical: 10,
+        paddingVertical: 5,
     }
 
 });

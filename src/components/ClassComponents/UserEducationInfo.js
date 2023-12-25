@@ -14,13 +14,13 @@ class UserEducationInfo extends React.Component {
                 <View style={{flexDirection: 'row', marginTop: 5}}>
                     <Text style={styles.textCommon}>University: </Text>
                     <Text
-                        style={{...styles.textInputCommon, paddingVertical: 12, paddingHorizontal: 4}}
+                        style={{...styles.textInputCommon, paddingVertical: 5, paddingHorizontal: 4}}
                     >{educationInfo?.lastDegree}</Text>
                 </View>
                 <View style={{flexDirection: 'row', marginTop: 5}}>
                     <Text style={styles.textCommon}>Last Degree: </Text>
                     <Text
-                        style={{...styles.textInputCommon, paddingVertical: 12, paddingHorizontal: 4}}
+                        style={{...styles.textInputCommon, paddingVertical: 5, paddingHorizontal: 4}}
                     >{educationInfo?.university}</Text>
                 </View>
             </View>
