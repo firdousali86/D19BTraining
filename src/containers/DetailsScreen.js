@@ -1,7 +1,17 @@
 import {StyleSheet, Text, View, TouchableOpacity} from 'react-native';
-import React from 'react';
+import React, {useEffect} from 'react';
 
 const DetailsScreen = props => {
+  useEffect(() => {
+    return () => {
+      console.log('this component is getting deinitialized now');
+      //assign nil to your complex datas
+      //call stoplisteners to your events
+      //nullify your timers
+      //nullify your setintervals
+    };
+  }, []);
+
   return (
     <View>
       <Text>DetailsScreen</Text>
