@@ -1,10 +1,10 @@
 import React, {useState} from 'react';
 import {View, Text, ScrollView, Button, SafeAreaView} from 'react-native';
-import UserProfileClassComponent from '../components/ClassComponents/UserProfileClassComponent';
-import UserProfileFunctionalComponent from '../components/FunctionalComponents/UserProfileFunctionalComponent';
-import TestCoreComponents from '../components/FunctionalComponents/TestCoreComponents';
-import TestClassComponent from '../components/ClassComponents/TestClassComponent';
-import TestFunctionalComponent from '../components/FunctionalComponents/TestFunctionalComponent';
+import UserProfileClassComponent from '../../components/ClassComponents/UserProfileClassComponent';
+import UserProfileFunctionalComponent from '../../components/FunctionalComponents/UserProfileFunctionalComponent';
+import TestCoreComponents from '../../components/FunctionalComponents/TestCoreComponents';
+import TestClassComponent from '../../components/ClassComponents/TestClassComponent';
+import TestFunctionalComponent from '../../components/FunctionalComponents/TestFunctionalComponent';
 
 const userObject = {
   basicInfo: {
