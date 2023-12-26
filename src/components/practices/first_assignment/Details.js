@@ -1,14 +1,21 @@
-import React from 'react';
-import {View, Text, Button} from 'react-native';
+import React, {useState} from 'react';
+import {View, Text, Button, TextInput} from 'react-native';
 
-const Details = ({navigation,route}) => {
+const Details = ({navigation, route}) => {
+  const [item, setItem] = useState(route.params);
   return (
     <View>
       <Text>{route.params?.item}</Text>
-      <Button
-        title="Back"
-        onPress={() => navigation.popToTop()}
+      <TextInput
+        value={item.item}
+        onChangeText={changedText => {
+          setItem(prevItem => ({
+            ...prevItem,
+            item: changedText,
+          }));
+        }}
       />
+      <Button title="Back" onPress={() => navigation.navigate('First', item)} />
     </View>
   );
 };

@@ -12,7 +12,14 @@ import {Button} from 'react-native-elements';
 const FirstAssignment = props => {
   const [todoArr, setTodoArr] = useState([]);
   const [task, setTask] = useState('');
-
+  React.useEffect(() => {
+    if (props.route.params !== undefined) {
+      const {index, item} = props.route.params;
+      todoArr[index] = item;
+      const updateToArr = todoArr;
+      setTask(...todoArr, updateToArr);
+    }
+  }, [props.route.params]);
   return (
     <SafeAreaView style={stylesCss.safeAreaView}>
       <View style={stylesCss.mainView}>
@@ -49,13 +56,18 @@ const FirstAssignment = props => {
         <View style={stylesCss.flatListMain}>
           <FlatList
             data={todoArr}
-            renderItem={({item}) => (
+            renderItem={({index, item}) => (
               <View style={stylesCss.flatListContainer}>
-                <Text style={{alignItems: 'center'}}>{item}</Text>
+                <Text style={{alignItems: 'center'}}>
+                  {item}---{index}
+                </Text>
                 <Button
                   title={'view'}
                   onPress={() => {
-                    props.navigation.navigate('Details', {item: item});
+                    props.navigation.navigate('Details', {
+                      item: item,
+                      index: index,
+                    });
                   }}
                 />
               </View>
