@@ -10,7 +10,12 @@ import React from 'react';
 import {NavigationContainer} from '@react-navigation/native';
 import {createNativeStackNavigator} from '@react-navigation/native-stack';
 
-import {DashboardScreen, SettingsScreen, TestHOCScreen} from './src/containers';
+import {
+  DashboardScreen,
+  SettingsScreen,
+  TestHOCScreen,
+  TestFlexScreen,
+} from './src/containers';
 
 const Stack = createNativeStackNavigator();
 
@@ -19,6 +24,8 @@ function App() {
     <NavigationContainer>
       <Stack.Navigator>
         <Stack.Screen name="Dashboard" component={DashboardScreen} />
+        <Stack.Screen name="TestFlexScreen" component={TestFlexScreen} />
+
         <Stack.Screen name="TestHOCScreen" component={TestHOCScreen} />
 
         <Stack.Screen

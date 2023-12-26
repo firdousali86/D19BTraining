@@ -41,11 +41,33 @@ function SettingsScreen({navigation, route}) {
       <Button
         title={'navigate to dashboard'}
         onPress={() => {
-          props.navigation.navigate('Dashboard');
+          navigation.navigate('Dashboard');
         }}
       />
+
+      <Button
+        title={'change params from within'}
+        onPress={() => {
+          navigation.setParams({
+            city: 'somecity',
+            country: 'somecountry',
+          });
+        }}
+      />
+
+      <CustomComp city={city} country={country}></CustomComp>
     </View>
   );
 }
+
+const CustomComp = props => {
+  return (
+    <View>
+      <Text>custom comp</Text>
+      <Text>{props.city}</Text>
+      <Text>{props.country}</Text>
+    </View>
+  );
+};
 
 export default SettingsScreen;
