@@ -15,6 +15,8 @@ import {
   SettingsScreen,
   TestHOCScreen,
   TestFlexScreen,
+  ListScreen,
+  DetailsScreen,
 } from './src/containers';
 
 const Stack = createNativeStackNavigator();
@@ -23,6 +25,8 @@ function App() {
   return (
     <NavigationContainer>
       <Stack.Navigator>
+        <Stack.Screen name="ListScreen" component={ListScreen} />
+        <Stack.Screen name="DetailsScreen" component={DetailsScreen} />
         <Stack.Screen name="Dashboard" component={DashboardScreen} />
         <Stack.Screen name="TestFlexScreen" component={TestFlexScreen} />
 

@@ -2,5 +2,14 @@ import DashboardScreen from './DashboardScreen';
 import SettingsScreen from './SettingsScreen';
 import TestHOCScreen from './TestHOCScreen';
 import TestFlexScreen from './TestFlexScreen';
+import ListScreen from './ListScreen';
+import DetailsScreen from './DetailsScreen';
 
-export {DashboardScreen, SettingsScreen, TestHOCScreen, TestFlexScreen};
+export {
+  DashboardScreen,
+  SettingsScreen,
+  TestHOCScreen,
+  TestFlexScreen,
+  ListScreen,
+  DetailsScreen,
+};
