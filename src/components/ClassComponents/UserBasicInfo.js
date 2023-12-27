@@ -1,5 +1,5 @@
 import React from 'react';
-import {View, Text, TextInput, StyleSheet} from 'react-native';
+import {View, Text} from 'react-native';
 
 class UserBasicInfo extends React.Component {
   constructor(props) {
@@ -14,7 +14,7 @@ class UserBasicInfo extends React.Component {
 
   render() {
     const {basicInfo} = this.props;
-    const {firstName, lastName, styles} = this.state;
+    const {styles} = this.state;
 
     return (
       <View>

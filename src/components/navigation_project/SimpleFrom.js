@@ -1,6 +1,26 @@
 import React, {useState} from 'react';
 import {View, Text, TextInput, Button, FlatList} from 'react-native';
 
+const userObject = {
+  basicInfo: {
+    firstName: 't',
+    lastName: 'boss',
+    gender: 'Male',
+    DOB: 'Dec 3',
+  },
+  contactInfo: {
+    cell: '123456789',
+    email: 'ntboss@gmail.com',
+    address: '123 street',
+    city: 'AH',
+    country: 'Bharat',
+  },
+  educationInfo: {
+    lastDegree: 'MS',
+    university: 'NEDUET',
+  },
+};
+
 const SimpleForm = props => {
   const [inputText, setInputText] = useState('');
   const [submittedData, setSubmittedData] = useState([]);
@@ -17,7 +37,15 @@ const SimpleForm = props => {
     setInputText('');
   };
 
-  console.log(props)
+  React.useEffect(() => {
+    if (props.route.params !== undefined) {
+      console.log(props.route.params);
+      const {firstName, lastName, index} = props.route.params;
+      const updatedData = [...submittedData];
+      updatedData[index] = {firstName, lastName};
+      setSubmittedData(updatedData);
+    }
+  }, [props.route.params]);
 
   return (
     <View style={{width: '100%'}}>
@@ -25,8 +53,19 @@ const SimpleForm = props => {
         <Text style={styles.label}>Please enter you name </Text>
         <TextInput
           style={styles.input}
-          onChangeText={newText => setInputText(newText)}
-          value={inputText}
+          placeholder="first name"
+          onChangeText={newText =>
+            setInputText(preData => ({...preData, firstName: newText}))
+          }
+          value={inputText.firstName}
+        />
+        <TextInput
+          style={styles.input}
+          placeholder="last name"
+          onChangeText={lastText =>
+            setInputText(preData => ({...preData, lastName: lastText}))
+          }
+          value={inputText.lastName}
         />
         <View>
           <Button
@@ -39,15 +78,26 @@ const SimpleForm = props => {
           <Button title="Clear" onPress={getClearData} />
         </View>
         <View style={{marginTop: 10}}>
-          <Button title="class user "  onPress={() => {
-                props.navigation.navigate('classUser');
-              }} />
+          <Button
+            title="class user "
+            onPress={() => {
+              props.navigation.navigate('classUser', userObject);
+            }}
+          />
+        </View>
+        <View style={{marginTop: 10}}>
+          <Button
+            title="Funcational Component"
+            onPress={() => {
+              props.navigation.navigate('functionalComponent', userObject);
+            }}
+          />
         </View>
       </View>
 
       <FlatList
         data={submittedData}
-        renderItem={({item}) => (
+        renderItem={({index, item}) => (
           <View
             style={{
               padding: 10,
@@ -56,12 +106,18 @@ const SimpleForm = props => {
               justifyContent: 'space-between',
               backgroundColor: '#f0f8ff',
             }}>
-            <Text style={styles.lisText}>{item}</Text>
+            <Text style={styles.lisText}>{item.firstName}</Text>
+            <Text style={styles.lisText}>{item.lastName}</Text>
+            <Text style={styles.lisText}>{index}</Text>
 
             <Button
               title={'Show Details'}
               onPress={() => {
-                props.navigation.navigate('Details',item);
+                props.navigation.navigate('Details', {
+                  item: item,
+                  index: index,
+                  style: styles.input,
+                });
               }}
             />
           </View>
@@ -94,7 +150,6 @@ const styles = {
 
   lisText: {
     fontSize: 20,
-    fontWeight: 'bold',
   },
 };
 

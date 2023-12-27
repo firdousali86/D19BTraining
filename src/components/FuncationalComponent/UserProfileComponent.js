@@ -3,8 +3,30 @@ import {View, Text, StyleSheet, Image, Button, ScrollView} from 'react-native';
 import BaseInfoComponent from './BaseInfoComponent';
 import ContactInfoComponent from './ContactInfoComponent';
 
-const UserInfoFunComponent = props => {
-  const {userObject} = props;
+
+
+const userObject = {
+  basicInfo: {
+    firstName: 't',
+    lastName: 'boss',
+    gender: 'Male',
+    DOB: 'Dec 3',
+  },
+  contactInfo: {
+    cell: '123456789',
+    email: 'ntboss@gmail.com',
+    address: '123 street',
+    city: 'AH',
+    country: 'Bharat',
+  },
+  educationInfo: {
+    lastDegree: 'MS',
+    university: 'NEDUET',
+  },
+};
+
+const UserFunComponent = props => {
+  
   const {basicInfo, contactInfo} = userObject;
   const [component_style, setColor] = useState(commonStyle);
 
@@ -26,7 +48,7 @@ const UserInfoFunComponent = props => {
   return (
     <ScrollView>
       <View>
-        <Text style={styles.head}>Functional Component</Text>
+        <Text style={commonStyle.head}>Functional Component</Text>
       </View>
       <View style={commonStyle.card}>
         <View style={{alignItems: 'center'}}>
@@ -66,13 +88,7 @@ const UserInfoFunComponent = props => {
                 title="gold"
                 color={'#ffd700'}
                 onPress={() => {
-                  setColor(prevStyle => ({
-                    ...prevStyle,
-                    info: {
-                      ...prevStyle.info,
-                      backgroundColor: '#ffd700',
-                    },
-                  }));
+                  setColor(prevStyle => ({...prevStyle,   info: {  ...prevStyle.info,  backgroundColor: '#ffd700'}, }));
                 }}
               />
             </View>
@@ -128,4 +144,4 @@ const commonStyle = StyleSheet.create({
   },
 });
 
-export default UserInfoFunComponent;
+export default UserFunComponent;

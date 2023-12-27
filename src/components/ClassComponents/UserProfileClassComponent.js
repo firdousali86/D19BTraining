@@ -4,9 +4,33 @@ import UserBasicInfo from './UserBasicInfo';
 import UserContactInfo from './UserContactInfo';
 import UserEducationInfo from './UserEducationInfo';
 
+
+const userObject = {
+    basicInfo: {
+      firstName: 't',
+      lastName: 'boss',
+      gender: 'Male',
+      DOB: 'Dec 3',
+    },
+    contactInfo: {
+      cell: '123456789',
+      email: 'ntboss@gmail.com',
+      address: '123 street',
+      city: 'AH',
+      country: 'Bharat',
+    },
+    educationInfo: {
+      lastDegree: 'MS',
+      university: 'NEDUET',
+    },
+  };
+  
+
 export default class UserProfileClassComponent extends Component {
     render() {
-        const {basicInfo, contactInfo, educationInfo} = this.props.userObject;
+
+
+        const {basicInfo, contactInfo, educationInfo} = userObject;
 
 
         const renderBasicInfo = () => {
