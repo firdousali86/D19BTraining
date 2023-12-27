@@ -11,6 +11,8 @@ import {
   ListScreen,
   DetailsScreen,
   TypeScriptTestScreen,
+  LoginScreen,
+  SignupScreen,
 } from '../containers';
 import {Text, View} from 'react-native';
 
@@ -18,20 +20,8 @@ const Navigation = () => {
   const getAuthStack = () => {
     return (
       <Stack.Group>
-        <Stack.Screen
-          name={'Login'}
-          component={() => (
-            <View>
-              <Text>this is login screen</Text>
-            </View>
-          )}></Stack.Screen>
-        <Stack.Screen
-          name={'Signup'}
-          component={() => (
-            <View>
-              <Text>this is signup screen</Text>
-            </View>
-          )}></Stack.Screen>
+        <Stack.Screen name={'Login'} component={LoginScreen}></Stack.Screen>
+        <Stack.Screen name={'Signup'} component={SignupScreen}></Stack.Screen>
       </Stack.Group>
     );
   };

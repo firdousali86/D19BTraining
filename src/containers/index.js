@@ -5,6 +5,8 @@ import TestFlexScreen from './TestFlexScreen';
 import ListScreen from './ListScreen';
 import DetailsScreen from './DetailsScreen';
 import TypeScriptTestScreen from './TypeScriptTestScreen';
+import LoginScreen from './LoginScreen';
+import SignupScreen from './SignupScreen';
 
 export {
   DashboardScreen,
@@ -14,4 +16,6 @@ export {
   ListScreen,
   DetailsScreen,
   TypeScriptTestScreen,
+  LoginScreen,
+  SignupScreen,
 };
