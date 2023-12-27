@@ -1,69 +1,39 @@
-/**
- * Sample React Native App
- * https://github.com/facebook/react-native
- *
- * @format
- */
+import * as React from 'react';
+import { Text, View } from 'react-native';
+import { NavigationContainer } from '@react-navigation/native';
+import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 
-import React, {useState} from 'react';
-import {SafeAreaView, View, Text, Button, ScrollView} from 'react-native';
-
-import TestClassComponent from './src/components/ClassComponents/TestClassComponent';
-import TestFunctionalComponent from './src/components/FunctionalComponents/TestFunctionalComponent';
-import UserProfileClassComponent from './src/components/ClassComponents/UserProfileClassComponent';
-import UserProfileFunctionalComponent from './src/components/FunctionalComponents/UserProfileFunctionalComponent';
-
-const userObject = {
-  basicInfo: {
-    firstName: 'Naresh',
-    lastName: 'Malaviya',
-    gender: 'Male',
-    DOB: 'Nov 18',
-  },
-  contactInfo: {
-    cell: '123456789',
-    email: 'naresh@gmail.com',
-    address: '856 jivanvadi',
-    city: 'AHmedabd',
-    country: 'India',
-  },
-  educationInfo: {
-    lastDegree: 'BCA',
-    university: 'Gujrat University',
-  },
-};
-
-function App() {
-  const [parentBGColor, setParentBGColor] = useState('yellow');
-
+function HomeScreen() {
   return (
-    <SafeAreaView style={{flex: 1}}>
-      <ScrollView style={{flex: 1}}>
-        <TestClassComponent
-          bgColor={parentBGColor}
-          myfirstprops={'this is prop value'}
-          mynumber={12345678}
-          mydata={['blue', 'green', 'red', 'white']}
-        />
-        <TestFunctionalComponent />
-
-        <Button
-          title="Change to black"
-          onPress={() => {
-            setParentBGColor('black');
-          }}
-        />
-        <Button
-          title="Change to grey"
-          onPress={() => {
-            setParentBGColor('grey');
-          }}
-        />
-        <UserProfileClassComponent userObject={userObject} />
-        <UserProfileFunctionalComponent userObject={userObject} />
-      </ScrollView>
-    </SafeAreaView>
+    <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
+      <Text>Home!</Text>
+    </View>
   );
 }
 
-export default App;
+function SettingsScreen() {
+  return (
+    <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
+      <Text>Settings!</Text>
+    </View>
+  );
+}
+
+const Tab = createBottomTabNavigator();
+
+function MyTabs() {
+  return (
+    <Tab.Navigator>
+      <Tab.Screen name="Home" component={HomeScreen} />
+      <Tab.Screen name="Settings" component={SettingsScreen} />
+    </Tab.Navigator>
+  );
+}
+
+export default function App() {
+  return (
+    <NavigationContainer>
+      <MyTabs />
+    </NavigationContainer>
+  );
+}
