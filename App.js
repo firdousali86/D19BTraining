@@ -28,7 +28,7 @@ const userObject = {
     country: 'India',
   },
   educationInfo: {
-    lastDegree: 'MCA',
+    lastDegree: 'BCA',
     university: 'Gujrat University',
   },
 };
