@@ -15,20 +15,31 @@ import {
   SignupScreen,
 } from '../containers';
 import {Text, View} from 'react-native';
+import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
+const Tab = createBottomTabNavigator();
 
 const Navigation = () => {
+  function MyTabs() {
+    return (
+      <Tab.Navigator>
+        <Tab.Screen name="Auth" component={getAuthStack} />
+        <Tab.Screen name="Main" component={getMainStack} />
+      </Tab.Navigator>
+    );
+  }
+
   const getAuthStack = () => {
     return (
-      <Stack.Group>
+      <Stack.Navigator>
         <Stack.Screen name={'Login'} component={LoginScreen}></Stack.Screen>
         <Stack.Screen name={'Signup'} component={SignupScreen}></Stack.Screen>
-      </Stack.Group>
+      </Stack.Navigator>
     );
   };
 
   const getMainStack = () => {
     return (
-      <Stack.Group>
+      <Stack.Navigator>
         <Stack.Screen
           name="TypeScriptTestScreen"
           component={TypeScriptTestScreen}
@@ -45,11 +56,12 @@ const Navigation = () => {
           component={SettingsScreen}
           initialParams={{city: 'London', country: 'UK'}}
         />
-      </Stack.Group>
+      </Stack.Navigator>
     );
   };
 
-  return <Stack.Navigator>{getAuthStack()}</Stack.Navigator>;
+  return MyTabs();
+  // return <Stack.Navigator>{getMainStack()}</Stack.Navigator>;
 };
 
 export default Navigation;
