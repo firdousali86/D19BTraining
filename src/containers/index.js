@@ -7,6 +7,7 @@ import DetailsScreen from './DetailsScreen';
 import TypeScriptTestScreen from './TypeScriptTestScreen';
 import LoginScreen from './LoginScreen';
 import SignupScreen from './SignupScreen';
+import TestModalScreen from './TestModalScreen';
 
 export {
   DashboardScreen,
@@ -18,4 +19,5 @@ export {
   TypeScriptTestScreen,
   LoginScreen,
   SignupScreen,
+  TestModalScreen,
 };

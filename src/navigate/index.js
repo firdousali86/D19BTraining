@@ -13,6 +13,7 @@ import {
   TypeScriptTestScreen,
   LoginScreen,
   SignupScreen,
+  TestModalScreen,
 } from '../containers';
 import {Text, View} from 'react-native';
 import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
@@ -39,7 +40,8 @@ const Navigation = () => {
 
   const getMainStack = () => {
     return (
-      <Stack.Navigator>
+      <Stack.Group>
+        <Stack.Screen name="TestModalScreen" component={TestModalScreen} />
         <Stack.Screen
           name="TypeScriptTestScreen"
           component={TypeScriptTestScreen}
@@ -56,12 +58,12 @@ const Navigation = () => {
           component={SettingsScreen}
           initialParams={{city: 'London', country: 'UK'}}
         />
-      </Stack.Navigator>
+      </Stack.Group>
     );
   };
 
-  return MyTabs();
-  // return <Stack.Navigator>{getMainStack()}</Stack.Navigator>;
+  // return MyTabs();
+  return <Stack.Navigator>{getMainStack()}</Stack.Navigator>;
 };
 
 export default Navigation;
