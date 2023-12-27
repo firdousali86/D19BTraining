@@ -10,11 +10,16 @@ import {
   TestFlexScreen,
   ListScreen,
   DetailsScreen,
+  TypeScriptTestScreen,
 } from '../containers';
 
 const Navigation = () => {
   return (
     <Stack.Navigator>
+      <Stack.Screen
+        name="TypeScriptTestScreen"
+        component={TypeScriptTestScreen}
+      />
       <Stack.Screen name="ListScreen" component={ListScreen} />
       <Stack.Screen name="DetailsScreen" component={DetailsScreen} />
       <Stack.Screen name="Dashboard" component={DashboardScreen} />

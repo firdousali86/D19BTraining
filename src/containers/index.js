@@ -4,6 +4,7 @@ import TestHOCScreen from './TestHOCScreen';
 import TestFlexScreen from './TestFlexScreen';
 import ListScreen from './ListScreen';
 import DetailsScreen from './DetailsScreen';
+import TypeScriptTestScreen from './TypeScriptTestScreen';
 
 export {
   DashboardScreen,
@@ -12,4 +13,5 @@ export {
   TestFlexScreen,
   ListScreen,
   DetailsScreen,
+  TypeScriptTestScreen,
 };
