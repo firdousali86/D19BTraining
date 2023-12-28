@@ -1,13 +1,13 @@
 import React from 'react';
 import { Text, View } from 'react-native';
 
-const Login = () => {
+const ModalScreen = () => {
 
     return (
         <View>
-            <Text>Login Screen</Text>
+            <Text>Modal Screen</Text>
         </View>
     );
 };
 
-export default Login;
+export default ModalScreen;
