@@ -1,5 +1,5 @@
 import {Button, Text, View} from 'react-native';
-import React, {Component} from 'react';
+import React, {Component, PureComponent} from 'react';
 import _ from 'lodash';
 
 export class SampleClassComp extends Component {
@@ -9,14 +9,14 @@ export class SampleClassComp extends Component {
     this.state = {datetime: undefined};
   }
 
-  shouldComponentUpdate(nextProps, nextState) {
-    console.log('should component update called');
+  //   shouldComponentUpdate(nextProps, nextState) {
+  //     console.log('should component update called');
 
-    // return nextProps.enteredText !== this.props.enteredText;
-    return (
-      !_.isEqual(this.props, nextProps) || !_.isEqual(this.state, nextState)
-    );
-  }
+  //     // return nextProps.enteredText !== this.props.enteredText;
+  //     return (
+  //       !_.isEqual(this.props, nextProps) || !_.isEqual(this.state, nextState)
+  //     );
+  //   }
 
   //   componentDidUpdate() {
   //     console.log('did update');
