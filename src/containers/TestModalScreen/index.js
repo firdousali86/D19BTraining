@@ -8,15 +8,17 @@ const TestModalScreen = () => {
   renderModal = () => {
     return (
       <Modal isVisible={isModalVisible}>
-        <View style={{flex: 1}}>
-          <Text>I am the modal content!</Text>
+        <View style={{width: 200, height: 200, backgroundColor: 'white'}}>
+          <View style={{flex: 1}}>
+            <Text>I am the modal content!</Text>
+          </View>
+          <Button
+            title={'Hide'}
+            onPress={() => {
+              setIsModalVisible(false);
+            }}
+          />
         </View>
-        <Button
-          title={'Hide'}
-          onPress={() => {
-            setIsModalVisible(false);
-          }}
-        />
       </Modal>
     );
   };

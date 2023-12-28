@@ -14,6 +14,7 @@ import {
   LoginScreen,
   SignupScreen,
   TestModalScreen,
+  TestPureComponentScreen,
 } from '../containers';
 import {Text, View} from 'react-native';
 import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
@@ -41,6 +42,10 @@ const Navigation = () => {
   const getMainStack = () => {
     return (
       <Stack.Group>
+        <Stack.Screen
+          name="TestPureComponentScreen"
+          component={TestPureComponentScreen}
+        />
         <Stack.Screen name="TestModalScreen" component={TestModalScreen} />
         <Stack.Screen
           name="TypeScriptTestScreen"
