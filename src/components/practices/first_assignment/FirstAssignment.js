@@ -7,7 +7,7 @@ import {
     FlatList,
     StyleSheet,
 } from 'react-native';
-import {Button} from 'react-native-elements';
+import { Button } from 'react-native-elements';
 
 const FirstAssignment = props => {
     const [todoArr, setTodoArr] = useState([]);
@@ -32,7 +32,7 @@ const FirstAssignment = props => {
                         onPress={() => {
                             if (task !== '') {
                                 setTodoArr([...todoArr, task]);
-                                setTask('');                                
+                                setTask('');
                             }
                         }}
                     />
@@ -61,10 +61,10 @@ const FirstAssignment = props => {
                                     title={'Delete'}
                                     onPress={() => {
                                         var index = todoArr.indexOf(item);
-                                        if (index > -1) {                                            
+                                        if (index > -1) {
                                             todoArr.splice(index, 1);
-                                            setTodoArr([...todoArr]);                                            
-                                        }                                        
+                                            setTodoArr([...todoArr]);
+                                        }
                                     }}
                                 />
                             </View>

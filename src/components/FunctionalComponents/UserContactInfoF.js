@@ -1,11 +1,12 @@
+import {StyleSheet, Text, View} from 'react-native';
 import React from 'react';
-import {View, Text} from 'react-native';
 
 const UserContactInfoF = props => {
-  const {cell, email, address, country, city} = props.contactInfo;
+  const {phone, email, address, city, country} = props.contactInfo;
+
   return (
     <View>
-      <Text>Cell: {cell}</Text>
+      <Text>Phone: {phone}</Text>
       <Text>Email: {email}</Text>
       <Text>Address: {address}</Text>
       <Text>City: {city}</Text>
@@ -15,3 +16,5 @@ const UserContactInfoF = props => {
 };
 
 export default UserContactInfoF;
+
+const styles = StyleSheet.create({});
