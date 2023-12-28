@@ -12,7 +12,7 @@ const TestPureComponentScreen = () => {
   return (
     <View>
       <SampleClassComp enteredText={textInput} />
-      <SampleFunctComp />
+      <SampleFunctComp enteredText={textInput2} />
 
       <TextInput
         value={textInput}
