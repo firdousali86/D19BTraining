@@ -2,15 +2,23 @@ import React, {useState} from 'react';
 import {Button, Text, TextInput, View} from 'react-native';
 import SimpleClassComp from './SimpleClassComp';
 import SimpleFunComp from './SimpleFunComp';
+import DependencyArray from './DependencyArray';
+
 const TestPureComponent = () => {
   const [classInput, setClassInput] = useState('');
   const [functionInput, setFunctionInput] = useState('');
   console.log('Parent Component  Render');
-
+  const userObject = {
+    firstName: 'Naresh1',
+    lastName: 'Malaviya',
+    mobile: 123456789,
+  };
   return (
     <View>
       <SimpleClassComp textValue={classInput} />
       <SimpleFunComp textValue={functionInput} />
+      <DependencyArray textValue={userObject} />
+
       <Text style={{marginTop: 15}}>Enter Class Component Value</Text>
       <View style={{flexDirection: 'row'}}>
         <TextInput
