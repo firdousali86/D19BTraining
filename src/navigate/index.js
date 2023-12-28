@@ -3,7 +3,9 @@ import React from 'react';
 import {
   LoginScreen,
   SignupScreen,
-  ModalScreen
+  ModalScreen,
+  DrawerScreen,
+  TestPureComponent,
 } from '../containers';
 
 import {Text, View} from 'react-native';
@@ -11,7 +13,6 @@ import {Text, View} from 'react-native';
 const Stack = createNativeStackNavigator();
 
 const Navigation = () => {
-  
   const getAuthStack = () => {
     return (
       <Stack.Group>
@@ -22,11 +23,11 @@ const Navigation = () => {
 
   const getMainStack = () => {
     return (
-        <Stack.Screen name={'ModalScreen'} component={ModalScreen} />
+      <Stack.Screen name={'TestPureComponent'} component={TestPureComponent} />
     );
   };
 
-  return <Stack.Navigator>{getAuthStack()}</Stack.Navigator>;
+  return <Stack.Navigator>{getMainStack()}</Stack.Navigator>;
 };
 
 export default Navigation;
