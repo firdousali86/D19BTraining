@@ -1,17 +1,12 @@
-import React, {useState} from 'react';
-import {NavigationContainer} from '@react-navigation/native';
-import {createNativeStackNavigator} from '@react-navigation/native-stack';
-import {FunAndClass, FirstAssignment,Details} from './src/components/master/Index';
+import React from 'react';
+import { NavigationContainer } from '@react-navigation/native';
+import Screens from './src/components/master/layouts/Screens';
 
-const Stack = createNativeStackNavigator();
+
 function App() {
   return (
     <NavigationContainer>
-      <Stack.Navigator>
-        <Stack.Screen name="First" component={FirstAssignment} />
-        <Stack.Screen name="Home" component={FunAndClass} />
-        <Stack.Screen name="Details" component={Details} />
-      </Stack.Navigator>
+      <Screens />
     </NavigationContainer>
   );
 }

@@ -1,5 +1,5 @@
-import React, {useState} from 'react';
-import {SafeAreaView, View, Text, Button, ScrollView} from 'react-native';
+import React from 'react';
+import { SafeAreaView, View, Text, Button, ScrollView } from 'react-native';
 import UserProfileClassComponent from './class_components/UserProfileClassComponent';
 import UserProfileFunctionalComponent from './function_components/UserProfileFunctionalComponent';
 
@@ -34,8 +34,8 @@ const carObjectForFunction = {
 const FunAndClass = props => {
   return (
     <ScrollView>
-      <SafeAreaView style={{flex: 1}}>
-        <View style={{flex: 1, backgroundColor: '#e8f0fe'}}>
+      <SafeAreaView style={{ flex: 1 }}>
+        <View style={{ flex: 1, backgroundColor: '#e8f0fe' }}>
           <View style={styles.container}>
             <Text style={styles.label}>Class Components</Text>
           </View>
