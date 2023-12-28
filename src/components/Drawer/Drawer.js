@@ -1,21 +1,38 @@
-import {StyleSheet, Text, View, TextInput,Image} from 'react-native';
-import React, {useState} from 'react';
-import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
-import HomeScreen from './HomeScreen';
+import React from 'react';
+import { Text, View } from 'react-native';
+import 'react-native-gesture-handler';
+import { NavigationContainer } from '@react-navigation/native';
+import { createDrawerNavigator } from '@react-navigation/drawer';
 
-const Tab = createBottomTabNavigator();
+const Drawer = createDrawerNavigator();
+
+function Feed() {
+  return (
+    <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
+      <Text>Feed Screen</Text>
+    </View>
+  );
+}
+
+function Article() {
+  return (
+    <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
+      <Text>Article Screen</Text>
+    </View>
+  );
+}
 
 
+const MyDrawer = () => {
 
-const Drawer = () => {
     return (
-    
-        <Tab.Navigator>
-        <Tab.Screen name="Home" component={HomeScreen} />
-
-        </Tab.Navigator>
-      
-      );
+      <Drawer.Navigator useLegacyImplementation>
+        <Drawer.Screen name="Feed" component={Feed} />
+        <Drawer.Screen name="Article" component={Article} />
+      </Drawer.Navigator>
+    );
+  
+  
 
 };
-export default Drawer;
+export default MyDrawer;
