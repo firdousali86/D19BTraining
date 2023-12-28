@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, { useState } from 'react';
 import {
   View,
   Text,
@@ -7,17 +7,20 @@ import {
   FlatList,
   StyleSheet,
 } from 'react-native';
-import {Button} from 'react-native-elements';
+import { Button } from 'react-native-elements';
 
 const FirstAssignment = props => {
   const [todoArr, setTodoArr] = useState([]);
   const [task, setTask] = useState('');
   React.useEffect(() => {
     if (props.route.params !== undefined) {
-      const {index, item} = props.route.params;
-      todoArr[index] = item;
-      const updateToArr = todoArr;
-      setTask(...todoArr, updateToArr);
+      const item = props.route.params;
+      newTodoArray = [...todoArr];
+      console.log(props.route.params);
+      const key = Object.keys(item)[0];
+      newTodoArray[key] = item[key];
+      setTodoArr(newTodoArray);
+      setTask('')
     }
   }, [props.route.params]);
   return (
@@ -35,7 +38,7 @@ const FirstAssignment = props => {
             style={stylesCss.textInput}
           />
           <Button
-            buttonStyle={{borderRadius: 10}}
+            buttonStyle={{ borderRadius: 10 }}
             title="Add"
             onPress={() => {
               if (task !== '') {
@@ -45,7 +48,7 @@ const FirstAssignment = props => {
             }}
           />
           <Button
-            buttonStyle={{borderRadius: 10}}
+            buttonStyle={{ borderRadius: 10 }}
             title="Clear"
             onPress={() => {
               setTodoArr([]);
@@ -56,18 +59,17 @@ const FirstAssignment = props => {
         <View style={stylesCss.flatListMain}>
           <FlatList
             data={todoArr}
-            renderItem={({index, item}) => (
+            renderItem={({ index, item }) => (
               <View style={stylesCss.flatListContainer}>
-                <Text style={{alignItems: 'center'}}>
+                <Text style={{ alignItems: 'center' }}>
                   {item}---{index}
                 </Text>
                 <Button
                   title={'view'}
                   onPress={() => {
-                    props.navigation.navigate('Details', {
-                      item: item,
-                      index: index,
-                    });
+                    const paramsObject = {};
+                    paramsObject[index] = item;
+                    props.navigation.navigate('Details', paramsObject);
                   }}
                 />
               </View>
@@ -80,7 +82,7 @@ const FirstAssignment = props => {
 };
 
 const stylesCss = StyleSheet.create({
-  safeAreaView: {flex: 1},
+  safeAreaView: { flex: 1 },
   mainView: {
     flex: 1,
     backgroundColor: '#e8f0fe',
