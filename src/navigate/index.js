@@ -7,6 +7,7 @@ import {
   DrawerScreen,
   TestPureComponent,
   ImageBackgroundScreen,
+  FastImageScreen,
 } from '../containers';
 
 import {Text, View} from 'react-native';
@@ -24,10 +25,7 @@ const Navigation = () => {
 
   const getMainStack = () => {
     return (
-      <Stack.Screen
-        name={'ImageBackgroundScreen'}
-        component={ImageBackgroundScreen}
-      />
+      <Stack.Screen name={'FastImageScreen'} component={FastImageScreen} />
     );
   };
 

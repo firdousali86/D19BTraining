@@ -4,6 +4,7 @@ import Signup from './SignUpScreen';
 import DrawerScreen from './DrawerScreen';
 import TestPureComponent from './TestPureComponent';
 import ImageBackgroundScreen from './ImageBackground';
+import FastImageScreen from './FastImage';
 export {
   LoginScreen,
   Signup,
@@ -11,4 +12,5 @@ export {
   DrawerScreen,
   TestPureComponent,
   ImageBackgroundScreen,
+  FastImageScreen,
 };
