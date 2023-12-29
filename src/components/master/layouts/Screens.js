@@ -1,44 +1,63 @@
 import React from 'react';
-import { FunAndClass, FirstAssignment, Details, Tab } from '../Index';
-import { createNativeStackNavigator } from '@react-navigation/native-stack';
+import { FunAndClass, FirstAssignment, Details, TabScreen, Login, SignUp } from '../Index';
 import { View, Text } from 'react-native';
+import { createNativeStackNavigator } from '@react-navigation/native-stack';
+import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 
 const Stack = createNativeStackNavigator();
+const Tab = createBottomTabNavigator();
 
 const Screens = props => {
-    const authStack = () => {
+
+    function MyTabs() {
         return (
-            <Stack.Group>
+            <Tab.Navigator>
+                <Tab.Screen name="1 Assignment" component={FirstAssignmentStack} />
+                <Tab.Screen name="F & C" component={FunAndClassStack} />
+                <Tab.Screen name="Auth" component={AuthStack} />
+            </Tab.Navigator>
+        );
+    }
+
+    const AuthStack = () => {
+        return (
+            <Stack.Navigator>
                 <Stack.Screen
-                    name={'Login'}
-                    component={() => (
-                        <View>
-                            <Text>[AUTH] . This is a Login Stack</Text>
-                        </View>
-                    )}>
+                    name={'Signup'} component={SignUp}>
                 </Stack.Screen>
                 <Stack.Screen
-                    name={'Signup'}
-                    component={() => (
-                        <View>
-                            <Text>This is a Signup stack</Text>
-                        </View>
-                    )}></Stack.Screen>
-            </Stack.Group>
+                    name={'Login'} component={Login}>
+                </Stack.Screen>
+            </Stack.Navigator>
         );
     };
 
     const mainStack = () => {
         return (
-            <Stack.Group>
-                <Stack.Screen name="FD" component={Tab} />
-                <Stack.Screen name="First" component={FirstAssignment} />
+            <Stack.Navigator>
                 <Stack.Screen name="Home" component={FunAndClass} />
-                <Stack.Screen name="Details" component={Details} />
-            </Stack.Group>
+            </Stack.Navigator>
         );
     };
-    return <Stack.Navigator>{authStack()}</Stack.Navigator>;
+    const FirstAssignmentStack = () => {
+        return (
+            <Stack.Navigator>
+                <Stack.Screen options={{ headerShown: false }} name="First" component={FirstAssignment} />
+                <Stack.Screen name="Details" component={Details} />
+            </Stack.Navigator>
+        );
+    };
+
+    const FunAndClassStack = () => {
+        return (
+            <Stack.Navigator>
+                <Stack.Screen name="Home" component={FunAndClass} />
+            </Stack.Navigator>
+        );
+    };
+
+    return MyTabs();
+    return <Stack.Navigator>{MyTabs()}</Stack.Navigator>;
 };
 
 export default Screens;
