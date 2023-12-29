@@ -45,10 +45,10 @@ const Navigation = () => {
 
   const getAuthStack = () => {
     return (
-      <Stack.Navigator>
+      <Stack.Group>
         <Stack.Screen name={'Login'} component={LoginScreen}></Stack.Screen>
         <Stack.Screen name={'Signup'} component={SignupScreen}></Stack.Screen>
-      </Stack.Navigator>
+      </Stack.Group>
     );
   };
 
@@ -64,7 +64,7 @@ const Navigation = () => {
           name="ClassCompForUnmount"
           component={ClassCompForUnmount}
         />
-        <Stack.Screen name="TabScreenAsNavigator" component={MyTabs} />
+
         <Stack.Screen name="TestModalScreen" component={TestModalScreen} />
         <Stack.Screen
           name="TypeScriptTestScreen"
@@ -86,7 +86,7 @@ const Navigation = () => {
 
   // return MyDrawer();
   // return MyTabs();
-  return <Stack.Navigator>{getMainStack()}</Stack.Navigator>;
+  return <Stack.Navigator>{getAuthStack()}</Stack.Navigator>;
 };
 
 export default Navigation;

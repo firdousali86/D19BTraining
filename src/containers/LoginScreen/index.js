@@ -8,14 +8,22 @@ import {
 import React, {useState, useEffect} from 'react';
 
 const LoginScreen = () => {
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
+
   useEffect(() => {
     return () => {
       console.log('login screen unmounted');
     };
   }, []);
 
-  const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('');
+  useEffect(() => {
+    console.log('email or pas was changed');
+  }, [email, password]);
+
+  // useEffect(() => {
+  //   console.log('password was changed');
+  // }, [password]);
 
   return (
     <View>
