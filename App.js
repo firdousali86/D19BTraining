@@ -9,8 +9,12 @@ import React from 'react';
 
 import {NavigationContainer} from '@react-navigation/native';
 import Navigation from './src/navigate';
+import {LogBox} from 'react-native';
 
 function App() {
+  LogBox.ignoreLogs(['Warning: ...']); // Ignore log notification by message
+  LogBox.ignoreAllLogs();
+
   return (
     <NavigationContainer>
       <Navigation />
