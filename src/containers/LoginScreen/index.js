@@ -6,6 +6,7 @@ import {
   TouchableOpacity,
 } from 'react-native';
 import React, {useState, useEffect} from 'react';
+import {PersistanceHelper} from '../../helpers';
 
 const LoginScreen = () => {
   const [email, setEmail] = useState('');
@@ -45,7 +46,11 @@ const LoginScreen = () => {
         style={styles.textInput}
       />
 
-      <TouchableOpacity style={styles.submitButton}>
+      <TouchableOpacity
+        style={styles.submitButton}
+        onPress={() => {
+          console.log(PersistanceHelper.getValue());
+        }}>
         <Text>LOGIN</Text>
       </TouchableOpacity>
     </View>
