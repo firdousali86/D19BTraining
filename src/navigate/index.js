@@ -6,6 +6,7 @@ import {
   ModalScreen,
   DrawerScreen,
   TestPureComponent,
+  ImageBackgroundScreen,
 } from '../containers';
 
 import {Text, View} from 'react-native';
@@ -23,7 +24,10 @@ const Navigation = () => {
 
   const getMainStack = () => {
     return (
-      <Stack.Screen name={'TestPureComponent'} component={TestPureComponent} />
+      <Stack.Screen
+        name={'ImageBackgroundScreen'}
+        component={ImageBackgroundScreen}
+      />
     );
   };
 
