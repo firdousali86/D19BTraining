@@ -1,5 +1,8 @@
 import {createNativeStackNavigator} from '@react-navigation/native-stack';
+import {createDrawerNavigator} from '@react-navigation/drawer';
+
 const Stack = createNativeStackNavigator();
+const Drawer = createDrawerNavigator();
 
 import React from 'react';
 
@@ -15,17 +18,27 @@ import {
   SignupScreen,
   TestModalScreen,
   TestPureComponentScreen,
+  ClassCompForUnmount,
 } from '../containers';
 import {Text, View} from 'react-native';
 import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
 const Tab = createBottomTabNavigator();
 
 const Navigation = () => {
+  function MyDrawer() {
+    return (
+      <Drawer.Navigator>
+        <Drawer.Screen name="Feed" component={ListScreen} />
+        <Drawer.Screen name="Article" component={TestFlexScreen} />
+      </Drawer.Navigator>
+    );
+  }
+
   function MyTabs() {
     return (
       <Tab.Navigator>
-        <Tab.Screen name="Auth" component={getAuthStack} />
-        <Tab.Screen name="Main" component={getMainStack} />
+        <Tab.Screen name="Auth" component={LoginScreen} />
+        <Tab.Screen name="Main" component={TestHOCScreen} />
       </Tab.Navigator>
     );
   }
@@ -46,6 +59,12 @@ const Navigation = () => {
           name="TestPureComponentScreen"
           component={TestPureComponentScreen}
         />
+
+        <Stack.Screen
+          name="ClassCompForUnmount"
+          component={ClassCompForUnmount}
+        />
+        <Stack.Screen name="TabScreenAsNavigator" component={MyTabs} />
         <Stack.Screen name="TestModalScreen" component={TestModalScreen} />
         <Stack.Screen
           name="TypeScriptTestScreen"
@@ -55,9 +74,7 @@ const Navigation = () => {
         <Stack.Screen name="DetailsScreen" component={DetailsScreen} />
         <Stack.Screen name="Dashboard" component={DashboardScreen} />
         <Stack.Screen name="TestFlexScreen" component={TestFlexScreen} />
-
         <Stack.Screen name="TestHOCScreen" component={TestHOCScreen} />
-
         <Stack.Screen
           name="Settings"
           component={SettingsScreen}
@@ -67,6 +84,7 @@ const Navigation = () => {
     );
   };
 
+  // return MyDrawer();
   // return MyTabs();
   return <Stack.Navigator>{getMainStack()}</Stack.Navigator>;
 };

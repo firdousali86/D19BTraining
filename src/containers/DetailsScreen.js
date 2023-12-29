@@ -27,6 +27,15 @@ const DetailsScreen = props => {
         }}>
         <Text>go back with changing props</Text>
       </TouchableOpacity>
+
+      <TouchableOpacity
+        onPress={() => {
+          props.navigation.navigate('TestPureComponentScreen', {
+            screen: 'Article',
+          });
+        }}>
+        <Text>switch from nested navi</Text>
+      </TouchableOpacity>
     </View>
   );
 };

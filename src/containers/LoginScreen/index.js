@@ -5,9 +5,15 @@ import {
   TextInput,
   TouchableOpacity,
 } from 'react-native';
-import React, {useState} from 'react';
+import React, {useState, useEffect} from 'react';
 
 const LoginScreen = () => {
+  useEffect(() => {
+    return () => {
+      console.log('login screen unmounted');
+    };
+  }, []);
+
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
 

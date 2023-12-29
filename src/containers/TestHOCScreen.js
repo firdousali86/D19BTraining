@@ -1,7 +1,13 @@
 import {StyleSheet, Text, View} from 'react-native';
-import React from 'react';
+import React, {useEffect} from 'react';
 
 const MYHOC = props => {
+  useEffect(() => {
+    return () => {
+      console.log('myhoc screen getting unmounted');
+    };
+  }, []);
+
   return (
     <>
       <View
