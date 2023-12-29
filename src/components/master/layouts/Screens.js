@@ -3,11 +3,23 @@ import { FunAndClass, FirstAssignment, Details, TabScreen, Login, SignUp } from 
 import { View, Text } from 'react-native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
+import { createDrawerNavigator } from '@react-navigation/drawer';
 
 const Stack = createNativeStackNavigator();
 const Tab = createBottomTabNavigator();
+const Drawer = createDrawerNavigator();
 
 const Screens = props => {
+
+    function MyDrawers() {
+        return (
+            <Drawer.Navigator>
+                <Drawer.Screen name="Feed" component={SignUp} />
+                <Drawer.Screen name="Article" component={Login} />
+            </Drawer.Navigator>
+        );
+    }
+
 
     function MyTabs() {
         return (
@@ -56,8 +68,8 @@ const Screens = props => {
         );
     };
 
-    return MyTabs();
-    return <Stack.Navigator>{MyTabs()}</Stack.Navigator>;
+    return MyDrawers();
+    // return <Stack.Navigator>{MyTabs()}</Stack.Navigator>;
 };
 
 export default Screens;
