@@ -1,10 +1,11 @@
 import {createNativeStackNavigator} from '@react-navigation/native-stack';
 import {createDrawerNavigator} from '@react-navigation/drawer';
+import {EventRegister} from 'react-native-event-listeners';
 
 const Stack = createNativeStackNavigator();
 const Drawer = createDrawerNavigator();
 
-import React from 'react';
+import React, {useState, useEffect} from 'react';
 
 import {
   DashboardScreen,
@@ -22,9 +23,27 @@ import {
 } from '../containers';
 import {Text, View} from 'react-native';
 import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
+import {PersistanceHelper} from '../helpers';
 const Tab = createBottomTabNavigator();
 
 const Navigation = () => {
+  const [isUserLoggedIn, setIsUserLoggedIn] = useState(false);
+
+  useEffect(async () => {
+    const userEmail = await PersistanceHelper.getValue('userEmail');
+    setIsUserLoggedIn(userEmail && userEmail.length > 0 ? true : false);
+
+    EventRegister.addEventListener('loginEvent', email => {
+      PersistanceHelper.setValue('userEmail', email);
+      setIsUserLoggedIn(true);
+    });
+
+    EventRegister.addEventListener('logoutEvent', () => {
+      PersistanceHelper.setValue('userEmail', '');
+      setIsUserLoggedIn(false);
+    });
+  }, []);
+
   function MyDrawer() {
     return (
       <Drawer.Navigator>
@@ -86,7 +105,11 @@ const Navigation = () => {
 
   // return MyDrawer();
   // return MyTabs();
-  return <Stack.Navigator>{getAuthStack()}</Stack.Navigator>;
+  return (
+    <Stack.Navigator>
+      {isUserLoggedIn ? getMainStack() : getAuthStack()}
+    </Stack.Navigator>
+  );
 };
 
 export default Navigation;

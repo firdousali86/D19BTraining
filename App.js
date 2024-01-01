@@ -16,8 +16,6 @@ function App() {
   LogBox.ignoreLogs(['Warning: ...']); // Ignore log notification by message
   LogBox.ignoreAllLogs();
 
-  // PersistanceHelper.setValue('testdata', 'this is the value to check');
-
   return (
     <NavigationContainer>
       <Navigation />
