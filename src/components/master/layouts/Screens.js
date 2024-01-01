@@ -14,8 +14,8 @@ const Screens = props => {
     function MyDrawers() {
         return (
             <Drawer.Navigator>
-                <Drawer.Screen name="Feed" component={SignUp} />
-                <Drawer.Screen name="Article" component={Login} />
+                <Drawer.Screen name="SignUp" component={SignUp} />
+                <Drawer.Screen name="Login" component={Login} />
             </Drawer.Navigator>
         );
     }
