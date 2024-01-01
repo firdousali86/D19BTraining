@@ -48,8 +48,10 @@ const LoginScreen = () => {
 
       <TouchableOpacity
         style={styles.submitButton}
-        onPress={() => {
-          console.log(PersistanceHelper.getValue());
+        onPress={async () => {
+          // console.log(PersistanceHelper.getValue('testdata'));
+          const retrievedvalue = await PersistanceHelper.getValue('testdata');
+          console.log(retrievedvalue);
         }}>
         <Text>LOGIN</Text>
       </TouchableOpacity>

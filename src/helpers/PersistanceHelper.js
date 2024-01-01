@@ -1,12 +1,21 @@
-class PersistanceHelper {
-  actualValue = undefined;
+import AsyncStorage from '@react-native-async-storage/async-storage';
 
-  setValue = someValue => {
-    this.actualValue = someValue;
+class PersistanceHelper {
+  // actualValue = undefined;
+
+  setValue = (key, someValue) => {
+    // this.actualValue = someValue;
+    AsyncStorage.setItem(key, someValue);
   };
 
-  getValue = () => {
-    return this.actualValue;
+  getValue = async key => {
+    // return this.actualValue;
+    try {
+      const value = await AsyncStorage.getItem(key);
+      return value;
+    } catch (err) {
+      console.log(err);
+    }
   };
 }
 
