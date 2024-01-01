@@ -28,7 +28,7 @@ export class SampleClassComp extends Component {
     const {enteredText} = this.props;
 
     return (
-      <View>
+      <View style={{backgroundColor: 'yellow'}}>
         <Text>this is very simple class comp</Text>
         <Text>{enteredText}</Text>
         <Text>{this.state.datetime}</Text>

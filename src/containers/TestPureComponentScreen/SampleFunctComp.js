@@ -1,4 +1,4 @@
-import {View, Text} from 'react-native';
+import {View, Text, Button} from 'react-native';
 import React, {memo, useEffect} from 'react';
 import UserBasicInfo from '../../components/ClassComponents/UserBasicInfo';
 import UserContactInfo from '../../components/ClassComponents/UserContactInfo';
@@ -39,10 +39,17 @@ const SampleFunctComp = props => {
   }, [props.enteredText]);
 
   return (
-    <View>
+    <View style={{backgroundColor: 'pink'}}>
       <Text>this is very simple functional comp</Text>
       <UserBasicInfo basicInfo={userObject.basicInfo} />
       <UserContactInfo contactInfo={userObject.contactInfo} />
+
+      <Button
+        title={'Button'}
+        onPress={() => {
+          props.buttonHandler();
+        }}
+      />
     </View>
   );
 };

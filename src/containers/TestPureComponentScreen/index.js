@@ -1,5 +1,5 @@
 import {StyleSheet, Text, View, TextInput, Button} from 'react-native';
-import React, {useState, useEffect} from 'react';
+import React, {useState, useEffect, useCallback} from 'react';
 import SampleClassComp from './SampleClassComp';
 import SampleFunctComp from './SampleFunctComp';
 import {PersistanceHelper} from '../../helpers';
@@ -14,13 +14,20 @@ const TestPureComponentScreen = props => {
 
   const [textInput, setTextInput] = useState('');
   const [textInput2, setTextInput2] = useState('');
+  const [datetime, setdatetime] = useState(undefined);
 
   console.log('parent comp got rerendered');
+
+  const buttonHandler = useCallback(() => {
+    console.log('funcitonal component button was tapped');
+  }, []);
+
+  let count = 0;
 
   return (
     <View>
       <SampleClassComp enteredText={textInput} />
-      <SampleFunctComp enteredText={textInput2} />
+      <SampleFunctComp enteredText={textInput2} buttonHandler={buttonHandler} />
 
       <TextInput
         value={textInput}
@@ -57,6 +64,15 @@ const TestPureComponentScreen = props => {
         onPress={() => {
           PersistanceHelper.setValue('userEmail', '');
           EventRegister.emit('logoutEvent');
+        }}
+      />
+
+      <Button
+        title={'Increment'}
+        onPress={() => {
+          setdatetime(Date.now());
+          count = count + 1;
+          console.log(count);
         }}
       />
     </View>
