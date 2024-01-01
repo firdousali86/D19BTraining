@@ -35,10 +35,11 @@ const SimpleForm = props => {
   const getClearData = () => {
     setSubmittedData([]);
     setInputText('');
+  
   };
 
   React.useEffect(() => {
-    if (props.route.params !== undefined) {
+        if (props.route.params !== undefined) {
       console.log(props.route.params);
       const {firstName, lastName, index} = props.route.params;
       const updatedData = [...submittedData];
@@ -67,31 +68,13 @@ const SimpleForm = props => {
           }
           value={inputText.lastName}
         />
-        <View>
-          <Button
-            style={{marginBottom: 10}}
-            title="Submit"
-            onPress={getDataFromInput}
-          />
-        </View>
-        <View style={{marginTop: 10}}>
-          <Button title="Clear" onPress={getClearData} />
-        </View>
-        <View style={{marginTop: 10}}>
-          <Button
-            title="class user "
-            onPress={() => {
-              props.navigation.navigate('classUser', userObject);
-            }}
-          />
-        </View>
-        <View style={{marginTop: 10}}>
-          <Button
-            title="Funcational Component"
-            onPress={() => {
-              props.navigation.navigate('functionalComponent', userObject);
-            }}
-          />
+        <View style={{flexDirection: 'row' ,justifyContent:'space-evenly'}}>
+          <View style={{width: '40%'}}>
+            <Button title="Submit" onPress={getDataFromInput} />
+          </View>
+          <View style={{width: '40%'}}>
+            <Button title="Clear" onPress={getClearData} />
+          </View>
         </View>
       </View>
 
@@ -110,16 +93,19 @@ const SimpleForm = props => {
             <Text style={styles.lisText}>{item.lastName}</Text>
             <Text style={styles.lisText}>{index}</Text>
 
-            <Button
-              title={'Show Details'}
-              onPress={() => {
-                props.navigation.navigate('Details', {
-                  item: item,
-                  index: index,
-                  style: styles.input,
-                });
-              }}
-            />
+            <View>
+              <Button
+                title={'Show Details'}
+                style={{width: '10%', fontSize: 10}}
+                onPress={() => {
+                  props.navigation.navigate('Details', {
+                    item: item,
+                    index: index,
+                    style: styles.input,
+                  });
+                }}
+              />
+            </View>
           </View>
         )}
       />
@@ -150,6 +136,7 @@ const styles = {
 
   lisText: {
     fontSize: 20,
+    textAlign: 'center',
   },
 };
 

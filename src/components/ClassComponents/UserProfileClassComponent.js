@@ -4,118 +4,127 @@ import UserBasicInfo from './UserBasicInfo';
 import UserContactInfo from './UserContactInfo';
 import UserEducationInfo from './UserEducationInfo';
 
-
 const userObject = {
-    basicInfo: {
-      firstName: 't',
-      lastName: 'boss',
-      gender: 'Male',
-      DOB: 'Dec 3',
-    },
-    contactInfo: {
-      cell: '123456789',
-      email: 'ntboss@gmail.com',
-      address: '123 street',
-      city: 'AH',
-      country: 'Bharat',
-    },
-    educationInfo: {
-      lastDegree: 'MS',
-      university: 'NEDUET',
-    },
-  };
-  
+  basicInfo: {
+    firstName: 't',
+    lastName: 'boss',
+    gender: 'Male',
+    DOB: 'Dec 3',
+  },
+  contactInfo: {
+    cell: '123456789',
+    email: 'ntboss@gmail.com',
+    address: '123 street',
+    city: 'AH',
+    country: 'Bharat',
+  },
+  educationInfo: {
+    lastDegree: 'MS',
+    university: 'NEDUET',
+  },
+};
 
 export default class UserProfileClassComponent extends Component {
-    render() {
+  render() {
+    const {basicInfo, contactInfo, educationInfo} = userObject;
 
+    const renderBasicInfo = () => {
+      if (basicInfo !== undefined) {
+        return <UserBasicInfo basicInfo={basicInfo} styles={styles} />;
+      }
 
-        const {basicInfo, contactInfo, educationInfo} = userObject;
+      return null;
+    };
 
+    const renderContactInfo = () => {
+      if (contactInfo !== undefined) {
+        return <UserContactInfo contactInfo={contactInfo} styles={styles} />;
+      }
 
-        const renderBasicInfo = () => {
-            if (basicInfo !== undefined)
-            {
-                return <UserBasicInfo basicInfo={basicInfo} styles={styles}/>;
-            }
+      return null;
+    };
 
-            return null;
-        };
-
-        const renderContactInfo = () => {
-            if (contactInfo !== undefined)
-            {
-                return <UserContactInfo contactInfo={contactInfo} styles={styles}/>;
-            }
-
-            return null;
-        };
-
-        const renderEducationInfo = () => {
-            if (educationInfo !== undefined)
-            {
-                return <UserEducationInfo educationInfo={educationInfo} styles={styles}/>;
-            }
-
-            return null;
-        };
-
+    const renderEducationInfo = () => {
+      if (educationInfo !== undefined) {
         return (
-            <ScrollView>
-                <View style={{
-                    backgroundColor: '#e0ffff', width: '100%', flex: 0,
-                    justifyContent: 'center',
-                    alignItems: 'center'
-
-                }}>
-                    <View style={{
-                        backgroundColor: 'white', width: '90%', padding: 10, borderColor: 'red', borderRadius: 5,
-                        margin: 5
-                    }}>
-                        {renderBasicInfo()}
-
-                    </View>
-                    <View style={{
-                        backgroundColor: 'white', width: '90%', padding: 10, borderColor: 'red', borderRadius: 5,
-                        margin: 5
-                    }}>
-
-                        {renderContactInfo()}
-
-                    </View>
-                    <View style={{
-                        backgroundColor: 'white', width: '90%', padding: 10, borderColor: 'red', borderRadius: 5,
-                        margin: 5
-                    }}>
-                        {renderEducationInfo()}
-                    </View>
-                </View>
-            </ScrollView>
+          <UserEducationInfo educationInfo={educationInfo} styles={styles} />
         );
-    }
+      }
+
+      return null;
+    };
+
+    return (
+      <ScrollView>
+        <View
+          style={{
+            backgroundColor: '#e0ffff',
+            width: '100%',
+            flex: 0,
+            justifyContent: 'center',
+            alignItems: 'center',
+          }}>
+          <View
+            style={{
+              backgroundColor: 'white',
+              width: '90%',
+              padding: 10,
+              borderColor: 'red',
+              borderRadius: 5,
+              margin: 5,
+            }}>
+            {renderBasicInfo()}
+          </View>
+          <View
+            style={{
+              backgroundColor: 'white',
+              width: '90%',
+              padding: 10,
+              borderColor: 'red',
+              borderRadius: 5,
+              margin: 5,
+            }}>
+            {renderContactInfo()}
+          </View>
+          <View
+            style={{
+              backgroundColor: 'white',
+              width: '90%',
+              padding: 10,
+              borderColor: 'red',
+              borderRadius: 5,
+              margin: 5,
+            }}>
+            {renderEducationInfo()}
+          </View>
+        </View>
+      </ScrollView>
+    );
+  }
 }
 
 const styles = StyleSheet.create({
-    textInputCommon: {
-        flex: 1,
-        backgroundColor: '#c0c0c0',
-        marginLeft: 10,
-        borderRadius: 40,
-        textAlign: 'center',
-    },
-    textCommon: {
-        fontWeight: 'bold',
-        fontSize: 15,
-        textAlignVertical: 'center', width: '30%',
-        textAlign: 'center',
-    }
-    , titles: {
-        fontSize: 20, fontWeight: 'bold', backgroundColor: '#8fbc8f', textAlign: 'center',
-        marginVertical: 10,
-        borderRadius: 10,
-        paddingVertical: 5,
-    }
-
+  textInputCommon: {
+    flex: 1,
+    backgroundColor: '#c0c0c0',
+    marginLeft: 10,
+    borderRadius: 40,
+    textAlign: 'center',
+  },
+  textCommon: {
+    fontWeight: 'bold',
+    fontSize: 15,
+    textAlignVertical: 'center',
+    width: '30%',
+    textAlign: 'center',
+  },
+  titles: {
+    fontSize: 20,
+    fontWeight: 'bold',
+    backgroundColor: '#8fbc8f',
+    textAlign: 'center',
+    marginVertical: 10,
+    borderRadius: 10,
+    paddingVertical: 5,
+  },
 });
-
-
