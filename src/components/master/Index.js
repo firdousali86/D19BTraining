@@ -4,5 +4,6 @@ import Details from "../practices/first_assignment/Details";
 import TabScreen from "../practices/tab_navigation/Index";
 import SignUp from "../practices/auth/sign_up/Index";
 import Login from "../practices/auth/login/Index";
+import FastImage from "../practices/fast_image/FastImage";
 
-export { FunAndClass, FirstAssignment, Details, TabScreen, Login ,SignUp};
+export { FunAndClass, FirstAssignment, Details, TabScreen, Login ,SignUp, FastImage};
