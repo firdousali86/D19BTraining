@@ -1,5 +1,5 @@
 import {Button, Text, View} from 'react-native';
-import React, {Component, PureComponent} from 'react';
+import React, {Component, PureComponent, memo} from 'react';
 import _ from 'lodash';
 
 export class SampleClassComp extends Component {
@@ -44,4 +44,6 @@ export class SampleClassComp extends Component {
   }
 }
 
-export default SampleClassComp;
+export default memo(SampleClassComp, (prevProps, nextProps) => {
+  return prevProps.someProp === nextProps.someProp;
+});
