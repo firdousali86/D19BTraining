@@ -52,6 +52,12 @@ const LoginScreen = () => {
         onPress={async () => {
           PersistanceHelper.setValue('userEmail', email);
           EventRegister.emit('loginEvent', email);
+
+          PersistanceHelper.setObject('testObject', {
+            car: 'Passo',
+            mileage: 53000,
+            color: 'black',
+          });
         }}>
         <Text>LOGIN</Text>
       </TouchableOpacity>

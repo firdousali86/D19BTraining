@@ -19,6 +19,8 @@ class PersistanceHelper {
   setObject = (key, data) => {
     const stringifiedobject = JSON.stringify(data);
 
+    console.log(stringifiedobject);
+
     this.setValue(key, stringifiedobject);
   };
 

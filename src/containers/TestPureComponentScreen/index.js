@@ -8,7 +8,7 @@ import {EventRegister} from 'react-native-event-listeners';
 const expensiveCalculation = num => {
   console.log('Calculating...');
 
-  for (let i = 0; i < 1000000000; i++) {
+  for (let i = 0; i < 1000; i++) {
     num += 1;
   }
 
@@ -23,6 +23,14 @@ const TestPureComponentScreen = props => {
   const [newCalcVal, setNewCalcVal] = useState(0);
 
   useEffect(() => {
+    PersistanceHelper.getObject('testObject')
+      .then(data => {
+        console.log(data);
+      })
+      .catch(err => {
+        console.log(err);
+      });
+
     return () => {
       console.log('test pure component screen unmounted');
     };
