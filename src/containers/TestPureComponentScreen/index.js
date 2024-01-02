@@ -16,16 +16,22 @@ const expensiveCalculation = num => {
 };
 
 const TestPureComponentScreen = props => {
+  const [textInput, setTextInput] = useState('');
+  const [textInput2, setTextInput2] = useState('');
+  const [datetime, setdatetime] = useState(undefined);
+  const [count2, setCount2] = useState(0);
+  const [newCalcVal, setNewCalcVal] = useState(0);
+
   useEffect(() => {
     return () => {
       console.log('test pure component screen unmounted');
     };
   }, []);
 
-  const [textInput, setTextInput] = useState('');
-  const [textInput2, setTextInput2] = useState('');
-  const [datetime, setdatetime] = useState(undefined);
-  const [count2, setCount2] = useState(0);
+  useEffect(() => {
+    const anotherExpensive = expensiveCalculation(count2);
+    setNewCalcVal(anotherExpensive);
+  }, [count2]);
 
   const increment = () => {
     setCount2(c => c + 1);
@@ -39,7 +45,7 @@ const TestPureComponentScreen = props => {
 
   let count = 0;
 
-  const calculation = useMemo(() => expensiveCalculation(count2), [count2]);
+  // const calculation = useMemo(() => expensiveCalculation(count2), [count2]);
 
   return (
     <View>
@@ -97,7 +103,8 @@ const TestPureComponentScreen = props => {
       />
 
       <Text>{count2}</Text>
-      <Text>{calculation}</Text>
+
+      <Text>{newCalcVal}</Text>
       <Button
         title={'Increment Expensive Calc'}
         onPress={() => {
