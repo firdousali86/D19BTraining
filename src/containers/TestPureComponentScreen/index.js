@@ -1,9 +1,19 @@
 import {StyleSheet, Text, View, TextInput, Button} from 'react-native';
-import React, {useState, useEffect, useCallback} from 'react';
+import React, {useState, useEffect, useCallback, useMemo} from 'react';
 import SampleClassComp from './SampleClassComp';
 import SampleFunctComp from './SampleFunctComp';
 import {PersistanceHelper} from '../../helpers';
 import {EventRegister} from 'react-native-event-listeners';
+
+const expensiveCalculation = num => {
+  console.log('Calculating...');
+
+  for (let i = 0; i < 1000000000; i++) {
+    num += 1;
+  }
+
+  return num;
+};
 
 const TestPureComponentScreen = props => {
   useEffect(() => {
@@ -15,6 +25,11 @@ const TestPureComponentScreen = props => {
   const [textInput, setTextInput] = useState('');
   const [textInput2, setTextInput2] = useState('');
   const [datetime, setdatetime] = useState(undefined);
+  const [count2, setCount2] = useState(0);
+
+  const increment = () => {
+    setCount2(c => c + 1);
+  };
 
   console.log('parent comp got rerendered');
 
@@ -24,17 +39,15 @@ const TestPureComponentScreen = props => {
 
   let count = 0;
 
+  const calculation = useMemo(() => expensiveCalculation(count2), [count2]);
+
   return (
     <View>
       <SampleClassComp
         enteredText={textInput}
         anotherEnteredText={textInput2}
       />
-      <SampleFunctComp
-        enteredText={textInput2}
-        anotherEnteredText={textInput}
-        buttonHandler={buttonHandler}
-      />
+      <SampleFunctComp enteredText={textInput2} buttonHandler={buttonHandler} />
 
       <TextInput
         value={textInput}
@@ -80,6 +93,15 @@ const TestPureComponentScreen = props => {
           setdatetime(Date.now());
           count = count + 1;
           console.log(count);
+        }}
+      />
+
+      <Text>{count2}</Text>
+      <Text>{calculation}</Text>
+      <Button
+        title={'Increment Expensive Calc'}
+        onPress={() => {
+          increment();
         }}
       />
     </View>
