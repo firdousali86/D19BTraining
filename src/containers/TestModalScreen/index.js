@@ -7,23 +7,25 @@ const TestModalScreen = () => {
 
   renderModal = () => {
     return (
-      <Modal isVisible={isModalVisible}>
-        <View style={{ flex: 1, fontColor: "white" }}>
-          <Text style={{ fontColor: "white" }}>This is a test modal</Text>
+      <Modal isVisible={isModalVisible} style={{ justifyContent: 'center', display: 'flex', alignItems: 'center' }}>
+        <View style={{ width: 250, height: 250, backgroundColor: 'white', justifyContent: 'center', display: 'flex', alignItems: 'center' }}>
+          <View>
+            <Text style={{ fontColor: 'black', margin: 10 }}>This is a test modal</Text>
+          </View>
+          <Button style={styles.modalButton}
+            title={'Hide'}
+            onPress={() => {
+              setIsModalVisible(false);
+            }}
+          />
         </View>
-        <Button
-          title={'Hide'}
-          onPress={() => {
-            setIsModalVisible(false);
-          }}
-        />
-      </Modal>
+      </Modal >
     );
   };
 
   return (
-    <View>
-      <Text>This is a Modal Screen</Text>
+    <View style={{ justifyContent: 'center', display: 'flex', alignItems: 'center' }}>
+      <Text style={{ fontColor: 'black', margin: 10 }}>This is a Modal Screen</Text>
       <Button style={styles.modalButton}
         title={'Show modal'}
         onPress={() => {
@@ -45,6 +47,7 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     alignItems: 'center',
     marginTop: 10,
+    padding: 25,
     borderRadius: 8,
   }
 });

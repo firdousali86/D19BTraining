@@ -5,11 +5,31 @@ import {
   TextInput,
   TouchableOpacity,
 } from 'react-native';
-import React, {useState} from 'react';
+import React, { useState, useEffect } from 'react';
 
-const LoginScreen = () => {
+const LoginScreen = (props) => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
+
+  // Simple effect which is called everytime while component changed
+  useEffect(() => {
+    console.log('it called');
+  });
+
+  // It is called when first time comp load
+  useEffect(() => {
+    console.log('it is called during first time load')
+  }, []);
+
+  useEffect(() => {
+    console.log('called when props or stats are changed');
+  }, [props]);
+
+  useEffect(() => {
+    return () => {
+      console.log('it is work during unmount');
+    }
+  }, []);
 
   return (
     <View>

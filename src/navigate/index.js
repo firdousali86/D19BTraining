@@ -5,15 +5,7 @@ import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { View, Text } from 'react-native';
 const Tab = createBottomTabNavigator();
 import {
-    DashboardScreen,
-    SettingsScreen,
-    TestHOCScreen,
-    TestFlexScreen,
-    ListScreen,
-    DetailsScreen,
-    TypeScriptTestScreen,
     LoginScreen,
-    SignupScreen,
     TestModalScreen,
 } from '../containers';
 import DrawerNavigator from '../navigate/drawer'
@@ -67,7 +59,7 @@ const Navigation = () => {
         );
     };
 
-    return MyDrawer();
+    return MyTabs();
     return <Stack.Navigator>{MyTabs()}</Stack.Navigator>;
 };
 
