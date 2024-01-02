@@ -54,4 +54,6 @@ const SampleFunctComp = props => {
   );
 };
 
-export default memo(SampleFunctComp);
+export default memo(SampleFunctComp, (prevProps, nextProps) => {
+  return prevProps.enteredText === nextProps.enteredText;
+});

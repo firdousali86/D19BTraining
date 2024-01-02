@@ -45,5 +45,5 @@ export class SampleClassComp extends Component {
 }
 
 export default memo(SampleClassComp, (prevProps, nextProps) => {
-  return prevProps.someProp === nextProps.someProp;
+  return prevProps.enteredText === nextProps.enteredText;
 });

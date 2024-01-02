@@ -26,8 +26,15 @@ const TestPureComponentScreen = props => {
 
   return (
     <View>
-      <SampleClassComp enteredText={textInput} />
-      <SampleFunctComp enteredText={textInput2} buttonHandler={buttonHandler} />
+      <SampleClassComp
+        enteredText={textInput}
+        anotherEnteredText={textInput2}
+      />
+      <SampleFunctComp
+        enteredText={textInput2}
+        anotherEnteredText={textInput}
+        buttonHandler={buttonHandler}
+      />
 
       <TextInput
         value={textInput}
