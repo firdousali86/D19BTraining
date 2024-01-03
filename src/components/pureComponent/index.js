@@ -26,7 +26,9 @@ const PureComponent = () => {
         }}
       />
       <TestClassComponent enterText={getTextValue} />
-      <TestFunctionalComponent  enterTExtTwo={getTextTwoValue}/>
+      <TestFunctionalComponent  enterTExtTwo={getTextTwoValue}
+       
+      />
     </View>
   );
 };

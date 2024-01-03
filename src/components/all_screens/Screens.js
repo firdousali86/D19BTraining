@@ -10,6 +10,8 @@ import {
 import PureComponent from '../pureComponent';
 import ModalComponentTab from '../modal/Modal';
 import FastImageExample from '../fast_image/FastImage';
+import AsyncStorage from '../async_storage/AsyncStorage';
+import MMkV from '../mmkv/MMKV';
 
 import {createNativeStackNavigator} from '@react-navigation/native-stack';
 import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
@@ -48,20 +50,25 @@ const Screens = () => {
     );
   };
 
+
+
+
   const TestDrawer = () => {
     return (
       <Drawer.Navigator>
-        <Drawer.Screen name="Fast Image" component={FastImageExample} />
         <Drawer.Screen name="re rendering" component={PureComponent} />
-        <Drawer.Screen name="Modal" component={ModalComponentTab} />
+        <Drawer.Screen name="MMKV Storage" component={MMkV} />
+        <Drawer.Screen name="Async Storage" component={AsyncStorage} />
+        <Drawer.Screen name="Fast Image" component={FastImageExample} />
         
+        <Drawer.Screen name="Modal" component={ModalComponentTab} />
       </Drawer.Navigator>
     );
   };
 
   return (
     <Tab.Navigator>
-       <Tab.Screen
+      <Tab.Screen
         options={{headerShown: false}}
         name="other"
         component={TestDrawer}
@@ -83,7 +90,6 @@ const Screens = () => {
         name="functional"
         component={UserFunComponent}
       />
-     
     </Tab.Navigator>
   );
 };

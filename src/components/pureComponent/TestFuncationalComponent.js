@@ -2,7 +2,6 @@ import React, {memo, useEffect, useState} from 'react';
 import {View, Text, TextInput} from 'react-native';
 import FastImage from 'react-native-fast-image';
 
-
 import _ from 'lodash';
 
 const TestFunctionalComponent = props => {
@@ -16,7 +15,7 @@ const TestFunctionalComponent = props => {
   return (
     <View>
       <TextInput
-        placeholder="child "
+        placeholder="child fun component "
         onChangeText={nk => {
           setChild(nk);
         }}
@@ -37,4 +36,11 @@ const TestFunctionalComponent = props => {
   );
 };
 
-export default memo(TestFunctionalComponent);
+export default memo(TestFunctionalComponent)
+
+
+
+// export default memo(TestFunctionalComponent, (prevPropse, nextProps) => {
+ 
+//   return prevPropse.enterText == nextProps.enterTExtTwo;
+// });
