@@ -1,4 +1,4 @@
-import {createNativeStackNavigator} from '@react-navigation/native-stack';
+import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import React from 'react';
 import {
   LoginScreen,
@@ -10,9 +10,11 @@ import {
   FastImageScreen,
 } from '../containers';
 
-import {Text, View} from 'react-native';
+import { Text, View } from 'react-native';
+import { Helper } from '../helper';
 
 const Stack = createNativeStackNavigator();
+
 
 const Navigation = () => {
   const getAuthStack = () => {
@@ -25,11 +27,11 @@ const Navigation = () => {
 
   const getMainStack = () => {
     return (
-      <Stack.Screen name={'FastImageScreen'} component={FastImageScreen} />
+      <Stack.Screen name={'TestPureComponent'} component={TestPureComponent} />
     );
   };
 
-  return <Stack.Navigator>{getMainStack()}</Stack.Navigator>;
+  return <Stack.Navigator>{getAuthStack()}</Stack.Navigator>;
 };
 
 export default Navigation;
