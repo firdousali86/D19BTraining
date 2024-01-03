@@ -5,9 +5,9 @@ import {
   TextInput,
   TouchableOpacity,
 } from 'react-native';
-import React, { useState, useEffect } from 'react';
-import { PersistanceHelper } from '../../helpers';
-import { EventRegister } from 'react-native-event-listeners';
+import React, {useState, useEffect} from 'react';
+import {PersistanceHelper} from '../../helpers';
+import {EventRegister} from 'react-native-event-listeners';
 
 const LoginScreen = () => {
   const [email, setEmail] = useState('');
@@ -49,7 +49,7 @@ const LoginScreen = () => {
 
       <TouchableOpacity
         style={styles.submitButton}
-        onPress={async () => {
+        onPress={() => {
           PersistanceHelper.setValue('userEmail', email);
           EventRegister.emit('loginEvent', email);
 
