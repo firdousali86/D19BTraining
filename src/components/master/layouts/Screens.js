@@ -1,5 +1,5 @@
 import React from 'react';
-import { FunAndClass, FirstAssignment, Details, TabScreen, Login, SignUp, FastImage, Async, MmkvStorage } from '../Index';
+import { FunAndClass, FirstAssignment, Details, TabScreen, Login, SignUp, FastImage, Async, MmkvStorage, propDrillingPractice } from '../Index';
 import { View, Text } from 'react-native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
@@ -14,6 +14,7 @@ const Screens = props => {
     function MyDrawers() {
         return (
             <Drawer.Navigator>
+                <Drawer.Screen name="Prop Drilling" component={propDrillingPractice} />
                 <Drawer.Screen name="MMKV Storage" component={MmkvStorage} />
                 <Drawer.Screen name="Async Storage" component={Async} />
                 <Drawer.Screen name="Fast Image" component={FastImage} />
