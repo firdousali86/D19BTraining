@@ -20,6 +20,7 @@ import {
   TestModalScreen,
   TestPureComponentScreen,
   ClassCompForUnmount,
+  PropDrillingPractice,
 } from '../containers';
 import {Text, View} from 'react-native';
 import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
@@ -74,6 +75,10 @@ const Navigation = () => {
   const getMainStack = () => {
     return (
       <Stack.Group>
+        <Stack.Screen
+          name="PropDrillingPractice"
+          component={PropDrillingPractice}
+        />
         <Stack.Screen
           name="TestPureComponentScreen"
           component={TestPureComponentScreen}

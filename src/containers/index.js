@@ -10,6 +10,7 @@ import SignupScreen from './SignupScreen';
 import TestModalScreen from './TestModalScreen';
 import TestPureComponentScreen from './TestPureComponentScreen';
 import ClassCompForUnmount from './ClassCompForUnmount';
+import PropDrillingPractice from './PropDrillingPractice';
 
 export {
   DashboardScreen,
@@ -24,4 +25,5 @@ export {
   TestModalScreen,
   TestPureComponentScreen,
   ClassCompForUnmount,
+  PropDrillingPractice,
 };
