@@ -6,30 +6,26 @@ import {
   TouchableOpacity,
 } from 'react-native';
 import React, { useState, useEffect } from 'react';
+import { PersistanceHelper } from '../../helpers';
+import { EventRegister } from 'react-native-event-listeners';
 
-const LoginScreen = (props) => {
+const LoginScreen = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
 
-  // Simple effect which is called everytime while component changed
-  useEffect(() => {
-    console.log('it called');
-  });
-
-  // It is called when first time comp load
-  useEffect(() => {
-    console.log('it is called during first time load')
-  }, []);
-
-  useEffect(() => {
-    console.log('called when props or stats are changed');
-  }, [props]);
-
   useEffect(() => {
     return () => {
-      console.log('it is work during unmount');
-    }
+      console.log('login screen unmounted');
+    };
   }, []);
+
+  useEffect(() => {
+    console.log('email or pas was changed');
+  }, [email, password]);
+
+  // useEffect(() => {
+  //   console.log('password was changed');
+  // }, [password]);
 
   return (
     <View>
@@ -51,7 +47,18 @@ const LoginScreen = (props) => {
         style={styles.textInput}
       />
 
-      <TouchableOpacity style={styles.submitButton}>
+      <TouchableOpacity
+        style={styles.submitButton}
+        onPress={async () => {
+          PersistanceHelper.setValue('userEmail', email);
+          EventRegister.emit('loginEvent', email);
+
+          PersistanceHelper.setObject('testObject', {
+            car: 'Passo',
+            mileage: 53000,
+            color: 'black',
+          });
+        }}>
         <Text>LOGIN</Text>
       </TouchableOpacity>
     </View>
