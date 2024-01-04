@@ -29,6 +29,7 @@ const Tab = createBottomTabNavigator();
 
 const Navigation = () => {
   const [isUserLoggedIn, setIsUserLoggedIn] = useState(false);
+  const [isUserLoggedIn, setIsUserLoggedIn] = useState(false);
 
   useEffect(async () => {
     const userEmail = await PersistanceHelper.getValue('userEmail');
@@ -38,7 +39,16 @@ const Navigation = () => {
       PersistanceHelper.setValue('userEmail', email);
       setIsUserLoggedIn(true);
     });
+    EventRegister.addEventListener('loginEvent', email => {
+      PersistanceHelper.setValue('userEmail', email);
+      setIsUserLoggedIn(true);
+    });
 
+    EventRegister.addEventListener('logoutEvent', () => {
+      PersistanceHelper.setValue('userEmail', '');
+      setIsUserLoggedIn(false);
+    });
+  }, []);
     EventRegister.addEventListener('logoutEvent', () => {
       PersistanceHelper.setValue('userEmail', '');
       setIsUserLoggedIn(false);
@@ -107,6 +117,24 @@ const Navigation = () => {
       </Stack.Group>
     );
   };
+        <Stack.Screen name="TestModalScreen" component={TestModalScreen} />
+        <Stack.Screen
+          name="TypeScriptTestScreen"
+          component={TypeScriptTestScreen}
+        />
+        <Stack.Screen name="ListScreen" component={ListScreen} />
+        <Stack.Screen name="DetailsScreen" component={DetailsScreen} />
+        <Stack.Screen name="Dashboard" component={DashboardScreen} />
+        <Stack.Screen name="TestFlexScreen" component={TestFlexScreen} />
+        <Stack.Screen name="TestHOCScreen" component={TestHOCScreen} />
+        <Stack.Screen
+          name="Settings"
+          component={SettingsScreen}
+          initialParams={{city: 'London', country: 'UK'}}
+        />
+      </Stack.Group>
+    );
+  };
 
   // return MyDrawer();
   // return MyTabs();
@@ -118,3 +146,4 @@ const Navigation = () => {
 };
 
 export default Navigation;
+

@@ -49,7 +49,7 @@ const LoginScreen = () => {
 
       <TouchableOpacity
         style={styles.submitButton}
-        onPress={async () => {
+        onPress={() => {
           PersistanceHelper.setValue('userEmail', email);
           EventRegister.emit('loginEvent', email);
 
