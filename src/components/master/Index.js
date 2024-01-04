@@ -9,4 +9,4 @@ import Async from "../practices/async_storage/Async";
 import MmkvStorage from "../practices/mmkv_storage/MmkvStorage";
 import propDrillingPractice from "../practices/prop_drilling_practice/Index";
 
-export { FunAndClass, FirstAssignment, Details, TabScreen, Login, SignUp, FastImage, Async, MmkvStorage, propDrillingPractice };
+export { FunAndClass, FirstAssignment, Details, TabScreen, Login, SignUp, FastImage, Async, MmkvStorage, propDrillingPractice};
