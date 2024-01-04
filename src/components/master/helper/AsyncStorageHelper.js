@@ -3,8 +3,9 @@ import AsyncStorage from "@react-native-async-storage/async-storage";
 class AsyncStorageHelper {
 
 
-    logInDataSet = async (key, value) => {
-        try {
+    setData = async (key, value) => {
+        try 
+        {
             console.log('set');
             AsyncStorage.setItem(key, value);
         } catch (e) {
@@ -12,11 +13,12 @@ class AsyncStorageHelper {
         }
     };
 
-    logInDataGet = async (key) => {
-        try {
+    getData = async (key) => {
+        try 
+        {
             console.log('get');
             const userData = await AsyncStorage.getItem(key);
-            console.log(JSON.parse(userData));
+            return (JSON.parse(userData));
 
         } catch (e) {
             console.error(e);

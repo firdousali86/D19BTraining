@@ -1,15 +1,28 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { FunAndClass, FirstAssignment, Details, TabScreen, Login, SignUp, FastImage, Async, MmkvStorage, propDrillingPractice } from '../Index';
-import { View, Text } from 'react-native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { createDrawerNavigator } from '@react-navigation/drawer';
+import { AsyncStorageHelper } from '../Helper';
 
 const Stack = createNativeStackNavigator();
 const Tab = createBottomTabNavigator();
 const Drawer = createDrawerNavigator();
 
 const Screens = props => {
+
+    const [is_login, setIsLogin] = useState(false);
+    useEffect(async () => {
+        try {
+            const loginData = await AsyncStorageHelper.getData('data');
+
+            console.log('loginData');
+            console.log(loginData);
+        } catch (e) {
+            console.log(e);
+        }
+
+    }, []);
 
     function MyDrawers() {
         return (
@@ -18,8 +31,6 @@ const Screens = props => {
                 <Drawer.Screen name="MMKV Storage" component={MmkvStorage} />
                 <Drawer.Screen name="Async Storage" component={Async} />
                 <Drawer.Screen name="Fast Image" component={FastImage} />
-                <Drawer.Screen name="SignUp" component={SignUp} />
-                <Drawer.Screen name="Login" component={Login} />
             </Drawer.Navigator>
         );
     }
@@ -38,12 +49,8 @@ const Screens = props => {
     const AuthStack = () => {
         return (
             <Stack.Navigator>
-                <Stack.Screen
-                    name={'Signup'} component={SignUp}>
-                </Stack.Screen>
-                <Stack.Screen
-                    name={'Login'} component={Login}>
-                </Stack.Screen>
+                <Stack.Screen name={'Login'} component={Login}></Stack.Screen>
+                <Stack.Screen name={'Signup'} component={SignUp} />
             </Stack.Navigator>
         );
     };
@@ -72,7 +79,7 @@ const Screens = props => {
         );
     };
 
-    return MyDrawers();
+    return AuthStack();
     // return <Stack.Navigator>{MyTabs()}</Stack.Navigator>;
 };
 

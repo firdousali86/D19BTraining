@@ -44,13 +44,15 @@ const Login = props => {
                     title={'set'}
                     onPress={() => {
                         const dataToStore = { email, u_password };
-                        AsyncStorageHelper.logInDataSet('u-l-d', JSON.stringify(dataToStore));
+                        AsyncStorageHelper.setData('data', JSON.stringify(dataToStore));
                     }}
                     disabled={isButtonDisabled}  // Disable the button if either email or u_password is empty
                 />
                 <Button
-                    onPress={() => {
-                        AsyncStorageHelper.logInDataGet('u-l-d');
+                    onPress={async () => {
+                        const loginDetails = await AsyncStorageHelper.getData('data');
+                        console.log(loginDetails);
+                        console.log('sdf');
                     }}
                     buttonStyle={{ width: 60, backgroundColor: '#02090d', margin: 10 }} title="get" />
             </View>
