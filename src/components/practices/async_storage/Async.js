@@ -2,7 +2,8 @@ import React, { useState } from "react";
 import { Text, TextInput, Alert, View } from "react-native";
 import { Button } from "react-native-elements";
 import AsyncStorage from "@react-native-async-storage/async-storage";
-
+import { AsyncStorageHelper } from "../../master/Helper";
+import { EventRegister } from "react-native-event-listeners";
 
 const Async = props => {
 
@@ -65,6 +66,13 @@ const Async = props => {
                         getData('userData');
                     }}
                     buttonStyle={{ width: 60, backgroundColor: '#02090d', margin: 10 }} title="get" />
+                <Button
+                    onPress={() => {
+
+                        AsyncStorageHelper.setData('user-login', '');
+                        EventRegister.emit('logoutEvent');
+                    }}
+                    buttonStyle={{ width: 100, backgroundColor: '#02090d', margin: 10 }} title="Logout" />
             </View>
         </View>
     );

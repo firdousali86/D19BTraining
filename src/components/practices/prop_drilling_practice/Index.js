@@ -5,7 +5,7 @@ import HeaderView from "./layout/HeaderView";
 import BodyView from "./layout/BodyView";
 
 
-const propDrillingPractice = () => {
+const PropDrillingPractice = () => {
     return (
         <View style={{ flex: 1 }}>
             <HeaderView />
@@ -16,5 +16,5 @@ const propDrillingPractice = () => {
 
 const Style = StyleSheet.create({});
 
-export default propDrillingPractice;
+export default PropDrillingPractice;
 
