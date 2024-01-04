@@ -4,7 +4,7 @@ import PersonalDetails from './PersonalDetails';
 import ContactDetails from './ContactDetails';
 import EducationDetails from './EducationDetails';
 
-const HeaderView = () => {
+const HeaderView = props => {
   return (
     <View
       style={{
@@ -14,9 +14,9 @@ const HeaderView = () => {
       }}>
       <View style={{width: 150, height: 150}}></View>
       <View style={{flex: 1, backgroundColor: 'pink'}}>
-        <PersonalDetails />
-        <ContactDetails />
-        <EducationDetails />
+        <PersonalDetails {...props} />
+        <ContactDetails {...props} />
+        <EducationDetails {...props} />
       </View>
     </View>
   );

@@ -9,7 +9,7 @@ const ListCellView = ({item}) => {
       style={{
         backgroundColor: 'white',
         margin: 2,
-        height: 40,
+        height: 70,
         flexDirection: 'row',
         alignItems: 'center',
       }}>

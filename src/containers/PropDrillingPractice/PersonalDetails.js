@@ -1,12 +1,14 @@
 import {StyleSheet, Text, View} from 'react-native';
 import React from 'react';
 
-const PersonalDetails = () => {
+const PersonalDetails = props => {
   return (
     <View>
-      <Text>Name</Text>
-      <Text>Age</Text>
-      <Text>Gender</Text>
+      <Text>
+        Name: {props.userObject.firstName + ' ' + props.userObject.lastName}
+      </Text>
+      <Text>Age: {props.userObject.age}</Text>
+      <Text>Gender: {props.userObject.gender}</Text>
     </View>
   );
 };
