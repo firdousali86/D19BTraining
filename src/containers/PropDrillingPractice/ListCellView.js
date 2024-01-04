@@ -1,8 +1,10 @@
 import {StyleSheet, Text, View} from 'react-native';
-import React from 'react';
+import React, {memo} from 'react';
 
 const ListCellView = ({item}) => {
   const {brand, model, color} = item;
+
+  console.log('ListCellView rendered');
 
   return (
     <View
@@ -29,6 +31,6 @@ const ListCellView = ({item}) => {
   );
 };
 
-export default ListCellView;
+export default memo(ListCellView);
 
 const styles = StyleSheet.create({});

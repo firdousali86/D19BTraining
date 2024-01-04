@@ -1,10 +1,12 @@
 import {StyleSheet, Text, View} from 'react-native';
-import React from 'react';
+import React, {memo} from 'react';
 import PersonalDetails from './PersonalDetails';
 import ContactDetails from './ContactDetails';
 import EducationDetails from './EducationDetails';
 
 const HeaderView = props => {
+  console.log('HeaderView rendered');
+
   return (
     <View
       style={{
@@ -22,6 +24,6 @@ const HeaderView = props => {
   );
 };
 
-export default HeaderView;
+export default memo(HeaderView);
 
 const styles = StyleSheet.create({});

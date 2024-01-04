@@ -1,7 +1,9 @@
 import {StyleSheet, Text, View} from 'react-native';
-import React from 'react';
+import React, {memo} from 'react';
 
 const PersonalDetails = props => {
+  console.log('PersonalDetails view rendered');
+
   return (
     <View>
       <Text>
@@ -13,6 +15,6 @@ const PersonalDetails = props => {
   );
 };
 
-export default PersonalDetails;
+export default memo(PersonalDetails);
 
 const styles = StyleSheet.create({});
