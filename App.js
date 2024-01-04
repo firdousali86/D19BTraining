@@ -10,8 +10,8 @@ import PersistanceHelper from './src/helper/PersistanceHelper';
 function App() {
 
   storage.set('username', 'Naresh Malaviya');
-  PersistanceHelper.setValue('test@test.com');
-  console.log(PersistanceHelper.getData());
+  // PersistanceHelper.setValue('test@test.com');
+  //console.log(PersistanceHelper.getData());
   console.log(storage.getString('username'));
 
   return (

@@ -6,6 +6,7 @@ import {
   TouchableOpacity,
 } from 'react-native';
 import React, { useState } from 'react';
+import PersistanceHelper from '../../helper/PersistanceHelper';
 
 const LoginScreen = () => {
   const [email, setEmail] = useState('');
@@ -33,7 +34,9 @@ const LoginScreen = () => {
         style={styles.textInput}
       />
 
-      <TouchableOpacity style={styles.submitButton}>
+      <TouchableOpacity style={styles.submitButton} onPress={async () => {
+        PersistanceHelper.setValue('userEmail', email);
+      }}>
         <Text>LOGIN</Text>
       </TouchableOpacity>
     </View>

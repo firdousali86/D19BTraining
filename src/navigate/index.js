@@ -1,5 +1,5 @@
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
-import React from 'react';
+import React, { useEffect } from 'react';
 import {
   LoginScreen,
   SignupScreen,
@@ -12,11 +12,17 @@ import {
 
 import { Text, View } from 'react-native';
 import { Helper } from '../helper';
+import PersistanceHelper from '../helper/PersistanceHelper';
 
 const Stack = createNativeStackNavigator();
 
 
 const Navigation = () => {
+  const [isUserLoggedIn, setIsUserLoggedIn] = useState(false);
+  useEffect(async () => {
+    const userEmail = await PersistanceHelper.getData('userEmail');
+    setIsUserLoggedIn(userEmail && userEmail.length > 0 !== undefined ? true : false);
+  });
   const getAuthStack = () => {
     return (
       <Stack.Group>
