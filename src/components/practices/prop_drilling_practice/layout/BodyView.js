@@ -1,6 +1,6 @@
-import { StyleSheet, Text, View } from 'react-native'
+import { StyleSheet, View } from 'react-native'
 import React from 'react'
-import ListView from '../ListView'
+import ListView from './ListView'
 
 const BodyView = () => {
     return (
