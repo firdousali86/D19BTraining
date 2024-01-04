@@ -1,11 +1,11 @@
-import {createNativeStackNavigator} from '@react-navigation/native-stack';
-import {createDrawerNavigator} from '@react-navigation/drawer';
-import {EventRegister} from 'react-native-event-listeners';
+import { createNativeStackNavigator } from '@react-navigation/native-stack';
+import { createDrawerNavigator } from '@react-navigation/drawer';
+import { EventRegister } from 'react-native-event-listeners';
 
 const Stack = createNativeStackNavigator();
 const Drawer = createDrawerNavigator();
 
-import React, {useState, useEffect} from 'react';
+import React, { useState, useEffect } from 'react';
 
 import {
   DashboardScreen,
@@ -22,13 +22,13 @@ import {
   ClassCompForUnmount,
   PropDrillingPractice,
 } from '../containers';
-import {Text, View} from 'react-native';
-import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
-import {PersistanceHelper} from '../helpers';
+import { Text, View } from 'react-native';
+import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
+import { PersistanceHelper } from '../helpers';
 const Tab = createBottomTabNavigator();
 
 const Navigation = () => {
-  const [isUserLoggedIn, setIsUserLoggedIn] = useState(false);
+
   const [isUserLoggedIn, setIsUserLoggedIn] = useState(false);
 
   useEffect(async () => {
@@ -48,11 +48,12 @@ const Navigation = () => {
       PersistanceHelper.setValue('userEmail', '');
       setIsUserLoggedIn(false);
     });
-  }, []);
+
     EventRegister.addEventListener('logoutEvent', () => {
       PersistanceHelper.setValue('userEmail', '');
       setIsUserLoggedIn(false);
     });
+
   }, []);
 
   function MyDrawer() {
@@ -112,32 +113,12 @@ const Navigation = () => {
         <Stack.Screen
           name="Settings"
           component={SettingsScreen}
-          initialParams={{city: 'London', country: 'UK'}}
-        />
-      </Stack.Group>
-    );
-  };
-        <Stack.Screen name="TestModalScreen" component={TestModalScreen} />
-        <Stack.Screen
-          name="TypeScriptTestScreen"
-          component={TypeScriptTestScreen}
-        />
-        <Stack.Screen name="ListScreen" component={ListScreen} />
-        <Stack.Screen name="DetailsScreen" component={DetailsScreen} />
-        <Stack.Screen name="Dashboard" component={DashboardScreen} />
-        <Stack.Screen name="TestFlexScreen" component={TestFlexScreen} />
-        <Stack.Screen name="TestHOCScreen" component={TestHOCScreen} />
-        <Stack.Screen
-          name="Settings"
-          component={SettingsScreen}
-          initialParams={{city: 'London', country: 'UK'}}
+          initialParams={{ city: 'London', country: 'UK' }}
         />
       </Stack.Group>
     );
   };
 
-  // return MyDrawer();
-  // return MyTabs();
   return (
     <Stack.Navigator>
       {isUserLoggedIn ? getMainStack() : getAuthStack()}
@@ -146,4 +127,3 @@ const Navigation = () => {
 };
 
 export default Navigation;
-

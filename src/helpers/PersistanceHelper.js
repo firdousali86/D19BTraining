@@ -32,5 +32,3 @@ class PersistanceHelper {
 }
 
 export default new PersistanceHelper();
-
-export default new PersistanceHelper();
