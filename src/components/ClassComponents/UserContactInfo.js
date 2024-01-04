@@ -1,8 +1,10 @@
 import React from 'react';
 import {View, Text, TextInput} from 'react-native';
 
-class UserContactInfo extends React.Component {
+class UserContactInfo extends React.PureComponent {
   render() {
+    console.log('user contact info was rerendered');
+
     const {contactInfo} = this.props;
 
     return (

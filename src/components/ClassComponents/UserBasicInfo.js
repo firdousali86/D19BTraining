@@ -1,7 +1,7 @@
 import React from 'react';
 import {View, Text, TextInput} from 'react-native';
 
-class UserBasicInfo extends React.Component {
+class UserBasicInfo extends React.PureComponent {
   constructor(props) {
     super(props);
 
@@ -11,6 +11,8 @@ class UserBasicInfo extends React.Component {
   }
 
   render() {
+    console.log('user basic info was rerendered');
+
     const {basicInfo} = this.props;
 
     const {firstName} = this.state;

@@ -7,20 +7,25 @@ import { View } from 'react-native';
 import { DrawerNavigator } from './src/navigate/drawer'
 import Navigation from './src/navigate';
 
-const Stack = createNativeStackNavigator();
+import React from 'react';
 
+import {NavigationContainer} from '@react-navigation/native';
+import Navigation from './src/navigate';
+import {LogBox} from 'react-native';
+import ErrorBoundary from './src/components/ErrorBoundary';
 
 function App() {
-    return (
-        <NavigationContainer>
-            <Navigation />
-            {/* <Stack.Navigator>
-                <Stack.Screen name="Weekly First Assignment" component={FirstAssignment} />
-                <Stack.Screen name="Home" component={FunAndClass} />
-                <Stack.Screen name="Details" component={Details} />
-            </Stack.Navigator> */}
-        </NavigationContainer>
-    );
+  LogBox.ignoreLogs(['Warning: ...']); // Ignore log notification by message
+  LogBox.ignoreAllLogs();
+
+  return (
+    <ErrorBoundary>
+      <NavigationContainer>
+        <Navigation />
+      </NavigationContainer>
+    </ErrorBoundary>
+  );
+
 }
 
 export default App;
