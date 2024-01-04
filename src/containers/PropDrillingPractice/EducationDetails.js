@@ -1,13 +1,16 @@
 import {StyleSheet, Text, View} from 'react-native';
 import React, {memo} from 'react';
+import {useUserContext} from '../../contexts/UserContext';
 
 const EducationDetails = props => {
   console.log('Education Details view rendered');
 
+  const userObject = useUserContext();
+
   return (
     <View style={{}}>
-      <Text>Degree: {props.userObject.degree}</Text>
-      <Text>University: {props.userObject.university}</Text>
+      <Text>Degree: {userObject?.degree}</Text>
+      <Text>University: {userObject?.university}</Text>
     </View>
   );
 };

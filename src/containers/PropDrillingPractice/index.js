@@ -4,6 +4,8 @@ import React, {useState, memo} from 'react';
 import HeaderView from './HeaderView';
 import BodyView from './BodyView';
 
+import {UserContextProvider} from '../../contexts/UserContext';
+
 const PropDrillingPractice = () => {
   const [userObject, setUserObject] = useState({
     firstName: 'Firdous',
@@ -30,8 +32,10 @@ const PropDrillingPractice = () => {
 
   return (
     <View style={{flex: 1}}>
-      <HeaderView userObject={userObject} style={{backgroundColor: 'red'}} />
-      <BodyView userObject={userObject} />
+      <UserContextProvider userObject={userObject}>
+        <HeaderView style={{backgroundColor: 'red'}} />
+        <BodyView />
+      </UserContextProvider>
 
       <Button
         title={'Change Age'}

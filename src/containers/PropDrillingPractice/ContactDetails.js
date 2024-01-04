@@ -1,13 +1,16 @@
 import {StyleSheet, Text, View} from 'react-native';
 import React, {memo} from 'react';
+import {useUserContext} from '../../contexts/UserContext';
 
 const ContactDetails = props => {
   console.log('Contact Details view rendered');
 
+  const userObject = useUserContext();
+
   return (
     <View style={{}}>
-      <Text>Address: {props.userObject.address}</Text>
-      <Text>Phone: {props.userObject.phone}</Text>
+      <Text>Address: {userObject?.address}</Text>
+      <Text>Phone: {userObject?.phone}</Text>
     </View>
   );
 };
