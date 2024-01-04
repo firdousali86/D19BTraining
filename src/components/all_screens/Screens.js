@@ -16,6 +16,7 @@ import MMkV from '../mmkv/MMKV';
 import {createNativeStackNavigator} from '@react-navigation/native-stack';
 import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
 import {createDrawerNavigator} from '@react-navigation/drawer';
+import PropsDrilling from '../props_driling/PropsDrilling';
 
 const Stack = createNativeStackNavigator();
 const Tab = createBottomTabNavigator();
@@ -50,17 +51,15 @@ const Screens = () => {
     );
   };
 
-
-
-
   const TestDrawer = () => {
     return (
       <Drawer.Navigator>
+        <Drawer.Screen name="props drilling" component={PropsDrilling} />
         <Drawer.Screen name="re rendering" component={PureComponent} />
         <Drawer.Screen name="MMKV Storage" component={MMkV} />
         <Drawer.Screen name="Async Storage" component={AsyncStorage} />
         <Drawer.Screen name="Fast Image" component={FastImageExample} />
-        
+
         <Drawer.Screen name="Modal" component={ModalComponentTab} />
       </Drawer.Navigator>
     );

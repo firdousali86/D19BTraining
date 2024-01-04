@@ -1,5 +1,5 @@
 import React, {memo, useEffect, useState} from 'react';
-import {View, Text, TextInput} from 'react-native';
+import {View, Text, TextInput, Button} from 'react-native';
 import FastImage from 'react-native-fast-image';
 
 import _ from 'lodash';
@@ -21,6 +21,15 @@ const TestFunctionalComponent = props => {
         }}
         value={getChild}
       />
+
+      <Button
+        title="Button handler usecallback"
+        onPress={() => {
+      
+          props.buttonHandler();
+        }}
+      />
+
       <Text>test Functional component</Text>
 
       {/* <FastImage
@@ -36,11 +45,9 @@ const TestFunctionalComponent = props => {
   );
 };
 
-export default memo(TestFunctionalComponent)
-
-
+export default memo(TestFunctionalComponent);
 
 // export default memo(TestFunctionalComponent, (prevPropse, nextProps) => {
- 
+
 //   return prevPropse.enterText == nextProps.enterTExtTwo;
 // });
