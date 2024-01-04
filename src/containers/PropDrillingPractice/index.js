@@ -33,7 +33,7 @@ const PropDrillingPractice = () => {
   return (
     <View style={{flex: 1}}>
       <UserContextProvider userObject={userObject}>
-        <HeaderView style={{backgroundColor: 'red'}} />
+        <HeaderView />
         <BodyView />
       </UserContextProvider>
 
