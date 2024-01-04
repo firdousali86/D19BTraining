@@ -8,6 +8,7 @@ import {
   TestPureComponent,
   ImageBackgroundScreen,
   FastImageScreen,
+  PropDrillingPractice
 } from '../containers';
 
 import { Text, View } from 'react-native';
@@ -18,15 +19,11 @@ const Stack = createNativeStackNavigator();
 
 
 const Navigation = () => {
-  const [isUserLoggedIn, setIsUserLoggedIn] = useState(false);
-  useEffect(async () => {
-    const userEmail = await PersistanceHelper.getData('userEmail');
-    setIsUserLoggedIn(userEmail && userEmail.length > 0 !== undefined ? true : false);
-  });
+
   const getAuthStack = () => {
     return (
       <Stack.Group>
-        <Stack.Screen name={'Login'} component={LoginScreen} />
+        <Stack.Screen name={'PropDrillingPractice'} component={PropDrillingPractice} />
       </Stack.Group>
     );
   };

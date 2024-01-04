@@ -5,6 +5,7 @@ import DrawerScreen from './DrawerScreen';
 import TestPureComponent from './TestPureComponent';
 import ImageBackgroundScreen from './ImageBackground';
 import FastImageScreen from './FastImage';
+import PropDrillingPractice from './PropDrillingPractice'
 export {
   LoginScreen,
   Signup,
@@ -13,4 +14,5 @@ export {
   TestPureComponent,
   ImageBackgroundScreen,
   FastImageScreen,
+  PropDrillingPractice
 };
