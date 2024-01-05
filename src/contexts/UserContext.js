@@ -2,10 +2,16 @@ import React, {createContext, useContext} from 'react';
 
 const UserContext = createContext();
 
-export function UserContextProvider({children, userObject, setSampleText}) {
+export function UserContextProvider({
+  children,
+  userObject,
+  setSampleText,
+  isUserLoggedIn,
+  setIsUserLoggedIn,
+}) {
   const value = {
-    state: {userObject},
-    actions: {setSampleText},
+    state: {userObject, isUserLoggedIn},
+    actions: {setSampleText, setIsUserLoggedIn},
   };
 
   return <UserContext.Provider value={value}>{children}</UserContext.Provider>;

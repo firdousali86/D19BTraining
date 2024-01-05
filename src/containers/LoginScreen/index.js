@@ -8,10 +8,15 @@ import {
 import React, {useState, useEffect} from 'react';
 import {PersistanceHelper} from '../../helpers';
 import {EventRegister} from 'react-native-event-listeners';
+import {useUserContext} from '../../contexts/UserContext';
 
 const LoginScreen = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
+
+  const {
+    actions: {setIsUserLoggedIn},
+  } = useUserContext();
 
   useEffect(() => {
     return () => {
@@ -50,14 +55,15 @@ const LoginScreen = () => {
       <TouchableOpacity
         style={styles.submitButton}
         onPress={async () => {
-          PersistanceHelper.setValue('userEmail', email);
-          EventRegister.emit('loginEvent', email);
+          // PersistanceHelper.setValue('userEmail', email);
+          // EventRegister.emit('loginEvent', email);
 
-          PersistanceHelper.setObject('testObject', {
-            car: 'Passo',
-            mileage: 53000,
-            color: 'black',
-          });
+          // PersistanceHelper.setObject('testObject', {
+          //   car: 'Passo',
+          //   mileage: 53000,
+          //   color: 'black',
+          // });
+          setIsUserLoggedIn(true);
         }}>
         <Text>LOGIN</Text>
       </TouchableOpacity>

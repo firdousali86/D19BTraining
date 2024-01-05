@@ -25,10 +25,16 @@ import {
 import {Text, View} from 'react-native';
 import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
 import {PersistanceHelper} from '../helpers';
+import {useUserContext} from '../contexts/UserContext';
+
 const Tab = createBottomTabNavigator();
 
 const Navigation = () => {
-  const [isUserLoggedIn, setIsUserLoggedIn] = useState(false);
+  // const [isUserLoggedIn, setIsUserLoggedIn] = useState(false);
+
+  const {
+    state: {isUserLoggedIn},
+  } = useUserContext();
 
   useEffect(async () => {
     const userEmail = await PersistanceHelper.getValue('userEmail');
@@ -76,14 +82,13 @@ const Navigation = () => {
     return (
       <Stack.Group>
         <Stack.Screen
-          name="PropDrillingPractice"
-          component={PropDrillingPractice}
-        />
-        <Stack.Screen
           name="TestPureComponentScreen"
           component={TestPureComponentScreen}
         />
-
+        <Stack.Screen
+          name="PropDrillingPractice"
+          component={PropDrillingPractice}
+        />
         <Stack.Screen
           name="ClassCompForUnmount"
           component={ClassCompForUnmount}

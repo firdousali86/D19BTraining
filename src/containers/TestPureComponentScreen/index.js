@@ -4,6 +4,7 @@ import SampleClassComp from './SampleClassComp';
 import SampleFunctComp from './SampleFunctComp';
 import {PersistanceHelper} from '../../helpers';
 import {EventRegister} from 'react-native-event-listeners';
+import {useUserContext} from '../../contexts/UserContext';
 
 const expensiveCalculation = num => {
   console.log('Calculating...');
@@ -16,6 +17,10 @@ const expensiveCalculation = num => {
 };
 
 const TestPureComponentScreen = props => {
+  const {
+    actions: {setIsUserLoggedIn},
+  } = useUserContext();
+
   const [textInput, setTextInput] = useState('');
   const [textInput2, setTextInput2] = useState('');
   const [datetime, setdatetime] = useState(undefined);
@@ -96,8 +101,9 @@ const TestPureComponentScreen = props => {
       <Button
         title={'logout'}
         onPress={() => {
-          PersistanceHelper.setValue('userEmail', '');
-          EventRegister.emit('logoutEvent');
+          // PersistanceHelper.setValue('userEmail', '');
+          // EventRegister.emit('logoutEvent');
+          setIsUserLoggedIn(false);
         }}
       />
 
