@@ -1,7 +1,7 @@
 import React from "react";
 import { View, Text } from "react-native";
 const PersonalDetails = props => {
-    console.log(props);
+	console.log('Person render');
     return (
         <View style={{}}>
             <Text>Name: {props.userObject.name}</Text>

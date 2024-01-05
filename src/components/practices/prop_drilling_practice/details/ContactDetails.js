@@ -3,6 +3,8 @@ import { View, Text } from "react-native";
 
 const ContactDetails = props =>
 {
+	console.log('Contact render');
+
 	return (
 		<View style={ {} }>
             <Text>Gender: { props.userObject.gender }</Text>

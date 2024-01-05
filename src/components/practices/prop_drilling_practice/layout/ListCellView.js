@@ -1,18 +1,17 @@
 import React from 'react'
 import { StyleSheet, View, Text } from 'react-native'
 
-const ListCellView = ({ item }) => {
-
-    const { brand, model, color } = item;
-
+const ListCellView = ({item}) => {
+    console.log('List cell view render');
+    
+    const { brand, modal, year } = item;
     return (
 
         <View style={{ backgroundColor: 'white', margin: 2, alignItems: 'center', height: 48, flexDirection: 'row' }}>
             <View style={{ width: 30, height: 30, backgroundColor: 'pink', margin: 5 }}></View>
             <View>
-                <Text>{brand}</Text>
-                <Text>{model}</Text>
-                <Text>{color}</Text>
+                <Text>{brand} - {modal}</Text>
+                <Text>{year}</Text>
             </View>
         </View>
 

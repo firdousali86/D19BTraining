@@ -1,6 +1,8 @@
 import React from "react";
 import { View, Text } from "react-native";
 const EducationDetails = props => {
+	console.log('Education render');
+
     return (
         <View style={{}}>
             <Text>Degree : {props.userObject.degree}</Text>

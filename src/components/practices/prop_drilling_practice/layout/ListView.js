@@ -3,13 +3,13 @@ import { FlatList } from "react-native";
 import ListCellView from "./ListCellView";
 
 const ListView = props => {
+    console.log('List render');
     return (
-        <FlatList data={[{}, {}, {}, {}, {}]} renderItem={ ({ item, index }) => {
+        <FlatList data={props.userObject.favCars} renderItem={ ({ item, index }) => {
             return (
                 <ListCellView item={item} />
             );
         }}
-
         />
     );
 }
