@@ -5,7 +5,9 @@ import {useUserContext} from '../../contexts/UserContext';
 const ContactDetails = props => {
   console.log('Contact Details view rendered');
 
-  const userObject = useUserContext();
+  const {
+    state: {userObject},
+  } = useUserContext();
 
   return (
     <View style={{}}>

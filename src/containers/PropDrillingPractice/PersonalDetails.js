@@ -5,7 +5,10 @@ import {useUserContext} from '../../contexts/UserContext';
 const PersonalDetails = props => {
   console.log('PersonalDetails view rendered');
 
-  const userObject = useUserContext();
+  // const userObject = useUserContext();
+  const {
+    state: {userObject},
+  } = useUserContext();
 
   return (
     <View>

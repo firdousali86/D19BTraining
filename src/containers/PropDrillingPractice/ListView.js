@@ -6,7 +6,9 @@ import {useUserContext} from '../../contexts/UserContext';
 const ListView = props => {
   console.log('ListView rendered');
 
-  const userObject = useUserContext();
+  const {
+    state: {userObject},
+  } = useUserContext();
 
   return (
     <FlatList

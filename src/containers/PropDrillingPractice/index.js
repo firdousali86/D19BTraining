@@ -1,12 +1,18 @@
-import {StyleSheet, Text, View, FlatList, Button} from 'react-native';
+import {
+  StyleSheet,
+  Text,
+  View,
+  FlatList,
+  Button,
+  TextInput,
+} from 'react-native';
 import React, {useState, memo} from 'react';
-
 import HeaderView from './HeaderView';
 import BodyView from './BodyView';
-
 import {UserContextProvider} from '../../contexts/UserContext';
 
 const PropDrillingPractice = () => {
+  const [sampleText, setSampleText] = useState('');
   const [userObject, setUserObject] = useState({
     firstName: 'Firdous',
     lastName: 'Ali',
@@ -32,7 +38,15 @@ const PropDrillingPractice = () => {
 
   return (
     <View style={{flex: 1}}>
-      <UserContextProvider userObject={userObject}>
+      <TextInput
+        value={sampleText}
+        onChangeText={ct => {
+          setSampleText(ct);
+        }}
+      />
+      <UserContextProvider
+        userObject={userObject}
+        setSampleText={setSampleText}>
         <HeaderView />
         <BodyView />
       </UserContextProvider>
