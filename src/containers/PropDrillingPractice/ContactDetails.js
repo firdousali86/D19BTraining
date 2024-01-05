@@ -1,16 +1,17 @@
 import { StyleSheet, Text, View } from 'react-native'
-import React from 'react'
+import React, { memo } from 'react'
 
-const ContactDetails = () => {
+const ContactDetails = props => {
+    console.log("Contact Detail View renderd");
     return (
         <View style={{}}>
-            <Text>Address</Text>
-            <Text>Phone</Text>
+            <Text>Address: {props?.userObject?.address}</Text>
+            <Text>Phone: {props?.userObject?.phone}</Text>
 
         </View>
     )
 }
 
-export default ContactDetails
+export default memo(ContactDetails);
 
 const styles = StyleSheet.create({})

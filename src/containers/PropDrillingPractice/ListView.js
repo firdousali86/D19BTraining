@@ -1,10 +1,11 @@
 import { StyleSheet, Text, View, FlatList } from 'react-native'
-import React from 'react'
+import React, { memo } from 'react'
 import ListCellView from './ListCellView'
-const ListView = () => {
+const ListView = props => {
+    console.log("List View renderd");
     return (
         <FlatList
-            data={[{}, {}, {}, {}, {}, {}]}
+            data={props?.userObject?.favCars}
             renderItem={({ item, index }) => {
 
                 return (
@@ -15,6 +16,6 @@ const ListView = () => {
     )
 }
 
-export default ListView
+export default memo(ListView);
 
 const styles = StyleSheet.create({})

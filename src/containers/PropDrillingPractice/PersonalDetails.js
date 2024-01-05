@@ -1,16 +1,20 @@
 import { StyleSheet, Text, View } from 'react-native'
-import React from 'react'
+import React, { memo } from 'react';
+import { useUserContext } from '../../contexts/UserContext';
 
-const PersonalDetails = () => {
+const PersonalDetails = props => {
+    console.log("Personal Detail View renderd");
+    const userObject = useUserContext();
+    console.log(userObject);
     return (
         <View style={{}}>
-            <Text>Name</Text>
-            <Text>Age</Text>
-            <Text>Gender</Text>
+            <Text>Name: {userObject?.firstName + " " + userObject?.lastName}</Text>
+            <Text>Age: {userObject?.age}</Text>
+            <Text>Gender: {userObject?.gender}</Text>
         </View>
     )
 }
 
-export default PersonalDetails
+export default memo(PersonalDetails);
 
 const styles = StyleSheet.create({})

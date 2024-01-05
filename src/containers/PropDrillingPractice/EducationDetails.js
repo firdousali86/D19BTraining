@@ -1,15 +1,16 @@
 import { StyleSheet, Text, View } from 'react-native'
-import React from 'react'
+import React, { memo } from 'react'
 
-const EducationDetails = () => {
+const EducationDetails = props => {
+    console.log("Education Detail View renderd");
     return (
         <View style={{}}>
-            <Text>Degree</Text>
-            <Text>University</Text>
+            <Text>Degree: {props?.userObject?.degree}</Text>
+            <Text>University: {props?.userObject?.university}</Text>
         </View>
     )
 }
 
-export default EducationDetails
+export default memo(EducationDetails);
 
 const styles = StyleSheet.create({})
