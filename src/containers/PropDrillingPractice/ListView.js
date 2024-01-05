@@ -1,11 +1,13 @@
 import { StyleSheet, Text, View, FlatList } from 'react-native'
 import React, { memo } from 'react'
 import ListCellView from './ListCellView'
+import { useUserContext } from '../../contexts/UserContext';
 const ListView = props => {
     console.log("List View renderd");
+    const userObject = useUserContext();
     return (
         <FlatList
-            data={props?.userObject?.favCars}
+            data={userObject?.favCars}
             renderItem={({ item, index }) => {
 
                 return (

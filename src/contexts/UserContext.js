@@ -7,7 +7,7 @@ export function UserContextProvider({ children, userObject }) {
         state: { userObject },
         actions: {},
     }
-    return <UserContext.Provider value={value}>{children}</UserContext.Provider>
+    return <UserContext.Provider value={userObject}>{children}</UserContext.Provider>
 
 }
 export function useUserContext() {
