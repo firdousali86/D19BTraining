@@ -1,9 +1,9 @@
-import React from 'react'
+import React, { memo } from 'react'
 import { StyleSheet, View, Text } from 'react-native'
 
-const ListCellView = ({item}) => {
+const ListCellView = ({ item }) => {
     console.log('List cell view render');
-    
+
     const { brand, modal, year } = item;
     return (
 
@@ -20,5 +20,5 @@ const ListCellView = ({item}) => {
 
 const styles = StyleSheet.create({})
 
-export default ListCellView
+export default memo(ListCellView)
 

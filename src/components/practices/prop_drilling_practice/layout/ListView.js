@@ -1,4 +1,4 @@
-import React from "react";
+import React,{memo} from "react";
 import { FlatList } from "react-native";
 import ListCellView from "./ListCellView";
 
@@ -13,4 +13,4 @@ const ListView = props => {
         />
     );
 }
-export default ListView;
+export default memo(ListView);

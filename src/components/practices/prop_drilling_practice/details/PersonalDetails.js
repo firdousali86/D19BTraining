@@ -1,4 +1,4 @@
-import React from "react";
+import React,{memo} from "react";
 import { View, Text } from "react-native";
 const PersonalDetails = props => {
 	console.log('Person render');
@@ -9,4 +9,4 @@ const PersonalDetails = props => {
         </View>
     );
 }
-export default PersonalDetails;
+export default memo(PersonalDetails);

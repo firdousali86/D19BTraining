@@ -1,4 +1,4 @@
-import React from "react";
+import React,{memo} from "react";
 import { View, Text } from "react-native";
 
 const ContactDetails = props =>
@@ -13,4 +13,4 @@ const ContactDetails = props =>
         </View>
 	);
 }
-export default ContactDetails;
+export default memo(ContactDetails);

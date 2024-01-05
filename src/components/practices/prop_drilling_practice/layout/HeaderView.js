@@ -1,14 +1,14 @@
 import { StyleSheet, View } from 'react-native'
-import React from 'react'
+import React, { memo } from 'react'
 import PersonalDetails from '../details/PersonalDetails'
 import ContactDetails from '../details/ContactDetails'
 import EducationDetails from '../details/EducationDetails'
 
 const HeaderView = props => {
-	console.log('Header render');
+    console.log('Header render');
 
     return (
-        
+
         <View style={{ flex: 0.4, backgroundColor: 'gray', flexDirection: "row" }}>
             <View style={{ width: 150, height: 150 }}></View>
             <View style={{ flex: 1, backgroundColor: 'pink' }}>
@@ -20,6 +20,6 @@ const HeaderView = props => {
     )
 }
 
-export default HeaderView
+export default memo(HeaderView)
 
 const styles = StyleSheet.create({})

@@ -1,4 +1,4 @@
-import React from "react";
+import React ,{memo}from "react";
 import { View, Text } from "react-native";
 const EducationDetails = props => {
 	console.log('Education render');
@@ -10,4 +10,4 @@ const EducationDetails = props => {
         </View>
     );
 }
-export default EducationDetails;
+export default memo(EducationDetails);

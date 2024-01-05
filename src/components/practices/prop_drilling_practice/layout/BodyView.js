@@ -1,5 +1,5 @@
 import { StyleSheet, View } from 'react-native'
-import React from 'react'
+import React,{memo} from 'react'
 import ListView from './ListView'
 
 const BodyView = props => {
@@ -11,6 +11,6 @@ const BodyView = props => {
     )
 }
 
-export default BodyView
+export default memo(BodyView)
 
 const styles = StyleSheet.create({})
