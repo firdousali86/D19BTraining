@@ -8,7 +8,8 @@ import {
   TestPureComponent,
   ImageBackgroundScreen,
   FastImageScreen,
-  PropDrillingPractice
+  PropDrillingPractice,
+  Dashboard
 } from '../containers';
 
 import { Text, View } from 'react-native';
@@ -30,11 +31,11 @@ const Navigation = () => {
 
   const getMainStack = () => {
     return (
-      <Stack.Screen name={'TestPureComponent'} component={TestPureComponent} />
+      <Stack.Screen name={'DrawerScreen'} component={DrawerScreen} />
     );
   };
 
-  return <Stack.Navigator>{getAuthStack()}</Stack.Navigator>;
+  return <Stack.Navigator>{getMainStack()}</Stack.Navigator>;
 };
 
 export default Navigation;
