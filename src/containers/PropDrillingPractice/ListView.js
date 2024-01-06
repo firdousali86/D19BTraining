@@ -4,7 +4,8 @@ import ListCellView from './ListCellView'
 import { useUserContext } from '../../contexts/UserContext';
 const ListView = props => {
     console.log("List View renderd");
-    const userObject = useUserContext();
+    const { state } = useUserContext();
+    let userObject = state.userObject;
     return (
         <FlatList
             data={userObject?.favCars}

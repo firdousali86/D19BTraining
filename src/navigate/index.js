@@ -35,7 +35,7 @@ const Navigation = () => {
     );
   };
 
-  return <Stack.Navigator>{getMainStack()}</Stack.Navigator>;
+  return <Stack.Navigator>{getAuthStack()}</Stack.Navigator>;
 };
 
 export default Navigation;

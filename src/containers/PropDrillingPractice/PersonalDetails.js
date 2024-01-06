@@ -4,7 +4,8 @@ import { useUserContext } from '../../contexts/UserContext';
 
 const PersonalDetails = props => {
     console.log("Personal Detail View renderd");
-    const userObject = useUserContext();
+    const { state } = useUserContext();
+    let userObject = state.userObject;
     //  console.log(userObject);
     return (
         <View style={{}}>
