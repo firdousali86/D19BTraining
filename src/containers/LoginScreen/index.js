@@ -7,15 +7,17 @@ import {
 } from 'react-native';
 import React, { useState } from 'react';
 import PersistanceHelper from '../../helper/PersistanceHelper';
+import { useUserContext } from '../../contexts/UserContext';
 
 const LoginScreen = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
 
-
+  const { state, actions } = useUserContext();
+  let setIsUserLoggedIn = actions.setIsUserLoggedIn;
 
   return (
-    <View>
+    <View style={{ marginTop: 20 }}>
       <TextInput
         value={email}
         onChangeText={ct => {
@@ -35,7 +37,8 @@ const LoginScreen = () => {
       />
 
       <TouchableOpacity style={styles.submitButton} onPress={async () => {
-        PersistanceHelper.setValue('userEmail', email);
+        //PersistanceHelper.setValue('userEmail', email);
+        setIsUserLoggedIn(true);
       }}>
         <Text>LOGIN</Text>
       </TouchableOpacity>

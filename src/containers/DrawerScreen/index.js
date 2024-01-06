@@ -1,41 +1,43 @@
 import 'react-native-gesture-handler';
 import React, { useState } from 'react';
 import { Text, View } from 'react-native';
-import { createDrawerNavigator } from '@react-navigation/drawer';
+import { createDrawerNavigator, DrawerContentScrollView, DrawerItemList, DrawerItem } from '@react-navigation/drawer';
 import Setting from './Setting';
 import Dashboard from '../Dashboard';
-import { UserContextProvider } from '../../contexts/UserContext';
+import PropDrillingPractice from '../PropDrillingPractice';
+import FastImage from '../FastImage';
+import ImageBackgroundScreen from '../ImageBackground/index';
+import ModalScreen from '../ModalScreen';
+import TestPureComponent from '../TestPureComponent';
+
 import { useUserContext } from '../../contexts/UserContext';
 const Drawer = createDrawerNavigator();
 
 
-function Feed() {
-  return (
-    <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
-      <Text>Feed Screen</Text>
-    </View>
-  );
-}
-
-function Article() {
-  return (
-    <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
-      <Text>Article Screen</Text>
-    </View>
-  );
-}
-
 const DrawerScreen = () => {
-  return (
-    <UserContextProvider>
-      <Drawer.Navigator>
-        <Drawer.Screen name="Dashboard" component={Dashboard} />
-        <Drawer.Screen name="Feed" component={Feed} />
-        <Drawer.Screen name="Article" component={Article} />
-        <Drawer.Screen name="Setting" component={Setting} />
+  const { state, actions } = useUserContext();
+  let setIsUserLoggedIn = actions.setIsUserLoggedIn;
 
-      </Drawer.Navigator>
-    </UserContextProvider>
+  return (
+
+    <Drawer.Navigator initialRouteName="Dashboard" drawerContent={props => {
+      return (
+        <DrawerContentScrollView {...props}>
+          <DrawerItemList {...props} />
+          <DrawerItem label="Logout" onPress={() => setIsUserLoggedIn(false)} />
+        </DrawerContentScrollView>
+      )
+    }}>
+      <Drawer.Screen name="Dashboard" component={Dashboard} />
+      <Drawer.Screen name="PropDrillingPractice" component={PropDrillingPractice} />
+      <Drawer.Screen name="FastImage" component={FastImage} />
+      <Drawer.Screen name="ImageBackgroundScreen" component={ImageBackgroundScreen} />
+      <Drawer.Screen name="ModalScreen" component={ModalScreen} />
+      <Drawer.Screen name="TestPureComponent" component={TestPureComponent} />
+      <Drawer.Screen name="Setting" component={Setting} />
+
+    </Drawer.Navigator>
+
   );
 };
 export default DrawerScreen;
