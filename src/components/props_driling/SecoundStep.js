@@ -27,4 +27,4 @@ const SecondStep = () => {
   );
 };
 
-export default memo(SecondStep);
+export default SecondStep;

@@ -12,11 +12,13 @@ import ModalComponentTab from '../modal/Modal';
 import FastImageExample from '../fast_image/FastImage';
 import AsyncStorage from '../async_storage/AsyncStorage';
 import MMkV from '../mmkv/MMKV';
+import { TestColorContextProvider } from '../setting/SettingContextApi';
 
 import {createNativeStackNavigator} from '@react-navigation/native-stack';
 import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
 import {createDrawerNavigator} from '@react-navigation/drawer';
 import PropsDrilling from '../props_driling/PropsDrilling';
+import Setting from '../setting/Setting';
 
 const Stack = createNativeStackNavigator();
 const Tab = createBottomTabNavigator();
@@ -53,15 +55,17 @@ const Screens = () => {
 
   const TestDrawer = () => {
     return (
+    <TestColorContextProvider>
       <Drawer.Navigator>
+        <Drawer.Screen name="Setting" component={Setting}/>
         <Drawer.Screen name="props drilling" component={PropsDrilling} />
         <Drawer.Screen name="re rendering" component={PureComponent} />
         <Drawer.Screen name="MMKV Storage" component={MMkV} />
         <Drawer.Screen name="Async Storage" component={AsyncStorage} />
         <Drawer.Screen name="Fast Image" component={FastImageExample} />
-
         <Drawer.Screen name="Modal" component={ModalComponentTab} />
       </Drawer.Navigator>
+      </TestColorContextProvider>
     );
   };
 

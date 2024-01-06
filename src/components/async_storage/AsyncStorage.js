@@ -2,6 +2,7 @@ import React, {useState} from 'react';
 import {View, Text, Button, StyleSheet} from 'react-native';
 import {TextInput} from 'react-native-gesture-handler';
 import AsyncStorage from '@react-native-async-storage/async-storage';
+import { useTextContext } from '../setting/SettingContextApi';
 
 const userObject = {
   basicInfo: {
@@ -24,6 +25,11 @@ const userObject = {
 };
 
 const AsyncStorageTest = () => {
+
+ const {selectedColor} =  useTextContext();
+console.log(selectedColor)
+
+
   const [getLogInData, setLogInData] = useState();
   const [getEmail, setEmail] = useState();
   const [getPassword, setPassword] = useState();
@@ -56,7 +62,7 @@ const AsyncStorageTest = () => {
   return (
     <View style={{flex: 1}}>
       <View
-        style={{backgroundColor: '#f0f8ff', padding: 15, borderBottomWidth: 1}}>
+        style={{backgroundColor: selectedColor, padding: 15, borderBottomWidth: 1}}>
         <Text style={{textAlign: 'justify', fontSize: 15}}>
           AsyncStorage is an unencrypted, asynchronous, persistent, key-value
           storage system that is global to the app. It should be used instead of
