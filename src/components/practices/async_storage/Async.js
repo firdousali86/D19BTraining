@@ -4,11 +4,13 @@ import { Button } from "react-native-elements";
 import AsyncStorage from "@react-native-async-storage/async-storage";
 import { AsyncStorageHelper } from "../../master/Helper";
 import { EventRegister } from "react-native-event-listeners";
+import { getLoginContext } from "../../master/contextApi/LoginContext";
 
 const Async = props => {
 
     const [email, setEmail] = useState('');
     const [u_password, setUPassword] = useState('');
+    const { actions: { setIsLogin } } = getLoginContext();
 
     const isButtonDisabled = !email || !u_password;
 
@@ -70,7 +72,8 @@ const Async = props => {
                     onPress={() => {
 
                         AsyncStorageHelper.setData('user-login', '');
-                        EventRegister.emit('logoutEvent');
+                        setIsLogin(false);
+                        // EventRegister.emit('logoutEvent');
                     }}
                     buttonStyle={{ width: 100, backgroundColor: '#02090d', margin: 10 }} title="Logout" />
             </View>

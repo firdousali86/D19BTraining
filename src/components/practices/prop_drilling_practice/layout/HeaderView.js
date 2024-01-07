@@ -12,9 +12,9 @@ const HeaderView = props => {
         <View style={{ flex: 0.4, backgroundColor: 'gray', flexDirection: "row" }}>
             <View style={{ width: 150, height: 150 }}></View>
             <View style={{ flex: 1, backgroundColor: 'pink' }}>
-                <PersonalDetails {...props} />
-                <ContactDetails {...props} />
-                <EducationDetails {...props} />
+                <PersonalDetails  />
+                <ContactDetails  />
+                <EducationDetails  />
             </View>
         </View>
     )

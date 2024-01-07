@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { View, StyleSheet, Button } from 'react-native';
 import HeaderView from './layout/HeaderView';
 import BodyView from './layout/BodyView';
+import { UserContextProvider } from '../../master/contextApi/userContext';
 
 const PropDrillingPractice = () => {
 
@@ -25,9 +26,13 @@ const PropDrillingPractice = () => {
 	console.log('Root render');
 	return (
 		<View style={{ flex: 1 }}>
-			<HeaderView userObject={userObject} />
-			<BodyView userObject={userObject} />
+			<UserContextProvider userObject={userObject}>
+				<HeaderView />
+				<BodyView />
+			</UserContextProvider>
+
 			<Button title='Age Change' onPress={() => {
+				console.log('chnage');
 				const userObjectCopy = { ...userObject }
 				userObjectCopy.age = 36;
 				setUserObject(userObjectCopy)

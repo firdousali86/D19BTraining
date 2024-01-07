@@ -1,18 +1,15 @@
 import React, { createContext, useContext, useState } from "react";
 
-const UserContext = createContext({ state: {}, actions: {} })
+const UserContext = createContext()
 
-export function UserContextProvider({ children }) {
-    
-    use [bgColor, setBgColor]=useState();
-
+export function UserContextProvider({ children, userObject }) {
 
     const value = {
-        state: { username },
-        actions: { setUsername }
+        state: { userObject },
+        actions: {  }
     }
 
-    return <UserContext.Provider>{children}</UserContext.Provider>
+    return <UserContext.Provider value={userObject}>{children}</UserContext.Provider>
 }
 
 export function useUserContext() {

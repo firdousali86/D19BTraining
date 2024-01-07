@@ -6,7 +6,7 @@ const BodyView = props => {
     console.log('Body render');
     return (
         <View style={{ flex: 0.6, backgroundColor: 'yellow', flexDirection: "row" }}>
-            <ListView  {...props} />
+            <ListView />
         </View>
     )
 }

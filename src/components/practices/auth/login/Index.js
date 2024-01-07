@@ -1,14 +1,15 @@
-import React, { useEffect, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { Text, TextInput, View } from "react-native";
 import { Button } from "react-native-elements";
 import { AsyncStorageHelper } from '../../../master/Helper';
 import { EventRegister } from "react-native-event-listeners";
-
+import { getLoginContext } from "../../../master/contextApi/LoginContext";
 
 const Login = props => {
 
     const [email, setEmail] = useState('');
     const [u_password, setUPassword] = useState('');
+    const {actions:{setIsLogin}} = getLoginContext();
 
 
     useEffect(() => {
@@ -46,12 +47,13 @@ const Login = props => {
                     onPress={() => {
                         const dataToStore = { email, u_password };
                         // AsyncStorageHelper.setData('user-login', JSON.stringify(dataToStore));
-                        EventRegister.emit('loginEvent',JSON.stringify(dataToStore));
+                        EventRegister.emit('loginEvent', JSON.stringify(dataToStore));
                     }}
                     disabled={isButtonDisabled}  // Disable the button if either email or u_password is empty
                 />
                 <Button
                     onPress={async () => {
+                        setIsLogin(true);
                         const loginDetails = await AsyncStorageHelper.getData('user-login');
                         console.log(loginDetails);
                         console.log('sdf');

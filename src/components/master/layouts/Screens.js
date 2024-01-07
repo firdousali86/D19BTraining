@@ -7,15 +7,16 @@ import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { createDrawerNavigator } from '@react-navigation/drawer';
 import { AsyncStorageHelper } from '../Helper';
 import { EventRegister } from 'react-native-event-listeners';
+import { getLoginContext } from '../contextApi/LoginContext';
 
-const Stack  = createNativeStackNavigator();
-const Tab    = createBottomTabNavigator();
+const Stack = createNativeStackNavigator();
+const Tab = createBottomTabNavigator();
 const Drawer = createDrawerNavigator();
 
 const Screens = props => {
 
-    const [is_login, setIsLogin] = useState(false);
-    console.log(is_login);
+    const { states: { isLogin }, actions: { setIsLogin } } = getLoginContext();
+    // const [is_login, setIsLogin] = useState(false);
     // useEffect(async () => {
 
     //     console.log(is_login);
@@ -50,16 +51,16 @@ const Screens = props => {
                 setIsLogin(true);
             });
 
-            EventRegister.addEventListener('logoutEvent', () => {
-                AsyncStorageHelper.setData('user-login', '');
-                setIsLogin(false);
-            });
+            // EventRegister.addEventListener('logoutEvent', () => {
+            //     AsyncStorageHelper.setData('user-login', '');
+            //     setIsLogin(false);
+            // });
         };
 
         fetchData();
 
     }, []);
-    console.log(is_login);
+    
 
     function MyDrawers() {
         return (
@@ -106,7 +107,7 @@ const Screens = props => {
         </Stack.Navigator>);
     };
 
-    return (is_login == true) ? MyDrawers() : AuthStack();
+    return (isLogin == true) ? MyDrawers() : AuthStack();
 
 };
 
