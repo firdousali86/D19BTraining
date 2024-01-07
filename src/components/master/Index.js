@@ -8,5 +8,10 @@ import FastImage from "../practices/fast_image/FastImage";
 import Async from "../practices/async_storage/Async";
 import MmkvStorage from "../practices/mmkv_storage/MmkvStorage";
 import PropDrillingPractice from "../practices/prop_drilling_practice/Index";
+import Setting from '../practices/settings/Index';
+import SettingTab1 from "../practices/settings/tabs/SettingTab1";
+import SettingTab2 from "../practices/settings/tabs/SettingTab2";
+import SettingTab3 from "../practices/settings/tabs/SettingTab3";
 
-export { FunAndClass, FirstAssignment, Details, TabScreen, Login, SignUp, FastImage, Async, MmkvStorage, PropDrillingPractice};
+
+export { FunAndClass, FirstAssignment, Details, TabScreen, Login, SignUp, FastImage, Async, MmkvStorage, PropDrillingPractice, Setting, SettingTab1, SettingTab2, SettingTab3 };

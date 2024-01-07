@@ -8,10 +8,16 @@ import {
   StyleSheet,
 } from 'react-native';
 import { Button } from 'react-native-elements';
+import { getThemeContext } from "../../master/contextApi/SettingContextApi";
 
 const FirstAssignment = props => {
   const [todoArr, setTodoArr] = useState([]);
   const [task, setTask] = useState('');
+  const { state: { customThemeObj } } = getThemeContext();
+
+  console.log('customThemeObj');
+  console.log(customThemeObj.bgColor);
+
   React.useEffect(() => {
     if (props.route.params !== undefined) {
       const item = props.route.params;
@@ -25,8 +31,8 @@ const FirstAssignment = props => {
   }, [props.route.params]);
   return (
     <SafeAreaView style={stylesCss.safeAreaView}>
-      <View style={stylesCss.mainView}>
-        <View style={stylesCss.container}>
+      <View style={{ ...stylesCss.mainView, backgroundColor: customThemeObj.bgColor }}>
+        <View style={{ ...stylesCss.container, backgroundColor: customThemeObj.borderColor,borderColor: customThemeObj.textColor }}>
           <Text style={stylesCss.label}>First Assignment</Text>
         </View>
         <View style={stylesCss.inputContainer}>
