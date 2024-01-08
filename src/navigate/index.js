@@ -21,6 +21,7 @@ import {
   TestPureComponentScreen,
   ClassCompForUnmount,
   PropDrillingPractice,
+  TestAPIListScreen,
 } from '../containers';
 import {Text, View} from 'react-native';
 import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
@@ -32,23 +33,21 @@ const Tab = createBottomTabNavigator();
 const Navigation = () => {
   // const [isUserLoggedIn, setIsUserLoggedIn] = useState(false);
 
-  const {
-    state: {isUserLoggedIn},
-  } = useUserContext();
+  // const {
+  //   state: {isUserLoggedIn},
+  // } = useUserContext();
 
-  useEffect(async () => {
-    const userEmail = await PersistanceHelper.getValue('userEmail');
-    setIsUserLoggedIn(userEmail && userEmail.length > 0 ? true : false);
-
-    EventRegister.addEventListener('loginEvent', email => {
-      PersistanceHelper.setValue('userEmail', email);
-      setIsUserLoggedIn(true);
-    });
-
-    EventRegister.addEventListener('logoutEvent', () => {
-      PersistanceHelper.setValue('userEmail', '');
-      setIsUserLoggedIn(false);
-    });
+  useEffect(() => {
+    // const userEmail = await PersistanceHelper.getValue('userEmail');
+    // setIsUserLoggedIn(userEmail && userEmail.length > 0 ? true : false);
+    // EventRegister.addEventListener('loginEvent', email => {
+    //   PersistanceHelper.setValue('userEmail', email);
+    //   setIsUserLoggedIn(true);
+    // });
+    // EventRegister.addEventListener('logoutEvent', () => {
+    //   PersistanceHelper.setValue('userEmail', '');
+    //   setIsUserLoggedIn(false);
+    // });
   }, []);
 
   function MyDrawer() {
@@ -81,6 +80,7 @@ const Navigation = () => {
   const getMainStack = () => {
     return (
       <Stack.Group>
+        <Stack.Screen name="TestAPIListScreen" component={TestAPIListScreen} />
         <Stack.Screen
           name="TestPureComponentScreen"
           component={TestPureComponentScreen}
@@ -93,7 +93,6 @@ const Navigation = () => {
           name="ClassCompForUnmount"
           component={ClassCompForUnmount}
         />
-
         <Stack.Screen name="TestModalScreen" component={TestModalScreen} />
         <Stack.Screen
           name="TypeScriptTestScreen"
@@ -116,9 +115,7 @@ const Navigation = () => {
   // return MyDrawer();
   // return MyTabs();
   return (
-    <Stack.Navigator>
-      {isUserLoggedIn ? getMainStack() : getAuthStack()}
-    </Stack.Navigator>
+    <Stack.Navigator>{true ? getMainStack() : getAuthStack()}</Stack.Navigator>
   );
 };
 

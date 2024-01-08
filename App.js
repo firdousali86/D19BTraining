@@ -11,25 +11,21 @@ import {NavigationContainer} from '@react-navigation/native';
 import Navigation from './src/navigate';
 import {LogBox} from 'react-native';
 import ErrorBoundary from './src/components/ErrorBoundary';
-import {UserContextProvider} from './src/contexts/UserContext';
+// import {UserContextProvider} from './src/contexts/UserContext';
 
 function App() {
   LogBox.ignoreLogs(['Warning: ...']); // Ignore log notification by message
   LogBox.ignoreAllLogs();
 
-  const [isUserLoggedIn, setIsUserLoggedIn] = useState(false);
+  // const [isUserLoggedIn, setIsUserLoggedIn] = useState(false);
 
-  console.log(isUserLoggedIn);
+  // console.log(isUserLoggedIn);
 
   return (
     <ErrorBoundary>
-      <UserContextProvider
-        isUserLoggedIn={isUserLoggedIn}
-        setIsUserLoggedIn={setIsUserLoggedIn}>
-        <NavigationContainer>
-          <Navigation />
-        </NavigationContainer>
-      </UserContextProvider>
+      <NavigationContainer>
+        <Navigation />
+      </NavigationContainer>
     </ErrorBoundary>
   );
 }
