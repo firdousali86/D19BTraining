@@ -1,27 +1,49 @@
 import {baseURL} from '../config/WebService';
+import {create} from 'apisauce';
+
+const api = create({
+  baseURL: baseURL,
+  headers: {
+    'Content-Type': 'application/json',
+    Accept: 'application/json',
+    'Cache-Control': 'no-cache',
+  },
+});
+
+const getUpdatedHeader = headers => {
+  return {...headers, Authorization: 'Bearer sdfsjdfskdfhkj'};
+};
 
 class ApiHelper {
-  get = async url => {
-    const response = await fetch(baseURL + url).then(data => data.json());
+  get = async (url, data, headers) => {
+    const updatedHeader = getUpdatedHeader(headers);
+    const response = await api.get(url, data, {headers: updatedHeader});
 
     return new Promise((resolve, reject) => {
       this.handleErrors(resolve, reject, response);
     });
   };
 
-  post = (url, data) => {
-    const response = fetch(baseURL + url, {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify(data),
-    });
+  post = async (url, data, headers) => {
+    const updatedHeader = getUpdatedHeader(headers);
+    // const response = fetch(baseURL + url, {
+    //   method: 'POST',
+    //   headers: {
+    //     'Content-Type': 'application/json',
+    //   },
+    //   body: JSON.stringify(data),
+    // });
+
+    const response = await api.post(url, data, {headers: updatedHeader});
 
     return new Promise((resolve, reject) => {
       this.handleErrors(resolve, reject, response);
     });
   };
+
+  put = () => {};
+
+  delete = () => {};
 
   handleErrors = (resolve, reject, response) => {
     if (response.error) {
