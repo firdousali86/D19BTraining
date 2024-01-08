@@ -25,6 +25,7 @@ const SettingTab3 = props => {
                 save="value"
                 onSelect={() => setCustomTheme(selected)}
                 label="Categories"
+            
 
             />
         </View>
