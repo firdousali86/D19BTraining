@@ -12,6 +12,7 @@ import TestPureComponentScreen from './TestPureComponentScreen';
 import ClassCompForUnmount from './ClassCompForUnmount';
 import PropDrillingPractice from './PropDrillingPractice';
 import TestAPIListScreen from './TestAPIListScreen';
+import TestRedux from './TestRedux';
 
 export {
   DashboardScreen,
@@ -28,4 +29,5 @@ export {
   ClassCompForUnmount,
   PropDrillingPractice,
   TestAPIListScreen,
+  TestRedux,
 };

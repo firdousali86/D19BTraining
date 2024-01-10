@@ -22,6 +22,7 @@ import {
   ClassCompForUnmount,
   PropDrillingPractice,
   TestAPIListScreen,
+  TestRedux,
 } from '../containers';
 import {Text, View} from 'react-native';
 import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
@@ -80,6 +81,7 @@ const Navigation = () => {
   const getMainStack = () => {
     return (
       <Stack.Group>
+        <Stack.Screen name="TestRedux" component={TestRedux} />
         <Stack.Screen name="TestAPIListScreen" component={TestAPIListScreen} />
         <Stack.Screen
           name="TestPureComponentScreen"
