@@ -12,6 +12,8 @@ import Setting from '../practices/settings/Index';
 import SettingTab1 from "../practices/settings/tabs/SettingTab1";
 import SettingTab2 from "../practices/settings/tabs/SettingTab2";
 import SettingTab3 from "../practices/settings/tabs/SettingTab3";
+import RLogin from "../practices/redux/login/Index";
+import RSignUp from "../practices/redux/sign_up/Index";
 
 
-export { FunAndClass, FirstAssignment, Details, TabScreen, Login, SignUp, FastImage, Async, MmkvStorage, PropDrillingPractice, Setting, SettingTab1, SettingTab2, SettingTab3 };
+export { FunAndClass, FirstAssignment, Details, TabScreen, Login, SignUp, FastImage, Async, MmkvStorage, PropDrillingPractice, Setting, SettingTab1, SettingTab2, SettingTab3, RLogin, RSignUp };

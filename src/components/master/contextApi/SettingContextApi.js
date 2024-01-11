@@ -20,9 +20,9 @@ export function ThemeContext({ children }) {
             borderColor: '#ff6b35',
         },
         'pink': {
-            bgColor: '#eef4ed',
-            textColor: '#4169e1',
-            borderColor: '#ff6b35',
+            bgColor: '#edd9f9',
+            textColor: '#fef3fe',
+            borderColor: '#ff06e6',
         },
     };
 

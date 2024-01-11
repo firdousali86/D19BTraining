@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import {
     FunAndClass, FirstAssignment, Details, TabScreen, Login, SignUp, FastImage, Async, MmkvStorage, PropDrillingPractice, Setting, SettingTab1, SettingTab2, SettingTab3
+    , RLogin, RSignUp,
 } from '../Index';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
@@ -63,12 +64,13 @@ const Screens = props => {
 
     }, []);
     function CustomHeader({ navigation }) {
-                return (
+        return (
 
             <TouchableOpacity style={{ marginRight: 10 }} onPress={() => {
-                
-                AsyncStorageHelper.setData('user-login','');
-                setIsLogin(false) }} >
+
+                AsyncStorageHelper.setData('user-login', '');
+                setIsLogin(false)
+            }} >
                 <Text>Logout</Text>
             </TouchableOpacity>
         );
@@ -89,7 +91,7 @@ const Screens = props => {
                         </Tab.Navigator>
                     )}
                 </Drawer.Screen>
-                
+
                 <Drawer.Screen name="Prop Drilling" component={PropDrillingPractice} />
                 <Drawer.Screen name="MMKV Storage" component={MmkvStorage} />
                 <Drawer.Screen name="Async Storage" component={Async} />
@@ -132,7 +134,17 @@ const Screens = props => {
         </Stack.Navigator>);
     };
 
-    return (isLogin == true) ? MyDrawers() : AuthStack();
+    const ReduxAuthStack = () => {
+        return (
+            <Stack.Navigator>
+                <Stack.Screen name={'Redux Login'} component={RLogin}></Stack.Screen>
+                <Stack.Screen name={'Redux Signup'} component={RSignUp} />
+            </Stack.Navigator>
+        );
+    };
+
+    //return (isLogin == true) ? MyDrawers() : AuthStack();
+    return (isLogin == true) ? MyDrawers() : ReduxAuthStack();
 
 };
 
