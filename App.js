@@ -11,7 +11,7 @@ import {NavigationContainer} from '@react-navigation/native';
 import Navigation from './src/navigate';
 import {LogBox} from 'react-native';
 import ErrorBoundary from './src/components/ErrorBoundary';
-import {store} from './src/store';
+import store from './src/store';
 import {Provider} from 'react-redux';
 // import {UserContextProvider} from './src/contexts/UserContext';
 
