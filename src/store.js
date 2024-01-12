@@ -1,5 +1,6 @@
 import {configureStore} from '@reduxjs/toolkit';
 import counterReducer from './features/counter/counterSlice';
+import cartReducer from './features/cart/cartSlice';
 import {createLogger} from 'redux-logger';
 // import {createFlipperMiddleware} from 'redux-flipper';
 
@@ -26,7 +27,7 @@ if (__DEV__) {
 //   : [...getDefaultMiddleware()];
 
 export default configureStore({
-  reducer: {counter: counterReducer},
+  reducer: {counter: counterReducer, cart: cartReducer},
   middleware: getDefaultMiddleware =>
     getDefaultMiddleware().concat(middlewares),
 });

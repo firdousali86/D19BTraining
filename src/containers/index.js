@@ -13,6 +13,8 @@ import ClassCompForUnmount from './ClassCompForUnmount';
 import PropDrillingPractice from './PropDrillingPractice';
 import TestAPIListScreen from './TestAPIListScreen';
 import TestRedux from './TestRedux';
+import ProductList from './ProductList';
+import CartScreen from './CartScreen';
 
 export {
   DashboardScreen,
@@ -30,4 +32,6 @@ export {
   PropDrillingPractice,
   TestAPIListScreen,
   TestRedux,
+  ProductList,
+  CartScreen,
 };

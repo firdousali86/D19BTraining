@@ -23,6 +23,8 @@ import {
   PropDrillingPractice,
   TestAPIListScreen,
   TestRedux,
+  ProductList,
+  CartScreen,
 } from '../containers';
 import {Text, View} from 'react-native';
 import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
@@ -81,6 +83,9 @@ const Navigation = () => {
   const getMainStack = () => {
     return (
       <Stack.Group>
+        <Stack.Screen name="ProductList" component={ProductList} />
+        <Stack.Screen name="CartScreen" component={CartScreen} />
+
         <Stack.Screen name="TestRedux" component={TestRedux} />
         <Stack.Screen name="TestAPIListScreen" component={TestAPIListScreen} />
         <Stack.Screen
