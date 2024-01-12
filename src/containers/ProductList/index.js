@@ -63,6 +63,12 @@ const ProductList = props => {
           props.navigation.navigate('CartScreen');
         }}
       />
+      <Button
+        title={'Clear Cart'}
+        onPress={() => {
+          dispatch(clearCart());
+        }}
+      />
     </View>
   );
 };
