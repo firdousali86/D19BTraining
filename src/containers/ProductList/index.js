@@ -1,4 +1,11 @@
-import {StyleSheet, Text, View, FlatList, TouchableOpacity} from 'react-native';
+import {
+  StyleSheet,
+  Text,
+  View,
+  FlatList,
+  TouchableOpacity,
+  Button,
+} from 'react-native';
 import React from 'react';
 import {useDispatch} from 'react-redux';
 import {
@@ -16,7 +23,7 @@ const itemList = [
   {name: 'LED TV', details: 'True colors', price: 600},
 ];
 
-const ProductList = () => {
+const ProductList = props => {
   const dispatch = useDispatch();
 
   return (
@@ -48,6 +55,12 @@ const ProductList = () => {
               </TouchableOpacity>
             </View>
           );
+        }}
+      />
+      <Button
+        title={'Go to Cart'}
+        onPress={() => {
+          props.navigation.navigate('CartScreen');
         }}
       />
     </View>
