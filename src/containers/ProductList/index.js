@@ -1,5 +1,11 @@
 import {StyleSheet, Text, View, FlatList, TouchableOpacity} from 'react-native';
 import React from 'react';
+import {useDispatch} from 'react-redux';
+import {
+  addToCart,
+  removeFromCart,
+  clearCart,
+} from '../../features/cart/cartSlice';
 
 const itemList = [
   {name: 'Macbook', details: 'Macbook pro with M2', price: 2500},
@@ -11,6 +17,8 @@ const itemList = [
 ];
 
 const ProductList = () => {
+  const dispatch = useDispatch();
+
   return (
     <View>
       <FlatList
@@ -32,7 +40,9 @@ const ProductList = () => {
                 <Text>{item.price}</Text>
               </View>
               <TouchableOpacity
-                onPress={() => {}}
+                onPress={() => {
+                  dispatch(addToCart(item));
+                }}
                 style={{backgroundColor: 'grey', padding: 10, borderRadius: 5}}>
                 <Text>Add To Cart</Text>
               </TouchableOpacity>
