@@ -26,14 +26,20 @@ import {
   ProductList,
   CartScreen,
 } from '../containers';
-import {Text, View} from 'react-native';
+import {Button, Text, View} from 'react-native';
 import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
 import {PersistanceHelper} from '../helpers';
 import {useUserContext} from '../contexts/UserContext';
+import {useNavigation} from '@react-navigation/native';
+import {useDispatch} from 'react-redux';
+import {clearCart} from '../features/cart/cartSlice';
 
 const Tab = createBottomTabNavigator();
 
-const Navigation = () => {
+const Navigation = props => {
+  const navigation = useNavigation();
+  const dispatch = useDispatch();
+
   // const [isUserLoggedIn, setIsUserLoggedIn] = useState(false);
 
   // const {
@@ -83,8 +89,40 @@ const Navigation = () => {
   const getMainStack = () => {
     return (
       <Stack.Group>
-        <Stack.Screen name="ProductList" component={ProductList} />
-        <Stack.Screen name="CartScreen" component={CartScreen} />
+        <Stack.Screen
+          name="ProductList"
+          component={ProductList}
+          options={{
+            title: 'Shopping List',
+            headerRight: () => {
+              return (
+                <Button
+                  title="Cart"
+                  onPress={() => {
+                    navigation.navigate('CartScreen');
+                  }}
+                />
+              );
+            },
+          }}
+        />
+        <Stack.Screen
+          name="CartScreen"
+          component={CartScreen}
+          options={{
+            title: 'Shopping Cart',
+            headerRight: () => {
+              return (
+                <Button
+                  title="Clear Cart"
+                  onPress={() => {
+                    dispatch(clearCart());
+                  }}
+                />
+              );
+            },
+          }}
+        />
 
         <Stack.Screen name="TestRedux" component={TestRedux} />
         <Stack.Screen name="TestAPIListScreen" component={TestAPIListScreen} />

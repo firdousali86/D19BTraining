@@ -2,7 +2,7 @@ import {StyleSheet, Text, View, FlatList, TouchableOpacity} from 'react-native';
 import React from 'react';
 import {useSelector} from 'react-redux';
 
-const CartScreen = () => {
+const CartScreen = props => {
   const cart = useSelector(state => state.cart.cartItems);
 
   return (
