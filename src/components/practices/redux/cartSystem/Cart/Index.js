@@ -1,6 +1,7 @@
 import React from "react";
 import { Text, View } from "react-native";
 import CartLists from "./CartLists";
+
 const Cart = props => {
     return (
         <View>
@@ -9,6 +10,5 @@ const Cart = props => {
     );
 
 }
-
 
 export default Cart;
