@@ -2,7 +2,7 @@ import { createSlice } from '@reduxjs/toolkit'
 
 const initialState = {
     cartItems: [],
-    totalCartItems:0
+    totalCartItems: 0
 }
 
 export const CartSlice = createSlice({
@@ -11,7 +11,7 @@ export const CartSlice = createSlice({
     reducers: {
         addToCart: (state, action) => {
             const itemToAdd = action.payload;
-           
+            let total = 0;
             const itemPresentIndex = state.cartItems.findIndex(thisEl => {
                 return thisEl.item.name === itemToAdd.name;
             })
@@ -21,13 +21,14 @@ export const CartSlice = createSlice({
             } else {
                 state.cartItems.push({ item: itemToAdd, quantity: 1 });
             }
-            const itemPresentIndex1 = state.cartItems.findIndex(thisEl => {
-                return  state.totalCartItems += thisEl.quantity;
-            })
-            console.log(itemToAdd);
+            state.cartItems.forEach(item => {
+                total += item.quantity;
+            });
+            state.totalCartItems = total;
         },
         removeFromCart: (state, action) => {
             const itemToAdd = action.payload;
+            let total = 0;
 
             const itemPresentIndex = state.cartItems.findIndex(thisEl => {
                 return thisEl.item.name === itemToAdd.name;
@@ -35,12 +36,18 @@ export const CartSlice = createSlice({
             if (itemPresentIndex !== -1) {
                 state.cartItems.pop(itemPresentIndex);
             }
-            const itemPresentIndex1 = state.cartItems.findIndex(thisEl => {
-                return  state.totalCartItems += thisEl.quantity;
-            })
+            
+            state.cartItems.forEach(item => {
+                total += item.quantity;
+            });
+            state.totalCartItems = total;
+
         },
-    
-        clearToCart: (state) => { },
+
+        clearToCart: (state) => {
+            state.cartItems = {};
+            state.totalCartItems = 0;
+         },
     }
 });
 

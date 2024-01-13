@@ -2,9 +2,13 @@ import React from "react";
 import { FlatList, Text, TouchableOpacity, View, StyleSheet, Animated, Easing } from "react-native";
 import { useDispatch, useSelector } from "react-redux";
 import { addToCart, removeFromCart } from "../../features/cart/CartSlice";
+import { Button } from "react-native-elements";
+import { useNavigation } from "@react-navigation/native";
 
 const CartLists = () => {
   const fadeAnim = new Animated.Value(0);
+  const navigation = useNavigation();
+
   const dispatch = useDispatch();
   const cartItems = useSelector((state) => state.cart.cartItems);
 
@@ -40,11 +44,15 @@ const CartLists = () => {
   );
 
   return (
-    <FlatList
-      data={cartItems}
-      keyExtractor={(item, index) => index.toString()}
-      renderItem={renderListItem}
-    />
+    <>
+      <Button title="Go to Product Lists" style={styles.goToCartButton} onPress={() => navigation.navigate('Product Lists')} />
+
+      <FlatList
+        data={cartItems}
+        keyExtractor={(item, index) => index.toString()}
+        renderItem={renderListItem}
+      />
+    </>
   );
 };
 
