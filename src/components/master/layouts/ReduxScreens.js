@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import {
     FunAndClass, FirstAssignment, FirstAssignmentStack, FunAndClassStack, AuthStack, Details, TabScreen, Login, SignUp, FastImage, Async, MmkvStorage, PropDrillingPractice, Setting, SettingTab1, SettingTab2, SettingTab3
-    , RLogin, RSignUp,
+    , RLogin, RSignUp, Products, Cart,
 } from '../Index';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
@@ -19,6 +19,16 @@ const Screens = props => {
                 <Drawer.Screen name='Settings'>
                     {() => (
                         <Tab.Navigator>
+                            <Tab.Screen name="Products" >
+                                {() => (
+                                    <Stack.Navigator>
+                                        <Stack.Screen name={'Products'} component={Products}></Stack.Screen>
+                                        <Stack.Screen name={'Cart'} component={Cart} />
+                                    </Stack.Navigator>
+                                )}
+
+                            
+                            </Tab.Screen>
                             <Tab.Screen name="1 TS" component={SettingTab1} />
                             <Tab.Screen name="2 TS" component={SettingTab2} />
                             <Tab.Screen name="Theme" component={SettingTab3} />
@@ -40,7 +50,7 @@ const Screens = props => {
     };
 
     //return (isLogin == true) ? MyDrawers() : AuthStack();
-    return (false) ? MyDrawers() : ReduxAuthStack();
+    return (true) ? MyDrawers() : ReduxAuthStack();
 
 };
 

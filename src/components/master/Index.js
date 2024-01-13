@@ -14,6 +14,9 @@ import SettingTab2 from "../practices/settings/tabs/SettingTab2";
 import SettingTab3 from "../practices/settings/tabs/SettingTab3";
 import RLogin from "../practices/redux/login/Index";
 import RSignUp from "../practices/redux/sign_up/Index";
+import Products from "../practices/redux/cartSystem/Products/Index";
+import Cart from '../practices/redux/cartSystem/Cart/Index';
 
 
-export { FunAndClass, FirstAssignment, Details, TabScreen, Login, SignUp, FastImage, Async, MmkvStorage, PropDrillingPractice, Setting, SettingTab1, SettingTab2, SettingTab3, RLogin, RSignUp };
+
+export { FunAndClass, FirstAssignment, Details, TabScreen, Login, SignUp, FastImage, Async, MmkvStorage, PropDrillingPractice, Setting, SettingTab1, SettingTab2, SettingTab3, RLogin, RSignUp, Products, Cart };
