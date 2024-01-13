@@ -9,14 +9,17 @@ import React, {useState, useEffect} from 'react';
 import {PersistanceHelper} from '../../helpers';
 import {EventRegister} from 'react-native-event-listeners';
 import {useUserContext} from '../../contexts/UserContext';
+import {useDispatch} from 'react-redux';
+import {login} from '../../features/user/userSlice';
 
 const LoginScreen = () => {
+  const dispatch = useDispatch();
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
 
-  const {
-    actions: {setIsUserLoggedIn},
-  } = useUserContext();
+  // const {
+  //   actions: {setIsUserLoggedIn},
+  // } = useUserContext();
 
   useEffect(() => {
     return () => {
@@ -63,7 +66,9 @@ const LoginScreen = () => {
           //   mileage: 53000,
           //   color: 'black',
           // });
-          setIsUserLoggedIn(true);
+          // setIsUserLoggedIn(true);
+
+          dispatch(login({email, password}));
         }}>
         <Text>LOGIN</Text>
       </TouchableOpacity>

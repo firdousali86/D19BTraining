@@ -31,16 +31,19 @@ import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
 import {PersistanceHelper} from '../helpers';
 import {useUserContext} from '../contexts/UserContext';
 import {useNavigation} from '@react-navigation/native';
-import {useDispatch} from 'react-redux';
+import {useDispatch, useSelector} from 'react-redux';
 import {clearCart} from '../features/cart/cartSlice';
 
 const Tab = createBottomTabNavigator();
 
 const Navigation = props => {
+  const user = useSelector(state => state.user.data);
   const navigation = useNavigation();
   const dispatch = useDispatch();
 
-  // const [isUserLoggedIn, setIsUserLoggedIn] = useState(false);
+  const [isUserLoggedIn, setIsUserLoggedIn] = useState(
+    user?.email ? true : false,
+  );
 
   // const {
   //   state: {isUserLoggedIn},
@@ -58,6 +61,10 @@ const Navigation = props => {
     //   setIsUserLoggedIn(false);
     // });
   }, []);
+
+  useEffect(() => {
+    setIsUserLoggedIn(user?.email ? true : false);
+  }, [user]);
 
   function MyDrawer() {
     return (
@@ -160,7 +167,9 @@ const Navigation = props => {
   // return MyDrawer();
   // return MyTabs();
   return (
-    <Stack.Navigator>{true ? getMainStack() : getAuthStack()}</Stack.Navigator>
+    <Stack.Navigator>
+      {isUserLoggedIn ? getMainStack() : getAuthStack()}
+    </Stack.Navigator>
   );
 };
 
