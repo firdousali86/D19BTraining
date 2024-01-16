@@ -98,10 +98,10 @@ const Navigation = props => {
     return (
       <Stack.Group>
         <Stack.Screen
-          name="ProductListClass"
-          component={ProductListClass}
+          name="ProductList"
+          component={ProductList}
           options={{
-            title: 'Shopping List Class',
+            title: 'Shopping List',
             headerRight: () => {
               return (
                 <Button
@@ -115,10 +115,10 @@ const Navigation = props => {
           }}
         />
         <Stack.Screen
-          name="ProductList"
-          component={ProductList}
+          name="ProductListClass"
+          component={ProductListClass}
           options={{
-            title: 'Shopping List',
+            title: 'Shopping List Class',
             headerRight: () => {
               return (
                 <Button
