@@ -2,6 +2,7 @@ import React from "react";
 import { Text, View } from "react-native";
 import ProductsLists from "./ProductLists";
 
+
 const Products = props => {
 
     const carsLists = [
@@ -18,6 +19,7 @@ const Products = props => {
     ];
     return (
         <View style={{ backgroundColor: '#41436A' }}>
+           
             <ProductsLists navigation={props.navigation} itemLists={carsLists} />
         </View>
     );
