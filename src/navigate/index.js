@@ -98,23 +98,6 @@ const Navigation = props => {
     return (
       <Stack.Group>
         <Stack.Screen
-          name="ProductList"
-          component={ProductList}
-          options={{
-            title: 'Shopping List',
-            headerRight: () => {
-              return (
-                <Button
-                  title="Cart"
-                  onPress={() => {
-                    navigation.navigate('CartScreen');
-                  }}
-                />
-              );
-            },
-          }}
-        />
-        <Stack.Screen
           name="ProductListClass"
           component={ProductListClass}
           options={{
@@ -131,6 +114,24 @@ const Navigation = props => {
             },
           }}
         />
+        <Stack.Screen
+          name="ProductList"
+          component={ProductList}
+          options={{
+            title: 'Shopping List',
+            headerRight: () => {
+              return (
+                <Button
+                  title="Cart"
+                  onPress={() => {
+                    navigation.navigate('CartScreen');
+                  }}
+                />
+              );
+            },
+          }}
+        />
+
         <Stack.Screen
           name="CartScreen"
           component={CartScreen}

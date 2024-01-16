@@ -12,13 +12,15 @@ const itemList = [
   {name: 'LED TV', details: 'True colors', price: 600},
 ];
 
-export class ProductListClass extends Component {
+class MyList extends React.PureComponent {
   render() {
     return (
-      <View>
+      <>
         <FlatList
           data={itemList}
           renderItem={({item, index}) => {
+            console.log('list item was rerendered');
+
             return (
               <View
                 style={{
@@ -50,6 +52,16 @@ export class ProductListClass extends Component {
             );
           }}
         />
+      </>
+    );
+  }
+}
+
+export class ProductListClass extends Component {
+  render() {
+    return (
+      <View>
+        <MyList addToCart={this.props.addToCart} />
         <Button
           title={'Go to Cart'}
           onPress={() => {
