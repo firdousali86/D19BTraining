@@ -15,6 +15,7 @@ import TestAPIListScreen from './TestAPIListScreen';
 import TestRedux from './TestRedux';
 import ProductList from './ProductList';
 import CartScreen from './CartScreen';
+import ProductListClass from './ProductListClass';
 
 export {
   DashboardScreen,
@@ -34,4 +35,5 @@ export {
   TestRedux,
   ProductList,
   CartScreen,
+  ProductListClass,
 };
