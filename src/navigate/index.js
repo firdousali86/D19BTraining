@@ -25,6 +25,7 @@ import {
   TestRedux,
   ProductList,
   CartScreen,
+  ProductListClass,
 } from '../containers';
 import {Button, Text, View} from 'react-native';
 import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
@@ -101,6 +102,23 @@ const Navigation = props => {
           component={ProductList}
           options={{
             title: 'Shopping List',
+            headerRight: () => {
+              return (
+                <Button
+                  title="Cart"
+                  onPress={() => {
+                    navigation.navigate('CartScreen');
+                  }}
+                />
+              );
+            },
+          }}
+        />
+        <Stack.Screen
+          name="ProductListClass"
+          component={ProductListClass}
+          options={{
+            title: 'Shopping List Class',
             headerRight: () => {
               return (
                 <Button
