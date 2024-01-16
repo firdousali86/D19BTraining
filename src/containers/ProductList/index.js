@@ -7,7 +7,7 @@ import {
   Button,
 } from 'react-native';
 import React from 'react';
-import {useDispatch} from 'react-redux';
+import {useDispatch, connect} from 'react-redux';
 import {
   addToCart,
   removeFromCart,
@@ -48,7 +48,8 @@ const ProductList = props => {
               </View>
               <TouchableOpacity
                 onPress={() => {
-                  dispatch(addToCart(item));
+                  // dispatch(addToCart(item));
+                  props.addToCart(item);
                 }}
                 style={{backgroundColor: 'grey', padding: 10, borderRadius: 5}}>
                 <Text>Add To Cart</Text>
@@ -66,13 +67,22 @@ const ProductList = props => {
       <Button
         title={'Clear Cart'}
         onPress={() => {
-          dispatch(clearCart());
+          // dispatch(clearCart());
+          props.clearCart();
         }}
       />
     </View>
   );
 };
 
-export default ProductList;
+// export default ProductList;
+
+const mapStateToProps = state => ({
+  cart: state.cart,
+});
+
+const actions = {addToCart, clearCart};
+
+export default connect(mapStateToProps, actions)(ProductList);
 
 const styles = StyleSheet.create({});
