@@ -4,8 +4,9 @@ import { Avatar, Badge, Icon, withBadge } from 'react-native-elements'
 
 
 import {
-  FunAndClass, FirstAssignment, FirstAssignmentStack, FunAndClassStack, AuthStack, Details, TabScreen, Login, SignUp, FastImage, Async, MmkvStorage, PropDrillingPractice, Setting, SettingTab1, SettingTab2, SettingTab3
-  , RLogin, RSignUp, Products, Cart,
+  FunAndClass, FirstAssignment, FirstAssignmentStack, FunAndClassStack, AuthStack, Details, TabScreen,
+  Login, SignUp, FastImage, Async, MmkvStorage, PropDrillingPractice, Setting, SettingTab1, SettingTab2,
+  SettingTab3, RLogin, RSignUp, Products, Cart, ProductClass
 } from '../Index';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
@@ -27,11 +28,11 @@ const Screens = props => {
 
     return (
       <TouchableOpacity
-        style={[styles.cartButton,{marginTop:10}]}
+        style={[styles.cartButton, { marginTop: 10 }]}
         onPress={() => navigation.navigate('Cart')}
       >
         <View >
-          <Badge status="primary" value={totalCartItems} containerStyle={{ position: 'absolute', top: -7, right: 0 }}/>
+          <Badge status="primary" value={totalCartItems} containerStyle={{ position: 'absolute', top: -7, right: 0 }} />
           <IconF name="cart-plus" size={30} color="#000000" />
         </View>
 
@@ -52,9 +53,17 @@ const Screens = props => {
                     <Stack.Screen options={{ headerShown: false }} name={'Cart'} component={Cart} />
                   </Stack.Navigator>
                 )}
-
-
               </Tab.Screen>
+
+              <Tab.Screen name="Products Class" options={{ headerRight: () => <CustomHeader /> }} >
+                {() => (
+                  <Stack.Navigator>
+                    <Stack.Screen name={'Product Lists Class'} options={{ headerShown: false }} component={ProductClass}></Stack.Screen>
+                    <Stack.Screen options={{ headerShown: false }} name={'Cart'} component={Cart} />
+                  </Stack.Navigator>
+                )}
+              </Tab.Screen>
+
               <Tab.Screen name="1 TS" component={SettingTab1} />
               <Tab.Screen name="2 TS" component={SettingTab2} />
               <Tab.Screen name="Theme" component={SettingTab3} />
