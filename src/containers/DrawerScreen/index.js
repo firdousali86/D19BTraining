@@ -9,6 +9,8 @@ import FastImage from '../FastImage';
 import ImageBackgroundScreen from '../ImageBackground/index';
 import ModalScreen from '../ModalScreen';
 import TestPureComponent from '../TestPureComponent';
+import Api from '../Api';
+import Counter from '../ReduxExample/Counter';
 
 import { useUserContext } from '../../contexts/UserContext';
 const Drawer = createDrawerNavigator();
@@ -34,6 +36,8 @@ const DrawerScreen = () => {
       <Drawer.Screen name="ImageBackgroundScreen" component={ImageBackgroundScreen} />
       <Drawer.Screen name="ModalScreen" component={ModalScreen} />
       <Drawer.Screen name="TestPureComponent" component={TestPureComponent} />
+      <Drawer.Screen name="Api" component={Api} />
+      <Drawer.Screen name="ReduxEx" component={Counter} />
       <Drawer.Screen name="Setting" component={Setting} />
 
     </Drawer.Navigator>

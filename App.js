@@ -6,6 +6,8 @@ import { UserContextProvider } from './src/contexts/UserContext';
 
 import Navigation from './src/navigate';
 import { storage } from './src/helper/mmkv';
+import { store } from './src/store'
+import { Provider } from 'react-redux'
 import PersistanceHelper from './src/helper/PersistanceHelper';
 
 function App() {
@@ -16,11 +18,13 @@ function App() {
   // console.log(storage.getString('username'));
 
   return (
-    <UserContextProvider isUserLoggedIn={isUserLoggedIn} setIsUserLoggedIn={setIsUserLoggedIn}>
-      <NavigationContainer>
-        <Navigation />
-      </NavigationContainer>
-    </UserContextProvider>
+    <Provider store={store}>
+      <UserContextProvider isUserLoggedIn={isUserLoggedIn} setIsUserLoggedIn={setIsUserLoggedIn}>
+        <NavigationContainer>
+          <Navigation />
+        </NavigationContainer>
+      </UserContextProvider>
+    </Provider>
   );
 }
 

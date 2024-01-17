@@ -9,7 +9,9 @@ import {
   ImageBackgroundScreen,
   FastImageScreen,
   PropDrillingPractice,
-  Dashboard
+  Dashboard,
+  Api,
+  Counter
 } from '../containers';
 
 import { Text, View } from 'react-native';

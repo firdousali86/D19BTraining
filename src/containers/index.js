@@ -7,6 +7,8 @@ import ImageBackgroundScreen from './ImageBackground';
 import FastImageScreen from './FastImage';
 import PropDrillingPractice from './PropDrillingPractice';
 import Dashboard from './Dashboard';
+import Api from './Api';
+import { Counter } from './ReduxExample/Counter/index';
 export {
   LoginScreen,
   Signup,
@@ -16,5 +18,7 @@ export {
   ImageBackgroundScreen,
   FastImageScreen,
   PropDrillingPractice,
-  Dashboard
+  Dashboard,
+  Api,
+  Counter
 };
