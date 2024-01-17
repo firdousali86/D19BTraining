@@ -20,6 +20,8 @@ import {createDrawerNavigator} from '@react-navigation/drawer';
 import PropsDrilling from '../props_driling/PropsDrilling';
 import Setting from '../setting/Setting';
 import TestApi from '../api_practise/TestApi';
+import ReduxTest from '../redux_test/ReduxTest';
+import ProductList from '../redux_cart/productList';
 
 const Stack = createNativeStackNavigator();
 const Tab = createBottomTabNavigator();
@@ -58,6 +60,8 @@ const Screens = () => {
     return (
       <TestColorContextProvider>
         <Drawer.Navigator>
+          <Drawer.Screen name="productPage" component={ProductList} />
+          <Drawer.Screen name="redux test" component={ReduxTest} />
           <Drawer.Screen name="TestApi" component={TestApi} />
           <Drawer.Screen name="Setting" component={Setting} />
           <Drawer.Screen name="props drilling" component={PropsDrilling} />
