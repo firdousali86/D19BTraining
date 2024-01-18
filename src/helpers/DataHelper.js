@@ -1,3 +1,5 @@
+import {increment} from '../features/counter/counterSlice';
+
 class DataHelper {
   store = undefined;
 
@@ -7,6 +9,10 @@ class DataHelper {
 
   getStore = () => {
     return this.store;
+  };
+
+  incrementValue = () => {
+    this.store.dispatch(increment());
   };
 }
 

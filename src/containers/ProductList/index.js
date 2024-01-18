@@ -14,6 +14,7 @@ import {
   clearCart,
 } from '../../features/cart/cartSlice';
 import {increment, decrement} from '../../features/counter/counterSlice';
+import {DataHelper} from '../../helpers';
 
 const itemList = [
   {name: 'Macbook', details: 'Macbook pro with M2', price: 2500},
@@ -86,14 +87,15 @@ const ProductList = props => {
       <Button
         title={'Increase'}
         onPress={() => {
-          props.increment();
+          // props.increment();
+          DataHelper.incrementValue();
         }}
       />
 
       <Button
         title={'Decrease'}
         onPress={() => {
-          props.decrement();
+          // props.decrement();
         }}
       />
     </View>
