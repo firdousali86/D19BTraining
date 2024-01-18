@@ -3,8 +3,12 @@ import { FlatList, Text, TouchableOpacity, View, StyleSheet, Animated, Easing, B
 import { addToCart, removeFromCart, clearToCart } from "../../features/cart/CartSlice";
 import { useDispatch } from "react-redux";
 import { useNavigation } from "@react-navigation/native";
+import Icon from 'react-native-vector-icons/FontAwesome';
+
 
 const ProductsLists = ({ itemLists }) => {
+
+
     const navigation = useNavigation();
     const fadeAnim = new Animated.Value(0);
     const dispatch = useDispatch();
@@ -36,6 +40,7 @@ const ProductsLists = ({ itemLists }) => {
 
     return (
         <>
+        <Icon name="rocket" size={30} color="#900" />
             <Button title="Go to cart" style={styles.goToCartButton} onPress={() => navigation.navigate('Cart')} />
             <FlatList
                 data={itemLists}
