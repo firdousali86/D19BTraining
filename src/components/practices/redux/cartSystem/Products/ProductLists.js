@@ -40,8 +40,10 @@ const ProductsLists = ({ itemLists }) => {
 
     return (
         <>
-        <Icon name="rocket" size={30} color="#900" />
-            <Button title="Go to cart" style={styles.goToCartButton} onPress={() => navigation.navigate('Cart')} />
+            <TouchableOpacity style={styles.goToCartButton} onPress={() => navigation.navigate('Cart')}>
+                <Icon name="rocket"  size={30} color="#900" />
+                <Text style={{fontSize:20}}>Data</Text>
+            </TouchableOpacity>
             <FlatList
                 data={itemLists}
                 keyExtractor={(item, index) => index.toString()}
@@ -95,6 +97,12 @@ const styles = StyleSheet.create({
         backgroundColor: "#FE9677",
         padding: 10,
         borderRadius: 8,
+        flexDirection:'row',
+        alignItems:'center',
+        justifyContent:'center',
+        margin:10
+
+
     },
 });
 
