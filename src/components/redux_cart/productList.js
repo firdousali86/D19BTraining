@@ -1,25 +1,38 @@
-import React from 'react';
-import { View, Text, FlatList, Button, TouchableOpacity } from 'react-native';
-import { addToCart, removeToCart } from '../feature/CartSlice';
-import { useSelector, useDispatch } from 'react-redux';
+import React, {useEffect, useState} from 'react';
+import {View, Text, FlatList, Button, TouchableOpacity} from 'react-native';
+import {addToCart, removeToCart} from '../feature/CartSlice';
+import {useSelector, useDispatch} from 'react-redux';
+import Icon from 'react-native-vector-icons/FontAwesome';
 
-const ProductList = (props) => {
+const ProductList = props => {
   const dispatch = useDispatch();
-  const cartItems = useSelector((state) => state.cart.cartItems)
-  console.log (cartItems)
+
+  const cartItems = useSelector(state => state.cart.cartItems);
+  const [cartCount, setCartCount] = useState(0);
+
+  useEffect(() => {
+    let total = 0;
+
+    cartItems.forEach(element => {
+      total += element.quantity;
+    });
+
+    setCartCount(total);
+  }, [cartItems]);
+
   const itemList = [
-    { name: 'apple', details: 'app', price: 200 },
-    { name: 'banana', details: 'ban', price: 100 },
-    { name: 'orange', details: 'ora', price: 150 },
-    { name: 'grape', details: 'gra', price: 300 },
-    { name: 'watermelon', details: 'wat', price: 500 },
-    { name: 'strawberry', details: 'str', price: 250 },
-    { name: 'kiwi', details: 'kiw', price: 120 },
-    { name: 'pineapple', details: 'pin', price: 350 },
-    { name: 'blueberry', details: 'blu', price: 180 },
+    {name: 'apple', details: 'app', price: 200},
+    {name: 'banana', details: 'ban', price: 100},
+    {name: 'orange', details: 'ora', price: 150},
+    {name: 'grape', details: 'gra', price: 300},
+    {name: 'watermelon', details: 'wat', price: 500},
+    {name: 'strawberry', details: 'str', price: 250},
+    {name: 'kiwi', details: 'kiw', price: 120},
+    {name: 'pineapple', details: 'pin', price: 350},
+    {name: 'blueberry', details: 'blu', price: 180},
   ];
 
-  const renderItem = ({ item }) => (
+  const renderItem = ({item}) => (
     <View style={styles.itemContainer}>
       <View style={styles.itemTextContainer}>
         <Text style={styles.itemName}>{item.name}</Text>
@@ -27,10 +40,14 @@ const ProductList = (props) => {
         <Text style={styles.itemPrice}>{item.price}</Text>
       </View>
       <View style={styles.buttonsContainer}>
-        <TouchableOpacity style={styles.button} onPress={() => dispatch(addToCart(item))}>
+        <TouchableOpacity
+          style={styles.button}
+          onPress={() => dispatch(addToCart(item))}>
           <Text style={styles.buttonText}>Add To Cart</Text>
         </TouchableOpacity>
-        <TouchableOpacity style={[styles.button, { backgroundColor: '#e74c3c' }]} onPress={() => dispatch(removeToCart(item))}>
+        <TouchableOpacity
+          style={[styles.button, {backgroundColor: '#e74c3c'}]}
+          onPress={() => dispatch(removeToCart(item))}>
           <Text style={styles.buttonText}>Remove</Text>
         </TouchableOpacity>
       </View>
@@ -39,11 +56,30 @@ const ProductList = (props) => {
 
   return (
     <View style={styles.container}>
-      <Text style={styles.cartTitle}>My Cart</Text>
+      <View
+        style={{
+          flexDirection: 'row',
+          justifyContent: 'space-between',
+          padding: 0,
+        }}>
+        <Text style={styles.cartTitle}>My Cart</Text>
+        <View style={{alignItems: 'center'}}>
+          <Icon.Button
+            name="cart-plus"
+            backgroundColor="#3b5998"
+            onPress={() => {
+              props.navigation.navigate('CartView');
+            }}>
+            <Text style={{color: 'white', fontWeight: 'bold'}}>
+              {cartCount}
+            </Text>
+          </Icon.Button>
+        </View>
+      </View>
       <FlatList
         data={itemList}
         renderItem={renderItem}
-        keyExtractor={(item) => item.name}
+        keyExtractor={item => item.name}
       />
     </View>
   );

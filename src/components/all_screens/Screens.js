@@ -22,6 +22,7 @@ import Setting from '../setting/Setting';
 import TestApi from '../api_practise/TestApi';
 import ReduxTest from '../redux_test/ReduxTest';
 import ProductList from '../redux_cart/productList';
+import CartView from '../redux_cart/cartView';
 
 const Stack = createNativeStackNavigator();
 const Tab = createBottomTabNavigator();
@@ -55,12 +56,28 @@ const Screens = () => {
       </Stack.Navigator>
     );
   };
+  const MyCart = () => {
+    return (
+      <Stack.Navigator>
+        <Stack.Screen
+          options={{...screenOptions, headerShown: false}}
+          name="ProductList"
+          component={ProductList}
+        />
+        <Stack.Screen
+          options={{...screenOptions, headerShown: false}}
+          name="CartView"
+          component={CartView}
+        />
+      </Stack.Navigator>
+    );
+  };
 
   const TestDrawer = () => {
     return (
       <TestColorContextProvider>
         <Drawer.Navigator>
-          <Drawer.Screen name="productPage" component={ProductList} />
+          <Drawer.Screen name="productPage" component={MyCart} />
           <Drawer.Screen name="redux test" component={ReduxTest} />
           <Drawer.Screen name="TestApi" component={TestApi} />
           <Drawer.Screen name="Setting" component={Setting} />
