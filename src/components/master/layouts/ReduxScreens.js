@@ -6,7 +6,7 @@ import { Avatar, Badge, Icon, withBadge } from 'react-native-elements'
 import {
   FunAndClass, FirstAssignment, FirstAssignmentStack, FunAndClassStack, AuthStack, Details, TabScreen,
   Login, SignUp, FastImage, Async, MmkvStorage, PropDrillingPractice, Setting, SettingTab1, SettingTab2,
-  SettingTab3, RLogin, RSignUp, Products, Cart, ProductClass
+  SettingTab3, RLogin, RSignUp, Products, Cart, ProductClass, ClassCart
 } from '../Index';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
@@ -59,7 +59,7 @@ const Screens = props => {
                 {() => (
                   <Stack.Navigator>
                     <Stack.Screen name={'Product Lists Class'} options={{ headerShown: false }} component={ProductClass}></Stack.Screen>
-                    <Stack.Screen options={{ headerShown: false }} name={'Cart'} component={Cart} />
+                    <Stack.Screen options={{ headerShown: false }} name={'ClassCart'} component={ClassCart} />
                   </Stack.Navigator>
                 )}
               </Tab.Screen>

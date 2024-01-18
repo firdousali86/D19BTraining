@@ -26,7 +26,7 @@ class ProductClass extends React.Component {
 
         return (
             <View style={{ flex: 1, backgroundColor: '#d4d6ff' }}>
-                <ProductsListsClass itemLists={carsLists} />
+                <ProductsListsClass itemLists={carsLists} navigation={this.props.navigation} />
             </View>
         );
     };

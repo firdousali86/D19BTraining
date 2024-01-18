@@ -17,11 +17,12 @@ import RSignUp from "../practices/redux/sign_up/Index";
 import Products from "../practices/redux/cartSystem/Products/Index";
 import Cart from '../practices/redux/cartSystem/Cart/Index';
 import ProductClass from "../practices/redux/cartSystemClassBase/Products/Index";
+import ClassCart from "../practices/redux/cartSystemClassBase/Cart/Index";
 
 
 
 export {
     FunAndClass, FirstAssignment, Details, TabScreen, Login, SignUp, FastImage, Async,
     MmkvStorage, PropDrillingPractice, Setting, SettingTab1, SettingTab2, SettingTab3,
-    RLogin, RSignUp, Products, Cart, ProductClass
+    RLogin, RSignUp, Products, Cart, ProductClass, ClassCart
 };
