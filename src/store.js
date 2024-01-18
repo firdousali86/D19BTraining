@@ -1,10 +1,19 @@
 import {configureStore} from '@reduxjs/toolkit';
-import counterReducer from './features/counter/counterSlice';
-import cartReducer from './features/cart/cartSlice';
-import userReducer from './features/user/userSlice';
+
 import {createLogger} from 'redux-logger';
+import AsyncStorage from '@react-native-async-storage/async-storage';
+import reducers from './features/reducers';
+import {combineReducers} from '@reduxjs/toolkit';
+import persistReducer from 'redux-persist/es/persistReducer';
+import storage from 'redux-persist/lib/storage';
+import persistStore from 'redux-persist/lib/persistStore';
 
 const isDebuggingInChrome = __DEV__ && !!window.navigator.userAgent;
+
+let persistConfig = {key: 'root', storage: AsyncStorage};
+let rootReducer = combineReducers(reducers);
+
+let persistedReducer = persistReducer(persistConfig, rootReducer);
 
 const logger = createLogger({
   predicate: () => isDebuggingInChrome,
@@ -20,8 +29,10 @@ if (__DEV__) {
   middlewares.push(createDebugger());
 }
 
-export default configureStore({
-  reducer: {counter: counterReducer, cart: cartReducer, user: userReducer},
+export const store = configureStore({
+  reducer: persistedReducer,
   middleware: getDefaultMiddleware =>
     getDefaultMiddleware().concat(middlewares),
 });
+
+export const persistor = persistStore(store);

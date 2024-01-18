@@ -31,7 +31,8 @@
     "react-native-screens": "^3.29.0",
     "react-redux": "^9.0.4",
     "redux-flipper": "^2.0.2",
-    "redux-logger": "^3.0.6"
+    "redux-logger": "^3.0.6",
+    "redux-persist": "^6.0.0"
   },
   "devDependencies": {
     "@babel/core": "^7.20.0",
