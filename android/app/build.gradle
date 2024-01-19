@@ -74,9 +74,9 @@ android {
     buildToolsVersion rootProject.ext.buildToolsVersion
     compileSdk rootProject.ext.compileSdkVersion
 
-    namespace "com.d19btraining"
+    namespace "com.training.d19b"
     defaultConfig {
-        applicationId "com.d19btraining"
+        applicationId "com.training.d19b"
         minSdkVersion rootProject.ext.minSdkVersion
         targetSdkVersion rootProject.ext.targetSdkVersion
         versionCode 1

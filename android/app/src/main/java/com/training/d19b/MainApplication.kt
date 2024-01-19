@@ -1,4 +1,4 @@
-package com.d19btraining
+package com.training.d19b
 
 import android.app.Application
 import com.facebook.react.PackageList
