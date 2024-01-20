@@ -1,7 +1,7 @@
 /**
  * Sample React Native App
  * https://github.com/facebook/react-native
- *
+ * Test
  * @format
  */
 import 'react-native-gesture-handler';
