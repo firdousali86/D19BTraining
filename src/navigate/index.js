@@ -26,6 +26,7 @@ import {
   ProductList,
   CartScreen,
   ProductListClass,
+  TestRefScreen,
 } from '../containers';
 import {Button, Text, View} from 'react-native';
 import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
@@ -97,6 +98,7 @@ const Navigation = props => {
   const getMainStack = () => {
     return (
       <Stack.Group>
+        <Stack.Screen name="TestRefScreen" component={TestRefScreen} />
         <Stack.Screen
           name="ProductList"
           component={ProductList}
