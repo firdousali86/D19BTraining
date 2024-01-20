@@ -17,6 +17,7 @@ import ProductList from './ProductList';
 import CartScreen from './CartScreen';
 import ProductListClass from './ProductListClass';
 import TestRefScreen from './TestRefScreen';
+// import SignupScreen from './SignupScreen';
 
 export {
   DashboardScreen,
@@ -38,4 +39,5 @@ export {
   CartScreen,
   ProductListClass,
   TestRefScreen,
+  // SignupScreen,
 };

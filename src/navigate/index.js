@@ -98,7 +98,10 @@ const Navigation = props => {
   const getMainStack = () => {
     return (
       <Stack.Group>
+        <Stack.Screen name={'Login'} component={LoginScreen}></Stack.Screen>
+        <Stack.Screen name="SignupScreen" component={SignupScreen} />
         <Stack.Screen name="TestRefScreen" component={TestRefScreen} />
+
         <Stack.Screen
           name="ProductList"
           component={ProductList}

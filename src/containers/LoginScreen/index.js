@@ -6,14 +6,15 @@ import {
   TouchableOpacity,
 } from 'react-native';
 import React, {useState, useEffect} from 'react';
-import {PersistanceHelper} from '../../helpers';
-import {EventRegister} from 'react-native-event-listeners';
-import {useUserContext} from '../../contexts/UserContext';
-import {useDispatch} from 'react-redux';
-import {login} from '../../features/user/userSlice';
+// import {PersistanceHelper} from '../../helpers';
+// import {EventRegister} from 'react-native-event-listeners';
+// import {useUserContext} from '../../contexts/UserContext';
+// import {useDispatch} from 'react-redux';
+// import {login} from '../../features/user/userSlice';
+import auth from '@react-native-firebase/auth';
 
 const LoginScreen = () => {
-  const dispatch = useDispatch();
+  // const dispatch = useDispatch();
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
 
@@ -30,6 +31,18 @@ const LoginScreen = () => {
   useEffect(() => {
     console.log('email or pas was changed');
   }, [email, password]);
+
+  const onAuthStateChanged = user => {
+    // setUser(user);
+    // if (initializing) setInitializing(false);
+    console.log('AUTH STATE CHANGED');
+    console.log(user);
+  };
+
+  useEffect(() => {
+    const subscriber = auth().onAuthStateChanged(onAuthStateChanged);
+    return subscriber; // unsubscribe on unmount
+  }, []);
 
   // useEffect(() => {
   //   console.log('password was changed');
@@ -60,15 +73,30 @@ const LoginScreen = () => {
         onPress={async () => {
           // PersistanceHelper.setValue('userEmail', email);
           // EventRegister.emit('loginEvent', email);
-
           // PersistanceHelper.setObject('testObject', {
           //   car: 'Passo',
           //   mileage: 53000,
           //   color: 'black',
           // });
           // setIsUserLoggedIn(true);
+          // dispatch(login({email, password}));
 
-          dispatch(login({email, password}));
+          auth()
+            .signInWithEmailAndPassword(email, password)
+            .then(() => {
+              console.log('Logged in successfully');
+            })
+            .catch(error => {
+              if (error.code === 'auth/email-already-in-use') {
+                console.log('That email address is already in use!');
+              }
+
+              if (error.code === 'auth/invalid-email') {
+                console.log('That email address is invalid!');
+              }
+
+              console.error(error);
+            });
         }}>
         <Text>LOGIN</Text>
       </TouchableOpacity>
