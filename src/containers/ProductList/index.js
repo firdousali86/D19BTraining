@@ -15,6 +15,7 @@ import {
 } from '../../features/cart/cartSlice';
 import {increment, decrement} from '../../features/counter/counterSlice';
 import {DataHelper} from '../../helpers';
+import auth from '@react-native-firebase/auth';
 
 const itemList = [
   {name: 'Macbook', details: 'Macbook pro with M2', price: 2500},
@@ -96,6 +97,15 @@ const ProductList = props => {
         title={'Decrease'}
         onPress={() => {
           // props.decrement();
+        }}
+      />
+
+      <Button
+        title={'Logout'}
+        onPress={() => {
+          auth()
+            .signOut()
+            .then(() => console.log('User signed out!'));
         }}
       />
     </View>

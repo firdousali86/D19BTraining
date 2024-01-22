@@ -6,12 +6,12 @@ import {
   TouchableOpacity,
 } from 'react-native';
 import React, {useState, useEffect} from 'react';
+import auth from '@react-native-firebase/auth';
 // import {PersistanceHelper} from '../../helpers';
 // import {EventRegister} from 'react-native-event-listeners';
 // import {useUserContext} from '../../contexts/UserContext';
 // import {useDispatch} from 'react-redux';
 // import {login} from '../../features/user/userSlice';
-import auth from '@react-native-firebase/auth';
 
 const LoginScreen = () => {
   // const dispatch = useDispatch();
@@ -31,18 +31,6 @@ const LoginScreen = () => {
   useEffect(() => {
     console.log('email or pas was changed');
   }, [email, password]);
-
-  const onAuthStateChanged = user => {
-    // setUser(user);
-    // if (initializing) setInitializing(false);
-    console.log('AUTH STATE CHANGED');
-    console.log(user);
-  };
-
-  useEffect(() => {
-    const subscriber = auth().onAuthStateChanged(onAuthStateChanged);
-    return subscriber; // unsubscribe on unmount
-  }, []);
 
   // useEffect(() => {
   //   console.log('password was changed');

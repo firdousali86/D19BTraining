@@ -28,13 +28,14 @@ import {
   ProductListClass,
   TestRefScreen,
 } from '../containers';
-import {Button, Text, View} from 'react-native';
+import {Button, Text, View, Platform} from 'react-native';
 import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
 import {PersistanceHelper} from '../helpers';
 import {useUserContext} from '../contexts/UserContext';
 import {useNavigation} from '@react-navigation/native';
 import {useDispatch, useSelector} from 'react-redux';
 import {clearCart} from '../features/cart/cartSlice';
+import auth from '@react-native-firebase/auth';
 
 const Tab = createBottomTabNavigator();
 
@@ -46,6 +47,17 @@ const Navigation = props => {
   const [isUserLoggedIn, setIsUserLoggedIn] = useState(
     user?.email ? true : false,
   );
+
+  function onAuthStateChanged(user) {
+    const check = user?.uid && user?.uid.length > 0;
+
+    setIsUserLoggedIn(check);
+  }
+
+  useEffect(() => {
+    const subscriber = auth().onAuthStateChanged(onAuthStateChanged);
+    return subscriber; // unsubscribe on unmount
+  }, []);
 
   // const {
   //   state: {isUserLoggedIn},
@@ -65,7 +77,7 @@ const Navigation = props => {
   }, []);
 
   useEffect(() => {
-    setIsUserLoggedIn(user?.email ? true : false);
+    // setIsUserLoggedIn(user?.email ? true : false);
   }, [user]);
 
   function MyDrawer() {
@@ -98,10 +110,6 @@ const Navigation = props => {
   const getMainStack = () => {
     return (
       <Stack.Group>
-        <Stack.Screen name={'Login'} component={LoginScreen}></Stack.Screen>
-        <Stack.Screen name="SignupScreen" component={SignupScreen} />
-        <Stack.Screen name="TestRefScreen" component={TestRefScreen} />
-
         <Stack.Screen
           name="ProductList"
           component={ProductList}
@@ -119,6 +127,9 @@ const Navigation = props => {
             },
           }}
         />
+
+        <Stack.Screen name="TestRefScreen" component={TestRefScreen} />
+
         <Stack.Screen
           name="ProductListClass"
           component={ProductListClass}
@@ -190,6 +201,9 @@ const Navigation = props => {
 
   // return MyDrawer();
   // return MyTabs();
+
+  console.log('at render time:' + isUserLoggedIn);
+
   return (
     <Stack.Navigator>
       {isUserLoggedIn ? getMainStack() : getAuthStack()}
