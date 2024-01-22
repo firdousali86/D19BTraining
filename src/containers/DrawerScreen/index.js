@@ -11,6 +11,8 @@ import ModalScreen from '../ModalScreen';
 import TestPureComponent from '../TestPureComponent';
 import Api from '../Api';
 import Counter from '../ReduxExample/Counter';
+import ProductList from '../ProductList';
+import CartScreen from '../CartScreen';
 
 import { useUserContext } from '../../contexts/UserContext';
 const Drawer = createDrawerNavigator();
@@ -38,6 +40,9 @@ const DrawerScreen = () => {
       <Drawer.Screen name="TestPureComponent" component={TestPureComponent} />
       <Drawer.Screen name="Api" component={Api} />
       <Drawer.Screen name="ReduxEx" component={Counter} />
+      <Drawer.Screen name="ProductList" component={ProductList} />
+      <Drawer.Screen name="CartScreen" component={CartScreen} />
+
       <Drawer.Screen name="Setting" component={Setting} />
 
     </Drawer.Navigator>

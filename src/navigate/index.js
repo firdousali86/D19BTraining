@@ -11,7 +11,9 @@ import {
   PropDrillingPractice,
   Dashboard,
   Api,
-  Counter
+  Counter,
+  ProductList,
+  CartScreen
 } from '../containers';
 
 import { Text, View } from 'react-native';
