@@ -14,7 +14,7 @@ import ErrorBoundary from './src/components/ErrorBoundary';
 import {store, persistor} from './src/store';
 import {Provider} from 'react-redux';
 import {PersistGate} from 'redux-persist/integration/react';
-import {DataHelper} from './src/helpers';
+import {DataHelper, PersistanceHelper} from './src/helpers';
 
 // import {UserContextProvider} from './src/contexts/UserContext';
 
@@ -27,6 +27,10 @@ function App() {
   // const [isUserLoggedIn, setIsUserLoggedIn] = useState(false);
 
   // console.log(isUserLoggedIn);
+
+  useEffect(() => {
+    // PersistanceHelper.setValue('myname', 'Firdous Ali');
+  }, []);
 
   useEffect(() => {
     if (store && !isLoading) {

@@ -6,7 +6,7 @@ import {
   TouchableOpacity,
   Button,
 } from 'react-native';
-import React, {memo} from 'react';
+import React, {memo, useEffect} from 'react';
 import {useDispatch, connect} from 'react-redux';
 import {
   addToCart,
@@ -14,7 +14,7 @@ import {
   clearCart,
 } from '../../features/cart/cartSlice';
 import {increment, decrement} from '../../features/counter/counterSlice';
-import {DataHelper} from '../../helpers';
+import {DataHelper, PersistanceHelper} from '../../helpers';
 import auth from '@react-native-firebase/auth';
 
 const itemList = [
@@ -27,6 +27,16 @@ const itemList = [
 ];
 
 const MyList = memo(props => {
+  useEffect(() => {
+    PersistanceHelper.getValue('myname')
+      .then(success => {
+        console.log(success);
+      })
+      .catch(error => {
+        console.log(error);
+      });
+  }, []);
+
   return (
     <FlatList
       data={itemList}

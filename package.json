@@ -24,6 +24,7 @@
     "lodash": "^4.17.21",
     "react": "18.2.0",
     "react-native": "0.73.1",
+    "react-native-encrypted-storage": "^4.0.3",
     "react-native-event-listeners": "^1.0.7",
     "react-native-gesture-handler": "^2.14.0",
     "react-native-modal": "^13.0.1",
