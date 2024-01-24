@@ -1,4 +1,4 @@
-package com.d19btraining
+package com.training.d19b
 
 import com.facebook.react.ReactActivity
 import com.facebook.react.ReactActivityDelegate
