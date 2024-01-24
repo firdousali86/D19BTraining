@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "81057075585",
+    "project_id": "fdrn-fde89",
+    "storage_bucket": "fdrn-fde89.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:81057075585:android:57f74f2410f08f38e09880",
+        "android_client_info": {
+          "package_name": "com.training.d19b"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBRl1YHzeqj34CFWfqqmdjmxuceJTs29gI"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
