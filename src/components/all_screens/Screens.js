@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useEffect, useState} from 'react';
 import {} from 'react-native';
 import {
   DetailsComponent,
@@ -23,6 +23,9 @@ import TestApi from '../api_practise/TestApi';
 import ReduxTest from '../redux_test/ReduxTest';
 import ProductList from '../redux_cart/productList';
 import CartView from '../redux_cart/cartView';
+import {RectButton} from 'react-native-gesture-handler';
+import LogIn from '../log_in/LogIn';
+import {useSelector, useDispatch} from 'react-redux';
 
 const Stack = createNativeStackNavigator();
 const Tab = createBottomTabNavigator();
@@ -92,12 +95,35 @@ const Screens = () => {
     );
   };
 
+  const login = () => {
+    return (
+      <Stack.Navigator>
+        <Stack.Screen
+          options={{...screenOptions}}
+          name="Log In"
+          component={LogIn}
+        />
+      </Stack.Navigator>
+    );
+  };
+
+  const user = useSelector(state => state.user.data);
+  const [isUserLogin, setUserLogin] = useState(user?.email ? false : true);
+  console.log(user);
+
+  useEffect(() => {
+    if (user?.email) {
+      setUserLogin(false);
+    } else {
+      setUserLogin(true);
+    }
+  }, [user]);
   return (
     <Tab.Navigator>
       <Tab.Screen
         options={{headerShown: false}}
         name="other"
-        component={TestDrawer}
+        component={isUserLogin ? login : TestDrawer}
       />
       <Tab.Screen
         options={{
