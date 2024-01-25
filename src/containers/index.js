@@ -18,6 +18,7 @@ import CartScreen from './CartScreen';
 import ProductListClass from './ProductListClass';
 import TestRefScreen from './TestRefScreen';
 // import SignupScreen from './SignupScreen';
+import TestSagaScreen from './TestSagaScreen';
 
 export {
   DashboardScreen,
@@ -40,4 +41,5 @@ export {
   ProductListClass,
   TestRefScreen,
   // SignupScreen,
+  TestSagaScreen,
 };
