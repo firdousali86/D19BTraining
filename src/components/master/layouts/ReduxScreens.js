@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import IconF from 'react-native-vector-icons/FontAwesome';
-import { Avatar, Badge, Icon, withBadge } from 'react-native-elements'
+import { Avatar, Badge,  withBadge } from 'react-native-elements'
 
 
 import {
@@ -14,6 +14,9 @@ import { createDrawerNavigator } from '@react-navigation/drawer';
 import { Text, TouchableOpacity, StyleSheet, View } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
 import { useSelector } from 'react-redux';
+// import Ionicons from 'react-native-vector-icons/Ionicons';
+
+import Icon from 'react-native-vector-icons/FontAwesome';
 
 const Stack = createNativeStackNavigator();
 const Tab = createBottomTabNavigator();
@@ -45,8 +48,34 @@ const Screens = props => {
       <Drawer.Navigator>
         <Drawer.Screen name='Settings'>
           {() => (
-            <Tab.Navigator>
-              <Tab.Screen name="Products" options={{ headerRight: () => <CustomHeader /> }} >
+            <Tab.Navigator screenOptions={({ route }) => ({
+
+              tabBarIcon: ({ focused, color, size }) => {
+                let iconName;
+
+                console.log(route);
+
+    
+                if (route.name === 'Products') {
+                  iconName = focused
+                    ? 'th-list'
+                    : 'th-list';
+                } else if (route.name === '1 TS') {
+                  iconName = focused ? 'users' : 'copy';
+                } else if (route.name === '2 TS') {
+                  iconName = focused ? 'profile' : 'profile';
+                } else if (route.name === 'Theme') {
+                  iconName = focused ? 'player-settings' : 'player-settings';
+                }
+    
+                // You can return any component that you like here!
+                return                 <Icon name={iconName} size={size} color={color}  />
+                // <Ionicons name={iconName} size={size} color={color} />;
+              },
+              tabBarActiveTintColor: 'tomato',
+              tabBarInactiveTintColor: 'gray',
+            })}>
+              <Tab.Screen name="Products"  options={{ headerRight: () => <CustomHeader /> }} >
                 {() => (
                   <Stack.Navigator>
                     <Stack.Screen name={'Product Lists'} options={{ headerShown: false }} component={Products}></Stack.Screen>
