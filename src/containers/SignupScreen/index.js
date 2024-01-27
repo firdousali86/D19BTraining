@@ -7,9 +7,14 @@ import {
   Button,
 } from 'react-native';
 import React, {useState, useEffect} from 'react';
-import auth from '@react-native-firebase/auth';
+import {request} from '../../features/user/userSlice';
+import {kApiSignup} from '../../config/WebService';
+// import auth from '@react-native-firebase/auth';
+import {useDispatch} from 'react-redux';
 
 const SignupScreen = props => {
+  const dispatch = useDispatch();
+
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
 
@@ -36,22 +41,24 @@ const SignupScreen = props => {
       <TouchableOpacity
         style={styles.submitButton}
         onPress={() => {
-          auth()
-            .createUserWithEmailAndPassword(email, password)
-            .then(() => {
-              console.log('User account created & signed in!');
-            })
-            .catch(error => {
-              if (error.code === 'auth/email-already-in-use') {
-                console.log('That email address is already in use!');
-              }
+          dispatch(
+            request({url: kApiSignup, method: 'POST', data: {email, password}}),
+          );
 
-              if (error.code === 'auth/invalid-email') {
-                console.log('That email address is invalid!');
-              }
-
-              console.error(error);
-            });
+          // auth()
+          //   .createUserWithEmailAndPassword(email, password)
+          //   .then(() => {
+          //     console.log('User account created & signed in!');
+          //   })
+          //   .catch(error => {
+          //     if (error.code === 'auth/email-already-in-use') {
+          //       console.log('That email address is already in use!');
+          //     }
+          //     if (error.code === 'auth/invalid-email') {
+          //       console.log('That email address is invalid!');
+          //     }
+          //     console.error(error);
+          //   });
         }}>
         <Text>Signup</Text>
       </TouchableOpacity>

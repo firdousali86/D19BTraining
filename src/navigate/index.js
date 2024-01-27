@@ -49,16 +49,20 @@ const Navigation = props => {
     user?.email ? true : false,
   );
 
-  function onAuthStateChanged(user) {
-    const check = user?.uid && user?.uid.length > 0;
-
-    setIsUserLoggedIn(check);
-  }
-
   useEffect(() => {
-    const subscriber = auth().onAuthStateChanged(onAuthStateChanged);
-    return subscriber; // unsubscribe on unmount
-  }, []);
+    setIsUserLoggedIn(user?.id);
+  }, [user]);
+
+  // function onAuthStateChanged(user) {
+  //   const check = user?.uid && user?.uid.length > 0;
+
+  //   setIsUserLoggedIn(check);
+  // }
+
+  // useEffect(() => {
+  //   const subscriber = auth().onAuthStateChanged(onAuthStateChanged);
+  //   return subscriber; // unsubscribe on unmount
+  // }, []);
 
   // const {
   //   state: {isUserLoggedIn},
@@ -102,8 +106,8 @@ const Navigation = props => {
   const getAuthStack = () => {
     return (
       <Stack.Group>
-        <Stack.Screen name={'Login'} component={LoginScreen}></Stack.Screen>
         <Stack.Screen name={'Signup'} component={SignupScreen}></Stack.Screen>
+        <Stack.Screen name={'Login'} component={LoginScreen}></Stack.Screen>
       </Stack.Group>
     );
   };

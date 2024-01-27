@@ -6,15 +6,17 @@ import {
   TouchableOpacity,
 } from 'react-native';
 import React, {useState, useEffect} from 'react';
-import auth from '@react-native-firebase/auth';
+// import auth from '@react-native-firebase/auth';
 // import {PersistanceHelper} from '../../helpers';
 // import {EventRegister} from 'react-native-event-listeners';
 // import {useUserContext} from '../../contexts/UserContext';
-// import {useDispatch} from 'react-redux';
+import {useDispatch} from 'react-redux';
 // import {login} from '../../features/user/userSlice';
+import {kApiLogin} from '../../config/WebService';
+import {request} from '../../features/user/userSlice';
 
 const LoginScreen = () => {
-  // const dispatch = useDispatch();
+  const dispatch = useDispatch();
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
 
@@ -59,6 +61,9 @@ const LoginScreen = () => {
       <TouchableOpacity
         style={styles.submitButton}
         onPress={async () => {
+          dispatch(
+            request({url: kApiLogin, method: 'POST', data: {email, password}}),
+          );
           // PersistanceHelper.setValue('userEmail', email);
           // EventRegister.emit('loginEvent', email);
           // PersistanceHelper.setObject('testObject', {
@@ -68,23 +73,20 @@ const LoginScreen = () => {
           // });
           // setIsUserLoggedIn(true);
           // dispatch(login({email, password}));
-
-          auth()
-            .signInWithEmailAndPassword(email, password)
-            .then(() => {
-              console.log('Logged in successfully');
-            })
-            .catch(error => {
-              if (error.code === 'auth/email-already-in-use') {
-                console.log('That email address is already in use!');
-              }
-
-              if (error.code === 'auth/invalid-email') {
-                console.log('That email address is invalid!');
-              }
-
-              console.error(error);
-            });
+          // auth()
+          //   .signInWithEmailAndPassword(email, password)
+          //   .then(() => {
+          //     console.log('Logged in successfully');
+          //   })
+          //   .catch(error => {
+          //     if (error.code === 'auth/email-already-in-use') {
+          //       console.log('That email address is already in use!');
+          //     }
+          //     if (error.code === 'auth/invalid-email') {
+          //       console.log('That email address is invalid!');
+          //     }
+          //     console.error(error);
+          //   });
         }}>
         <Text>LOGIN</Text>
       </TouchableOpacity>

@@ -1,7 +1,8 @@
-import {StyleSheet, Text, View} from 'react-native';
+import {StyleSheet, Text, View, Button} from 'react-native';
 import React, {useEffect} from 'react';
 // import {ApiHelper} from '../../helpers';
 import {request} from '../../features/items/itemsSlice';
+import {logout} from '../../features/user/userSlice';
 import {useDispatch} from 'react-redux';
 
 const TestSagaScreen = () => {
@@ -21,6 +22,12 @@ const TestSagaScreen = () => {
   return (
     <View>
       <Text>index</Text>
+      <Button
+        title={'Logout'}
+        onPress={() => {
+          dispatch(logout());
+        }}
+      />
     </View>
   );
 };
