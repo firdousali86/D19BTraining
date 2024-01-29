@@ -50,11 +50,7 @@ const Navigation = props => {
   );
 
   useEffect(() => {
-    if (user?.id && typeof user?.id === 'string' && user?.id.length > 10) {
-      setIsUserLoggedIn(true);
-    } else {
-      setIsUserLoggedIn(false);
-    }
+    setIsUserLoggedIn(user?.accessToken);
   }, [user]);
 
   // function onAuthStateChanged(user) {
