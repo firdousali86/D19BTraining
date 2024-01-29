@@ -14,7 +14,7 @@ import ErrorBoundary from './src/components/ErrorBoundary';
 import {store, persistor} from './src/store';
 import {Provider} from 'react-redux';
 import {PersistGate} from 'redux-persist/integration/react';
-import {DataHelper, PersistanceHelper} from './src/helpers';
+import {ApiHelper, DataHelper, PersistanceHelper} from './src/helpers';
 
 // import {UserContextProvider} from './src/contexts/UserContext';
 
@@ -35,6 +35,10 @@ function App() {
   useEffect(() => {
     if (store && !isLoading) {
       DataHelper.setStore(store);
+
+      if (store.getState().user.data?.accessToken) {
+        ApiHelper.accessToken = store.getState().user.data.accessToken;
+      }
     }
   }, [isLoading]);
 

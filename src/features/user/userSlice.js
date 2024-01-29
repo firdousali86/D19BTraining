@@ -1,4 +1,5 @@
 import {createSlice} from '@reduxjs/toolkit';
+import {ApiHelper} from '../../helpers';
 
 const initialState = {
   data: {},
@@ -22,6 +23,7 @@ export const userSlice = createSlice({
         payload.id.length > 10
       ) {
         state.data.accessToken = payload.id;
+        ApiHelper.accessToken = payload.id;
       }
 
       state.isFetching = false;

@@ -10,13 +10,19 @@ const api = create({
   },
 });
 
-const getUpdatedHeader = headers => {
-  return {...headers, Authorization: 'Bearer sdfsjdfskdfhkj'};
-};
-
 class ApiHelper {
+  accessToken = undefined;
+
+  getUpdatedHeader = headers => {
+    if (this.accessToken) {
+      return {...headers, 'X-Access-Token': this.accessToken};
+    } else {
+      return headers;
+    }
+  };
+
   get = async (url, data, headers) => {
-    const updatedHeader = getUpdatedHeader(headers);
+    const updatedHeader = this.getUpdatedHeader(headers);
     const response = await api.get(url, data, {headers: updatedHeader});
 
     return new Promise((resolve, reject) => {
@@ -25,7 +31,10 @@ class ApiHelper {
   };
 
   post = async (url, data, headers) => {
-    const updatedHeader = getUpdatedHeader(headers);
+    const updatedHeader = this.getUpdatedHeader(headers);
+
+    console.log(this.accessToken);
+
     // const response = fetch(baseURL + url, {
     //   method: 'POST',
     //   headers: {

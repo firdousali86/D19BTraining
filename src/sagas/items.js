@@ -7,6 +7,10 @@ function callGetRequest(url, data, headers) {
   return ApiHelper.get(url, data, headers);
 }
 
+function callPostRequest(url, data, headers) {
+  return ApiHelper.post(url, data, headers);
+}
+
 function* watchRequest() {
   while (true) {
     const {payload} = yield take(request);
@@ -14,7 +18,12 @@ function* watchRequest() {
     try {
       let response;
 
-      response = yield call(callGetRequest, payload.url, {});
+      if (payload.method === 'POST') {
+        response = yield call(callPostRequest, payload.url, payload.data);
+      } else {
+        response = yield call(callGetRequest, payload.url, {});
+      }
+
       yield put(success(response));
     } catch (ex) {
       yield put(failure(ex));

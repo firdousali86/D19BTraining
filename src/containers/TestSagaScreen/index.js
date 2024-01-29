@@ -1,11 +1,16 @@
-import {StyleSheet, Text, View, Button} from 'react-native';
-import React, {useEffect} from 'react';
+import {StyleSheet, Text, View, Button, TextInput} from 'react-native';
+import React, {useEffect, useState} from 'react';
 // import {ApiHelper} from '../../helpers';
 import {request} from '../../features/items/itemsSlice';
 import {logout} from '../../features/user/userSlice';
 import {useDispatch} from 'react-redux';
+import {kApiPostItems} from '../../config/WebService';
 
 const TestSagaScreen = () => {
+  const [title, setTitle] = useState('');
+  const [image, setImage] = useState('');
+  const [details, setDetails] = useState('');
+
   const dispatch = useDispatch();
 
   useEffect(() => {
@@ -26,6 +31,41 @@ const TestSagaScreen = () => {
         title={'Logout'}
         onPress={() => {
           dispatch(logout());
+        }}
+      />
+
+      <TextInput
+        value={title}
+        onChangeText={ct => {
+          setTitle(ct);
+        }}
+        placeholder="Title"
+      />
+      <TextInput
+        value={image}
+        onChangeText={ct => {
+          setImage(ct);
+        }}
+        placeholder="Image"
+      />
+      <TextInput
+        value={details}
+        onChangeText={ct => {
+          setDetails(ct);
+        }}
+        placeholder="Details"
+      />
+
+      <Button
+        title={'Submit Item'}
+        onPress={() => {
+          dispatch(
+            request({
+              url: kApiPostItems,
+              method: 'POST',
+              data: {title, image, details},
+            }),
+          );
         }}
       />
     </View>
