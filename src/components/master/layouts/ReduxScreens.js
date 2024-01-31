@@ -6,7 +6,7 @@ import { Avatar, Badge,  withBadge } from 'react-native-elements'
 import {
   FunAndClass, FirstAssignment, FirstAssignmentStack, FunAndClassStack, AuthStack, Details, TabScreen,
   Login, SignUp, FastImage, Async, MmkvStorage, PropDrillingPractice, Setting, SettingTab1, SettingTab2,
-  SettingTab3, RLogin, RSignUp, Products, Cart, ProductClass, ClassCart
+  SettingTab3, RLogin, RSignUp, Products, Cart, ProductClass, ClassCart,FirebaseSignUp
 } from '../Index';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
@@ -46,6 +46,8 @@ const Screens = props => {
   function MyDrawers() {
     return (
       <Drawer.Navigator>
+        <Drawer.Screen name="FireBaseSignUp" component={FirebaseSignUp} />
+
         <Drawer.Screen name='Settings'>
           {() => (
             <Tab.Navigator screenOptions={({ route }) => ({

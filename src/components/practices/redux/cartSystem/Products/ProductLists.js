@@ -1,13 +1,15 @@
-import React from "react";
+import React, { useRef } from "react";
 import { FlatList, Text, TouchableOpacity, View, StyleSheet, Animated, Easing, Button } from "react-native";
 import { addToCart, removeFromCart, clearToCart } from "../../features/cart/CartSlice";
 import { useDispatch } from "react-redux";
 import { useNavigation } from "@react-navigation/native";
 import Icon from 'react-native-vector-icons/FontAwesome';
+import { TextInput } from "react-native-gesture-handler";
 
 
 const ProductsLists = ({ itemLists }) => {
 
+    const inputField  = useRef('');
 
     const navigation = useNavigation();
     const fadeAnim = new Animated.Value(0);
@@ -40,10 +42,13 @@ const ProductsLists = ({ itemLists }) => {
 
     return (
         <>
-            <TouchableOpacity style={styles.goToCartButton} onPress={() => navigation.navigate('Cart')}>
+            <TouchableOpacity style={styles.goToCartButton} onPress={() =>  navigation.navigate('Cart')}>
                 <Icon name="rocket"  size={30} color="#900" />
-                <Text style={{fontSize:20}}>Data</Text>
+                <Text  style={{fontSize:20}}>Data</Text>
+
             </TouchableOpacity>
+            <TextInput  style={styles.price} ref={inputField} placeholder="Input Field" />
+
             <FlatList
                 data={itemLists}
                 keyExtractor={(item, index) => index.toString()}

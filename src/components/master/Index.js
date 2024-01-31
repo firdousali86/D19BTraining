@@ -18,11 +18,12 @@ import Products from "../practices/redux/cartSystem/Products/Index";
 import Cart from '../practices/redux/cartSystem/Cart/Index';
 import ProductClass from "../practices/redux/cartSystemClassBase/Products/Index";
 import ClassCart from "../practices/redux/cartSystemClassBase/Cart/Index";
+import FirebaseSignUp from "../practices/firebaseAuth/SignUp"
 
 
 
 export {
     FunAndClass, FirstAssignment, Details, TabScreen, Login, SignUp, FastImage, Async,
     MmkvStorage, PropDrillingPractice, Setting, SettingTab1, SettingTab2, SettingTab3,
-    RLogin, RSignUp, Products, Cart, ProductClass, ClassCart
+    RLogin, RSignUp, Products, Cart, ProductClass, ClassCart, FirebaseSignUp
 };
