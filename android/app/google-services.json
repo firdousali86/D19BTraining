@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "558321815298",
+    "project_id": "test-bde72",
+    "storage_bucket": "test-bde72.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:558321815298:android:dfa316a7026cd53b617c1b",
+        "android_client_info": {
+          "package_name": "com.d19btraining"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyC8phaU7KCG5MfBlhtQB_kMfDGzaKtccD0"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

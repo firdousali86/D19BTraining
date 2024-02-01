@@ -1,5 +1,5 @@
 import React, {useEffect, useState} from 'react';
-import {} from 'react-native';
+import {View,Text,TouchableOpacity} from 'react-native';
 import {
   DetailsComponent,
   UserProfileClassComponent,
@@ -23,8 +23,11 @@ import TestApi from '../api_practise/TestApi';
 import ReduxTest from '../redux_test/ReduxTest';
 import ProductList from '../redux_cart/productList';
 import CartView from '../redux_cart/cartView';
+import LogInComponent from '../log_in/Fusion';
+import SignUp from '../log_in/SignUp';
+import auth from '@react-native-firebase/auth';
+
 import {RectButton} from 'react-native-gesture-handler';
-import LogInComponent from '../log_in/LogIn';
 import {useSelector, useDispatch} from 'react-redux';
 
 const Stack = createNativeStackNavigator();
@@ -76,11 +79,35 @@ const Screens = () => {
     );
   };
 
+  const CustomHeader = () => {
+
+    const  authLOgOut = () => {
+      auth()
+        .signOut()
+        .then(() => console.log('User signed out!'));
+    }
+
+    return (
+      <View
+        style={{flexDirection: 'row', alignItems: 'center', paddingRight: 16}}>
+        <TouchableOpacity onPress={() => authLOgOut() }>
+          <Text style={{color: 'red', fontSize: 16, marginLeft: 16}}>
+            Logout
+          </Text>
+        </TouchableOpacity>
+      </View>
+    );
+  };
+
   const TestDrawer = () => {
     return (
       <TestColorContextProvider>
         <Drawer.Navigator>
-          <Drawer.Screen name="productPage" component={MyCart} />
+          <Drawer.Screen
+            name="productPage"
+            options={{ headerRight: CustomHeader  }}
+            component={MyCart}
+          />
           <Drawer.Screen name="redux test" component={ReduxTest} />
           <Drawer.Screen name="TestApi" component={TestApi} />
           <Drawer.Screen name="Setting" component={Setting} />
@@ -99,31 +126,56 @@ const Screens = () => {
     return (
       <Stack.Navigator>
         <Stack.Screen
-          options={{...screenOptions}}
+          options={{...screenOptions, headerShown: false}}
           name="Log In"
           component={LogInComponent}
+        />
+        <Stack.Screen
+          options={{...screenOptions}}
+          name="SignUp"
+          component={SignUp}
         />
       </Stack.Navigator>
     );
   };
 
-  const user = useSelector(state => state.user.data);
-  const [isUserLogin, setUserLogin] = useState(user?.email ? false : true);
-  console.log(user);
+  // const user = useSelector(state => state.user.data);
+  // const [isUserLogin, setUserLogin] = useState(user?.email ? false : true);
+  // console.log(user);
+
+  // useEffect(() => {
+  //   if (user?.email) {
+  //     setUserLogin(false);
+  //   } else {
+  //     setUserLogin(true);
+  //   }
+  // }, [user]);
+
+  const [initializing, setInitializing] = useState(true);
+  const [userFire, setUser] = useState();
+
+  console.log(userFire);
+  function onAuthStateChanged(user) {
+    setUser(user);
+    if (initializing) setInitializing(false);
+  }
 
   useEffect(() => {
-    if (user?.email) {
-      setUserLogin(false);
-    } else {
-      setUserLogin(true);
-    }
-  }, [user]);
+    const subscriber = auth().onAuthStateChanged(onAuthStateChanged);
+    return subscriber;
+  }, []);
+
   return (
     <Tab.Navigator>
       <Tab.Screen
         options={{headerShown: false}}
         name="other"
-        component={isUserLogin ? Login : TestDrawer}
+        // component={isUserLogin ? Login : TestDrawer}
+        component={
+          userFire != null && userFire != '' && !initializing
+            ? TestDrawer
+            : Login
+        }
       />
       <Tab.Screen
         options={{

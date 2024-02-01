@@ -12,12 +12,12 @@ const LogIn = () => {
   return (
     <View style={styles.container}>
       <Icon name="user-circle" style={{marginBottom: 10}} size={100}></Icon>
-
       <TextInput
         style={styles.input}
         placeholder="Enter username"
         onChangeText={newUser => setUser(newUser)}
       />
+
       <TextInput
         secureTextEntry={true}
         style={styles.input}
@@ -56,3 +56,4 @@ const styles = StyleSheet.create({
 });
 
 export default LogIn;
+
