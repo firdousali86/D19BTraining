@@ -2,6 +2,7 @@ import React from 'react';
 import {Text, View} from 'react-native';
 import {Button} from 'react-native-elements';
 import auth from '@react-native-firebase/auth';
+import Toast from 'react-native-toast-message';
 
 const Dashboard = props => {
   const handleLogin = () => {
@@ -11,7 +12,11 @@ const Dashboard = props => {
         .signOut()
         .then(() => console.log('User signed out!'));
     } catch (error) {
-      console.log(error);
+      Toast.show({
+        type: 'error',
+        position: 'bottom',
+        text1: error.message,
+      });
     }
   };
 

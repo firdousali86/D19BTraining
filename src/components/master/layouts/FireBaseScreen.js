@@ -4,7 +4,7 @@ import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
 import {createDrawerNavigator} from '@react-navigation/drawer';
 import {FireBaseSignUp, FireBaseSignIn, FusionDashBoard} from '../Index';
 import auth from '@react-native-firebase/auth';
-import {Text} from 'react-native';
+import { Text, TouchableOpacity } from 'react-native';
 
 const FirebaseScreen = props => {
   const Stack = createNativeStackNavigator();
@@ -27,17 +27,31 @@ const FirebaseScreen = props => {
     const subscriber = auth().onAuthStateChanged(onAuthStateChanged);
     return subscriber; // unsubscribe on unmount
   }, []);
+  function CustomHeader({ navigation }) {
+    return (
+
+        <TouchableOpacity style={{ marginRight: 10 }} onPress={() => {
+
+            AsyncStorageHelper.setData('user-login', '');
+            setIsLogin(false)
+        }} >
+            <Text>Logout</Text>
+        </TouchableOpacity>
+    );
+}
 
   function FirebaseAuthStack() {
     return (
       <Stack.Navigator>
-        <Stack.Screen
-          name={'FireBase Register'}
-          component={FireBaseSignUp}></Stack.Screen>
+       
         <Stack.Screen
           name={'FireBase Login'}
-          options={{headerBackTitleVisible: false}}
+          options={{headerShown: false,headerBackTitleVisible: false}}
           component={FireBaseSignIn}></Stack.Screen>
+           <Stack.Screen
+          name={'FireBase Register'}
+          options={{headerShown: false}}
+          component={FireBaseSignUp}></Stack.Screen>
       </Stack.Navigator>
     );
   }
@@ -47,6 +61,7 @@ const FirebaseScreen = props => {
       <Stack.Navigator>
         <Stack.Screen
           name={'Dashboard'}
+          options={{ headerRight: () => <CustomHeader /> }}
           component={FusionDashBoard}></Stack.Screen>
       </Stack.Navigator>
     );

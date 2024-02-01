@@ -11,6 +11,7 @@ import {
 } from 'react-native';
 import auth from '@react-native-firebase/auth';
 import {useNavigation} from '@react-navigation/native';
+import Toast from 'react-native-toast-message';
 
 const FireBaseSignIn = props => {
   const [email, setEmail] = useState('');
@@ -19,7 +20,7 @@ const FireBaseSignIn = props => {
   const appLogo = require('../../../../logo.png');
 
   const fadeIn = new Animated.Value(0);
-  
+
   useEffect(() => {
     Animated.timing(fadeIn, {
       toValue: 1,
@@ -37,13 +38,19 @@ const FireBaseSignIn = props => {
       })
       .catch(error => {
         if (error.code === 'auth/email-already-in-use') {
-          console.log('That email address is already in use!');
+          Toast.show({
+            type: 'error',
+            position: 'bottom',
+            text1: error.message,
+          });
         }
-
         if (error.code === 'auth/invalid-email') {
-          console.log('That email address is invalid!');
+          Toast.show({
+            type: 'error',
+            position: 'bottom',
+            text1: error.message,
+          });
         }
-
         console.error(error);
       });
     console.log('Email:', email);
@@ -68,7 +75,6 @@ const FireBaseSignIn = props => {
       </TouchableOpacity>
     </View>
   );
-
   return (
     <Animated.View style={[styles.container, {opacity: fadeIn}]}>
       <View style={[styles.shadowContainer]}>
@@ -78,7 +84,8 @@ const FireBaseSignIn = props => {
           <Text style={styles.title}>SIGN IN</Text>
         )}
       </View>
-      <View style={styles.inputContainer}>
+  
+      <View style={[styles.inputContainer, styles.darkTheme]}>
         <TextInput
           style={styles.input}
           placeholder="Email"
@@ -94,30 +101,28 @@ const FireBaseSignIn = props => {
           onChangeText={text => setPassword(text)}
           value={password}
         />
+        <TouchableOpacity style={styles.loginButton} onPress={handleLogin}>
+          <Text style={styles.buttonText}>SIGN IN</Text>
+        </TouchableOpacity>
       </View>
-      <TouchableOpacity style={styles.loginButton} onPress={handleLogin}>
-        <Text style={styles.buttonText}>SIGN IN</Text>
-      </TouchableOpacity>
-
-      <View>
-        <TouchableOpacity style={{marginTop: 30}} onPress={handleLogin}>
-          <Text style={[styles.buttonText, {fontSize: 10}]}>
-            If you have not account then go to sign up page
-          </Text>
+  
+      <View style={styles.signupContainer}>
+        <Text style={styles.signupText}>
+          Don't have an account?{' '}
           <Text
-            style={[styles.buttonText, {color: '#3aceff', textAlign: 'center'}]}
+            style={[styles.signupLink, {color: '#3aceff'}]}
             onPress={() => {
               navigate.navigate('FireBase Register');
             }}>
-            {' '}
             Sign Up
           </Text>
-        </TouchableOpacity>
+        </Text>
       </View>
+  
       {attributionText}
     </Animated.View>
   );
-};
+  };
 
 const styles = StyleSheet.create({
   container: {
@@ -137,6 +142,9 @@ const styles = StyleSheet.create({
     shadowRadius: 16.0,
     shadowColor: '#f9f9f9',
   },
+  darkTheme: {
+    backgroundColor: '#34495E'
+  },
   logo: {
     width: 150,
     height: 150,
@@ -150,8 +158,11 @@ const styles = StyleSheet.create({
     marginBottom: 30,
   },
   inputContainer: {
-    width: '80%',
+    width: '90%',
     marginBottom: 20,
+    backgroundColor: '#34495E', // Dark background color for input container
+    borderRadius: 10, // Add border radius for a rounded look
+    padding: 15, // Add padding for spacing
   },
   input: {
     height: 40,
@@ -166,7 +177,7 @@ const styles = StyleSheet.create({
     paddingVertical: 15,
     paddingHorizontal: 30,
     borderRadius: 50,
-    marginBottom: 20,
+    marginTop:20
   },
 
   buttonText: {
@@ -175,8 +186,8 @@ const styles = StyleSheet.create({
     textAlign: 'center',
   },
   imgShadow: {
-    backgroundColor: '#ebfbff',
-    shadowColor: '#FFFFFF',
+    backgroundColor: '#111111',
+    shadowColor: '#ffffff',
     shadowOffset: {
       width: 0,
       height: 12,
@@ -189,6 +200,17 @@ const styles = StyleSheet.create({
   attributionText: {
     color: '#ECF0F1',
     fontSize: 12,
+  },
+  signupContainer: {
+    marginTop: 20,
+    alignItems: 'center',
+  },
+  signupText: {
+    fontSize: 14,
+    color: '#ECF0F1',
+  },
+  signupLink: {
+    fontWeight: 'bold',
   },
 });
 

@@ -46,7 +46,6 @@ const Screens = props => {
   function MyDrawers() {
     return (
       <Drawer.Navigator>
-        <Drawer.Screen name="FireBaseSignUp" component={FirebaseSignUp} />
 
         <Drawer.Screen name='Settings'>
           {() => (
