@@ -24,7 +24,7 @@ import ReduxTest from '../redux_test/ReduxTest';
 import ProductList from '../redux_cart/productList';
 import CartView from '../redux_cart/cartView';
 import {RectButton} from 'react-native-gesture-handler';
-import LogIn from '../log_in/LogIn';
+import LogInComponent from '../log_in/LogIn';
 import {useSelector, useDispatch} from 'react-redux';
 
 const Stack = createNativeStackNavigator();
@@ -95,13 +95,13 @@ const Screens = () => {
     );
   };
 
-  const login = () => {
+  const Login = () => {
     return (
       <Stack.Navigator>
         <Stack.Screen
           options={{...screenOptions}}
           name="Log In"
-          component={LogIn}
+          component={LogInComponent}
         />
       </Stack.Navigator>
     );
@@ -123,7 +123,7 @@ const Screens = () => {
       <Tab.Screen
         options={{headerShown: false}}
         name="other"
-        component={isUserLogin ? login : TestDrawer}
+        component={isUserLogin ? Login : TestDrawer}
       />
       <Tab.Screen
         options={{
