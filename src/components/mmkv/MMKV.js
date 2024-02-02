@@ -1,12 +1,22 @@
-import React from 'react';
+import React,{useState} from 'react';
 import {View, Text, TextInput, Button, StyleSheet} from 'react-native';
-import {MMKVLoader, useMMKVStorage} from 'react-native-mmkv-storage';
+import  {MMKV}  from 'react-native-mmkv'
 
-const storage = new MMKVLoader().initialize();
+const MmkvDemo = () => {
+  const [getEmail, setEmail] = useState();
+  const [getPassword, setPassword] = useState();
 
-const MMkV = () => {
-  const [email, setEmail] = useMMKVStorage('email',storage,'15648474');
-  
+   const storage = new MMKV()
+
+const StoreMMKV = () => {
+   storage.set('user', JSON.stringify({'email':getEmail,'password':getPassword}))
+}
+
+const GetMMKV = () => {
+  const user = storage.getString('user') 
+  console.log(user);
+}
+
 
   return (
     <View style={{flex: 1}}>
@@ -39,8 +49,20 @@ const MMkV = () => {
             setPassword(pass);
           }}
         />
-        {/* {/* <Button title="Submit Data" onPress={StoreDataOnAsyncStorage} /> */}
-        <Button title="Show data" />
+      
+      <Button
+          title="Submit Data"
+          onPress={() => {
+            StoreMMKV()
+          }}
+        />
+        <Button
+          title="Show data"
+          onPress={() => {
+            GetMMKV()
+          }}
+        />
+
       </View>
     </View>
   );
@@ -57,4 +79,4 @@ const mmkv = StyleSheet.create({
   },
 });
 
-export default MMkV;
+export default MmkvDemo;

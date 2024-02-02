@@ -1,5 +1,5 @@
 import React, {useEffect, useState} from 'react';
-import {View,Text,TouchableOpacity} from 'react-native';
+import {View, Text, TouchableOpacity} from 'react-native';
 import {
   DetailsComponent,
   UserProfileClassComponent,
@@ -12,6 +12,7 @@ import ModalComponentTab from '../modal/Modal';
 import FastImageExample from '../fast_image/FastImage';
 import AsyncStorage from '../async_storage/AsyncStorage';
 import MMkV from '../mmkv/MMKV';
+import KeyChain from '../key_chain/KeyChain';
 import {TestColorContextProvider} from '../setting/SettingContextApi';
 
 import {createNativeStackNavigator} from '@react-navigation/native-stack';
@@ -80,17 +81,16 @@ const Screens = () => {
   };
 
   const CustomHeader = () => {
-
-    const  authLOgOut = () => {
+    const authLOgOut = () => {
       auth()
         .signOut()
         .then(() => console.log('User signed out!'));
-    }
+    };
 
     return (
       <View
         style={{flexDirection: 'row', alignItems: 'center', paddingRight: 16}}>
-        <TouchableOpacity onPress={() => authLOgOut() }>
+        <TouchableOpacity onPress={() => authLOgOut()}>
           <Text style={{color: 'red', fontSize: 16, marginLeft: 16}}>
             Logout
           </Text>
@@ -103,9 +103,11 @@ const Screens = () => {
     return (
       <TestColorContextProvider>
         <Drawer.Navigator>
+          <Drawer.Screen name="MMKV Storage" component={MMkV} />
+          <Drawer.Screen name="Key chain" component={KeyChain} />
           <Drawer.Screen
             name="productPage"
-            options={{ headerRight: CustomHeader  }}
+            options={{headerRight: CustomHeader}}
             component={MyCart}
           />
           <Drawer.Screen name="redux test" component={ReduxTest} />
@@ -113,7 +115,7 @@ const Screens = () => {
           <Drawer.Screen name="Setting" component={Setting} />
           <Drawer.Screen name="props drilling" component={PropsDrilling} />
           <Drawer.Screen name="re rendering" component={PureComponent} />
-          <Drawer.Screen name="MMKV Storage" component={MMkV} />
+
           <Drawer.Screen name="Async Storage" component={AsyncStorage} />
           <Drawer.Screen name="Fast Image" component={FastImageExample} />
           <Drawer.Screen name="Modal" component={ModalComponentTab} />

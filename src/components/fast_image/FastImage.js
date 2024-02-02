@@ -7,23 +7,10 @@ const FastImageExample = () => {
   const [getNumberOfImg, setNumberOfImg] = useState('');
   const [getView, setView] = useState([]);
 
-  const ImgView = i => {
-    return (
-      <View>
-        <FastImage
-          style={{width: 100, height: 100, marginBottom: 10}}
-          source={{
-            uri: 'https://unsplash.it/400/400?image=' + i,
-          }}
-        />
-      </View>
-    );
-  };
-
   const ViewWithLoop = () => {
     const prepareImages = [];
     for (let i = 0; i < getNumberOfImg; i++) {
-      prepareImages[i] = ImgView(i);
+      prepareImages[i] =  'https://unsplash.it/400/400?image=' + i ;
     }
     setView(prepareImages);
   };
@@ -51,7 +38,14 @@ const FastImageExample = () => {
         data={getView}
         numColumns={3}
         renderItem={({item}) => (
-          <View style={{flex: 1, justifyContent: 'space-between'}}>{item}</View>
+          <View style={{flex: 1, justifyContent: 'space-between'}}>
+              <FastImage
+                style={{width: 100, height: 100, marginBottom: 10}}
+                source={{
+                  uri: item,
+                }}
+              />
+          </View>
         )}
       />
     </View>
