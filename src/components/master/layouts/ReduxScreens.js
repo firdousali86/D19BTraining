@@ -138,6 +138,7 @@ const Screens = props => {
           )}
         </Drawer.Screen>
         <Drawer.Screen name="Fast Image" component={FastImage} />
+        <Drawer.Screen name="MMKV Storage" component={MmkvStorage} />
         <Drawer.Screen name="Key Chain">
           {() => (<Stack.Navigator>
             <Stack.Screen
