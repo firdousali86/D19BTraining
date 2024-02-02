@@ -9,12 +9,36 @@ import {SetLoginContext} from './src/components/master/contextApi/LoginContext';
 import {ThemeContext} from './src/components/master/contextApi/SettingContextApi';
 import {Store, store} from './src/components/practices/redux/store';
 import {Provider} from 'react-redux';
-import Toast,{BaseToast, ErrorToast} from 'react-native-toast-message';
+import Toast, {
+  BaseToast,
+  ErrorToast,
+  SuccessToast,
+} from 'react-native-toast-message';
 const toastConfig = {
   /*
     Overwrite 'success' type,
     by modifying the existing `BaseToast` component
   */
+  // style={{ borderLeftColor: '#FE6301' }}
+  //<BaseToast style={{ borderLeftColor: '#87CEFA' }} {...props}/>
+  // <BaseToast style={{ borderLeftColor: '#69C779' }} {...props}/>
+
+  error: props => (
+    <ErrorToast
+      {...props}
+      contentContainerStyle={{paddingHorizontal: 5, paddingVertical: 5}}
+      text1NumberOfLines={15}
+    />
+  ),
+
+  success: props => (
+    <SuccessToast
+      {...props}
+      contentContainerStyle={{paddingHorizontal: 5, paddingVertical: 5}}
+      text1NumberOfLines={15}
+    />
+  ),
+
   // success: (props) => (
   //   <BaseToast
   //     {...props}
@@ -75,7 +99,7 @@ function App() {
         </ThemeContext>
       </Provider>
 
-      <Toast config={toastConfig}/>
+      <Toast config={toastConfig} />
     </>
   );
 }

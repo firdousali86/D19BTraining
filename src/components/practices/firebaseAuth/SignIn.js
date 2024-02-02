@@ -35,23 +35,42 @@ const FireBaseSignIn = props => {
       .signInWithEmailAndPassword(email, password)
       .then(() => {
         console.log('Login Successfully!');
+        Toast.show({
+          type: 'success',
+          position: 'top',
+          text1: 'Login Successfully!',
+        });
       })
       .catch(error => {
         if (error.code === 'auth/email-already-in-use') {
           Toast.show({
             type: 'error',
-            position: 'bottom',
+            position: 'top',
             text1: error.message,
           });
-        }
-        if (error.code === 'auth/invalid-email') {
+        } else if (error.code === 'auth/invalid-email') {
           Toast.show({
             type: 'error',
-            position: 'bottom',
+            position: 'top',
             text1: error.message,
           });
+
+          
+        } else {
+          var errorMessage = error.message;
+          var regexPattern = /\[.*\] (.*)/;
+          var match = errorMessage.match(regexPattern);
+          var extractedMessage = match ? match[1] : errorMessage;
+          console.log('this is main');
+          Toast.show({
+            type: 'error',
+            position: 'top',
+            text1: extractedMessage,
+            text1NumberOfLines:5
+          });
+
         }
-        console.error(error);
+        console.log(error);
       });
     console.log('Email:', email);
     console.log('Password:', password);
@@ -84,7 +103,7 @@ const FireBaseSignIn = props => {
           <Text style={styles.title}>SIGN IN</Text>
         )}
       </View>
-  
+
       <View style={[styles.inputContainer, styles.darkTheme]}>
         <TextInput
           style={styles.input}
@@ -105,7 +124,7 @@ const FireBaseSignIn = props => {
           <Text style={styles.buttonText}>SIGN IN</Text>
         </TouchableOpacity>
       </View>
-  
+
       <View style={styles.signupContainer}>
         <Text style={styles.signupText}>
           Don't have an account?{' '}
@@ -118,11 +137,11 @@ const FireBaseSignIn = props => {
           </Text>
         </Text>
       </View>
-  
+
       {attributionText}
     </Animated.View>
   );
-  };
+};
 
 const styles = StyleSheet.create({
   container: {
@@ -143,7 +162,7 @@ const styles = StyleSheet.create({
     shadowColor: '#f9f9f9',
   },
   darkTheme: {
-    backgroundColor: '#34495E'
+    backgroundColor: '#34495E',
   },
   logo: {
     width: 150,
@@ -177,7 +196,7 @@ const styles = StyleSheet.create({
     paddingVertical: 15,
     paddingHorizontal: 30,
     borderRadius: 50,
-    marginTop:20
+    marginTop: 20,
   },
 
   buttonText: {
