@@ -14,6 +14,8 @@ import Toast, {
   ErrorToast,
   SuccessToast,
 } from 'react-native-toast-message';
+import { KeyChainStorageHelper } from './src/components/master/Helper';
+
 const toastConfig = {
   /*
     Overwrite 'success' type,
@@ -30,7 +32,6 @@ const toastConfig = {
       text1NumberOfLines={15}
     />
   ),
-
   success: props => (
     <SuccessToast
       {...props}
@@ -81,6 +82,8 @@ const toastConfig = {
 };
 
 function App() {
+
+  console.log(KeyChainStorageHelper.getData('user_session'));
   LogBox.ignoreLogs(['Warning: ...']); // Ignore log notification by message
   LogBox.ignoreAllLogs(); //Ignore all log notifications
 
@@ -91,8 +94,8 @@ function App() {
         <ThemeContext>
           <SetLoginContext isLogin={isLogin} setIsLogin={setIsLogin}>
             <NavigationContainer>
-              <FireBaseScreen />
-              {/* <ReduxScreens /> */}
+              {/* <FireBaseScreen /> */}
+              <ReduxScreens />
               {/* <Screens /> */}
             </NavigationContainer>
           </SetLoginContext>

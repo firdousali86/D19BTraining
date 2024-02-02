@@ -1,12 +1,32 @@
 import React, { useEffect, useState } from 'react';
 import IconF from 'react-native-vector-icons/FontAwesome';
-import { Avatar, Badge,  withBadge } from 'react-native-elements'
-
+import { Avatar, Badge, withBadge } from 'react-native-elements';
 
 import {
-  FunAndClass, FirstAssignment, FirstAssignmentStack, FunAndClassStack, AuthStack, Details, TabScreen,
-  Login, SignUp, FastImage, Async, MmkvStorage, PropDrillingPractice, Setting, SettingTab1, SettingTab2,
-  SettingTab3, RLogin, RSignUp, Products, Cart, ProductClass, ClassCart,FirebaseSignUp
+  FunAndClass,
+  FirstAssignment,
+  FirstAssignmentStack,
+  FunAndClassStack,
+  AuthStack,
+  Details,
+  TabScreen,
+  Login,
+  SignUp,
+  FastImage,
+  Async,
+  MmkvStorage,
+  PropDrillingPractice,
+  Setting,
+  SettingTab1,
+  SettingTab2,
+  SettingTab3,
+  RLogin,
+  RSignUp,
+  Products,
+  Cart,
+  ProductClass,
+  ClassCart,
+  FirebaseSignUp,
 } from '../Index';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
@@ -17,6 +37,7 @@ import { useSelector } from 'react-redux';
 // import Ionicons from 'react-native-vector-icons/Ionicons';
 
 import Icon from 'react-native-vector-icons/FontAwesome';
+import KeyChain from '../../practices/key_chain/KeyChain';
 
 const Stack = createNativeStackNavigator();
 const Tab = createBottomTabNavigator();
@@ -32,13 +53,15 @@ const Screens = props => {
     return (
       <TouchableOpacity
         style={[styles.cartButton, { marginTop: 10 }]}
-        onPress={() => navigation.navigate('Cart')}
-      >
-        <View >
-          <Badge status="primary" value={totalCartItems} containerStyle={{ position: 'absolute', top: -7, right: 0 }} />
+        onPress={() => navigation.navigate('Cart')}>
+        <View>
+          <Badge
+            status="primary"
+            value={totalCartItems}
+            containerStyle={{ position: 'absolute', top: -7, right: 0 }}
+          />
           <IconF name="cart-plus" size={30} color="#000000" />
         </View>
-
       </TouchableOpacity>
     );
   }
@@ -46,50 +69,64 @@ const Screens = props => {
   function MyDrawers() {
     return (
       <Drawer.Navigator>
-
-        <Drawer.Screen name='Settings'>
+        <Drawer.Screen name="Settings">
           {() => (
-            <Tab.Navigator screenOptions={({ route }) => ({
+            <Tab.Navigator
+              screenOptions={({ route }) => ({
+                tabBarIcon: ({ focused, color, size }) => {
+                  let iconName;
 
-              tabBarIcon: ({ focused, color, size }) => {
-                let iconName;
+                  // console.log(route);
 
-                console.log(route);
+                  if (route.name === 'Products') {
+                    iconName = focused ? 'th-list' : 'th-list';
+                  } else if (route.name === '1 TS') {
+                    iconName = focused ? 'users' : 'copy';
+                  } else if (route.name === '2 TS') {
+                    iconName = focused ? 'profile' : 'profile';
+                  } else if (route.name === 'Theme') {
+                    iconName = focused ? 'player-settings' : 'player-settings';
+                  }
 
-    
-                if (route.name === 'Products') {
-                  iconName = focused
-                    ? 'th-list'
-                    : 'th-list';
-                } else if (route.name === '1 TS') {
-                  iconName = focused ? 'users' : 'copy';
-                } else if (route.name === '2 TS') {
-                  iconName = focused ? 'profile' : 'profile';
-                } else if (route.name === 'Theme') {
-                  iconName = focused ? 'player-settings' : 'player-settings';
-                }
-    
-                // You can return any component that you like here!
-                return                 <Icon name={iconName} size={size} color={color}  />
-                // <Ionicons name={iconName} size={size} color={color} />;
-              },
-              tabBarActiveTintColor: 'tomato',
-              tabBarInactiveTintColor: 'gray',
-            })}>
-              <Tab.Screen name="Products"  options={{ headerRight: () => <CustomHeader /> }} >
+                  // You can return any component that you like here!
+                  return <Icon name={iconName} size={size} color={color} />;
+                  // <Ionicons name={iconName} size={size} color={color} />;
+                },
+                tabBarActiveTintColor: 'tomato',
+                tabBarInactiveTintColor: 'gray',
+              })}>
+              <Tab.Screen
+                name="Products"
+                options={{ headerRight: () => <CustomHeader /> }}>
                 {() => (
                   <Stack.Navigator>
-                    <Stack.Screen name={'Product Lists'} options={{ headerShown: false }} component={Products}></Stack.Screen>
-                    <Stack.Screen options={{ headerShown: false }} name={'Cart'} component={Cart} />
+                    <Stack.Screen
+                      name={'Product Lists'}
+                      options={{ headerShown: false }}
+                      component={Products}></Stack.Screen>
+                    <Stack.Screen
+                      options={{ headerShown: false }}
+                      name={'Cart'}
+                      component={Cart}
+                    />
                   </Stack.Navigator>
                 )}
               </Tab.Screen>
 
-              <Tab.Screen name="Products Class" options={{ headerRight: () => <CustomHeader /> }} >
+              <Tab.Screen
+                name="Products Class"
+                options={{ headerRight: () => <CustomHeader /> }}>
                 {() => (
                   <Stack.Navigator>
-                    <Stack.Screen name={'Product Lists Class'} options={{ headerShown: false }} component={ProductClass}></Stack.Screen>
-                    <Stack.Screen options={{ headerShown: false }} name={'ClassCart'} component={ClassCart} />
+                    <Stack.Screen
+                      name={'Product Lists Class'}
+                      options={{ headerShown: false }}
+                      component={ProductClass}></Stack.Screen>
+                    <Stack.Screen
+                      options={{ headerShown: false }}
+                      name={'ClassCart'}
+                      component={ClassCart}
+                    />
                   </Stack.Navigator>
                 )}
               </Tab.Screen>
@@ -101,6 +138,14 @@ const Screens = props => {
           )}
         </Drawer.Screen>
         <Drawer.Screen name="Fast Image" component={FastImage} />
+        <Drawer.Screen name="Key Chain">
+          {() => (<Stack.Navigator>
+            <Stack.Screen
+              name={'KeyChainPage'}
+              options={{ headerShown: false }}
+              component={KeyChain}></Stack.Screen>
+          </Stack.Navigator>)}
+        </Drawer.Screen>
       </Drawer.Navigator>
     );
   }
@@ -115,8 +160,7 @@ const Screens = props => {
   };
 
   //return (isLogin == true) ? MyDrawers() : AuthStack();
-  return (true) ? MyDrawers() : ReduxAuthStack();
-
+  return true ? MyDrawers() : ReduxAuthStack();
 };
 const styles = StyleSheet.create({
   cartButton: {
