@@ -13,6 +13,7 @@ import FastImageExample from '../fast_image/FastImage';
 import AsyncStorage from '../async_storage/AsyncStorage';
 import MMkV from '../mmkv/MMKV';
 import KeyChain from '../key_chain/KeyChain';
+import TestSaga from '../testSagaScreen/TestSaga';
 import {TestColorContextProvider} from '../setting/SettingContextApi';
 
 import {createNativeStackNavigator} from '@react-navigation/native-stack';
@@ -103,19 +104,19 @@ const Screens = () => {
     return (
       <TestColorContextProvider>
         <Drawer.Navigator>
-          <Drawer.Screen name="MMKV Storage" component={MMkV} />
-          <Drawer.Screen name="Key chain" component={KeyChain} />
+          <Drawer.Screen name="item saga" component={TestSaga} />
           <Drawer.Screen
             name="productPage"
             options={{headerRight: CustomHeader}}
             component={MyCart}
           />
+          <Drawer.Screen name="MMKV Storage" component={MMkV} />
+          <Drawer.Screen name="Key chain" component={KeyChain} />
           <Drawer.Screen name="redux test" component={ReduxTest} />
           <Drawer.Screen name="TestApi" component={TestApi} />
           <Drawer.Screen name="Setting" component={Setting} />
           <Drawer.Screen name="props drilling" component={PropsDrilling} />
           <Drawer.Screen name="re rendering" component={PureComponent} />
-
           <Drawer.Screen name="Async Storage" component={AsyncStorage} />
           <Drawer.Screen name="Fast Image" component={FastImageExample} />
           <Drawer.Screen name="Modal" component={ModalComponentTab} />

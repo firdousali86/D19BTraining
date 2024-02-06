@@ -6,7 +6,7 @@ const TestApi = () => {
   const [apiData, setApiData] = useState();
 
   useEffect(() => {
-    TestApiHelper.post('https://jsonplaceholder.typicode.com/todos')
+    TestApiHelper.get('https://jsonplaceholder.typicode.com/todos')
       .then(data => {
         console.log(data);
         setApiData(data);

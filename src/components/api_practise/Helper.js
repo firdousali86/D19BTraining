@@ -19,7 +19,7 @@ class TestApiHelper {
     });
 
     return new Promise((resolve, reject) => {
-      this.handleErrors(resolve, reject, response);
+      this.handlerError(resolve, reject, response);
     });
   };
 
