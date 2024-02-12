@@ -16,6 +16,7 @@ import {
 import {increment, decrement} from '../../features/counter/counterSlice';
 import {DataHelper, PersistanceHelper} from '../../helpers';
 import auth from '@react-native-firebase/auth';
+import MyList from './MyList';
 
 const itemList = [
   {name: 'Macbook', details: 'Macbook pro with M2', price: 2500},
@@ -26,58 +27,16 @@ const itemList = [
   {name: 'LED TV', details: 'True colors', price: 600},
 ];
 
-const MyList = memo(props => {
-  useEffect(() => {
-    PersistanceHelper.getValue('myname')
-      .then(success => {
-        console.log(success);
-      })
-      .catch(error => {
-        console.log(error);
-      });
-  }, []);
-
-  return (
-    <FlatList
-      data={itemList}
-      renderItem={({item, index}) => {
-        console.log('list is rerendered');
-        return (
-          <View
-            style={{
-              backgroundColor: 'pink',
-              marginVertical: 5,
-              flexDirection: 'row',
-              justifyContent: 'space-between',
-              paddingHorizontal: 10,
-              alignItems: 'center',
-            }}>
-            <View>
-              <Text>{item.name}</Text>
-              <Text>{item.details}</Text>
-              <Text>{item.price}</Text>
-            </View>
-            <TouchableOpacity
-              onPress={() => {
-                // dispatch(addToCart(item));
-                props.addToCart(item);
-              }}
-              style={{backgroundColor: 'grey', padding: 10, borderRadius: 5}}>
-              <Text>Add To Cart</Text>
-            </TouchableOpacity>
-          </View>
-        );
-      }}
-    />
-  );
-});
-
 const ProductList = props => {
   const dispatch = useDispatch();
 
   return (
     <View>
-      <MyList addToCart={props.addToCart} />
+      <MyList
+        addToCart={props.addToCart}
+        itemList={itemList}
+        backgroundColor="pink"
+      />
       <Button
         title={'Go to Cart'}
         onPress={() => {

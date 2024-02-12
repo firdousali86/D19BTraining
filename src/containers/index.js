@@ -19,6 +19,7 @@ import ProductListClass from './ProductListClass';
 import TestRefScreen from './TestRefScreen';
 // import SignupScreen from './SignupScreen';
 import TestSagaScreen from './TestSagaScreen';
+import TestRTKQuery from './TestRTKQuery';
 
 export {
   DashboardScreen,
@@ -42,4 +43,5 @@ export {
   TestRefScreen,
   // SignupScreen,
   TestSagaScreen,
+  TestRTKQuery,
 };
