@@ -29,6 +29,7 @@ import {
   TestRefScreen,
   TestSagaScreen,
   TestRTKQuery,
+  MapScreen,
 } from '../containers';
 import {Button, Text, View, Platform} from 'react-native';
 import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
@@ -116,6 +117,7 @@ const Navigation = props => {
   const getMainStack = () => {
     return (
       <Stack.Group>
+        <Stack.Screen name="MapScreen" component={MapScreen} />
         <Stack.Screen
           name="ProductListClass"
           component={ProductListClass}

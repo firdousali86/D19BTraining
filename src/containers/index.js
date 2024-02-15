@@ -20,6 +20,7 @@ import TestRefScreen from './TestRefScreen';
 // import SignupScreen from './SignupScreen';
 import TestSagaScreen from './TestSagaScreen';
 import TestRTKQuery from './TestRTKQuery';
+import MapScreen from './MapScreen';
 
 export {
   DashboardScreen,
@@ -44,4 +45,5 @@ export {
   // SignupScreen,
   TestSagaScreen,
   TestRTKQuery,
+  MapScreen,
 };
