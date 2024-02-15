@@ -75,6 +75,12 @@ export class ProductListClass extends Component {
             this.props.clearCart();
           }}
         />
+        <Button
+          title={'Goto item list'}
+          onPress={() => {
+            this.props.navigation.navigate('TestSagaScreen');
+          }}
+        />
         <View>
           <Text>{this.props.cart.cartItems.length}</Text>
         </View>

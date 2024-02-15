@@ -1,12 +1,20 @@
-import {StyleSheet, Text, View, Button, TextInput} from 'react-native';
+import {
+  StyleSheet,
+  Text,
+  View,
+  Button,
+  TextInput,
+  FlatList,
+} from 'react-native';
 import React, {useEffect, useState} from 'react';
 // import {ApiHelper} from '../../helpers';
 import {request} from '../../features/items/itemsSlice';
 import {logout} from '../../features/user/userSlice';
-import {useDispatch} from 'react-redux';
+import {useDispatch, useSelector} from 'react-redux';
 import {kApiPostItems} from '../../config/WebService';
 
 const TestSagaScreen = () => {
+  const items = useSelector(state => state.items);
   const [title, setTitle] = useState('');
   const [image, setImage] = useState('');
   const [details, setDetails] = useState('');
@@ -65,6 +73,17 @@ const TestSagaScreen = () => {
               method: 'POST',
               data: {title, image, details},
             }),
+          );
+        }}
+      />
+
+      <FlatList
+        data={items}
+        renderItem={({item, index}) => {
+          return (
+            <View>
+              <Text>test</Text>
+            </View>
           );
         }}
       />

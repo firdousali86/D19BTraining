@@ -116,6 +116,24 @@ const Navigation = props => {
   const getMainStack = () => {
     return (
       <Stack.Group>
+        <Stack.Screen
+          name="ProductListClass"
+          component={ProductListClass}
+          options={{
+            title: 'Shopping List Class',
+            headerRight: () => {
+              return (
+                <Button
+                  title="Cart"
+                  onPress={() => {
+                    navigation.navigate('CartScreen');
+                  }}
+                />
+              );
+            },
+          }}
+        />
+        <Stack.Screen name="TestSagaScreen" component={TestSagaScreen} />
         <Stack.Screen name="TestRTKQuery" component={TestRTKQuery} />
         <Stack.Screen
           name="ProductList"
@@ -135,25 +153,6 @@ const Navigation = props => {
           }}
         />
         <Stack.Screen name="TestRefScreen" component={TestRefScreen} />
-        <Stack.Screen name="TestSagaScreen" component={TestSagaScreen} />
-
-        <Stack.Screen
-          name="ProductListClass"
-          component={ProductListClass}
-          options={{
-            title: 'Shopping List Class',
-            headerRight: () => {
-              return (
-                <Button
-                  title="Cart"
-                  onPress={() => {
-                    navigation.navigate('CartScreen');
-                  }}
-                />
-              );
-            },
-          }}
-        />
 
         <Stack.Screen
           name="CartScreen"
@@ -212,9 +211,7 @@ const Navigation = props => {
   console.log('at render time:' + isUserLoggedIn);
 
   return (
-    <Stack.Navigator>
-      {isUserLoggedIn ? getMainStack() : getAuthStack()}
-    </Stack.Navigator>
+    <Stack.Navigator>{true ? getMainStack() : getAuthStack()}</Stack.Navigator>
   );
 };
 
