@@ -38,6 +38,7 @@ import { useSelector } from 'react-redux';
 
 import Icon from 'react-native-vector-icons/FontAwesome';
 import KeyChain from '../../practices/key_chain/KeyChain';
+import TestSagaApi from '../../practices/testSagaApi/TestSagaApi';
 
 const Stack = createNativeStackNavigator();
 const Tab = createBottomTabNavigator();
@@ -69,6 +70,7 @@ const Screens = props => {
   function MyDrawers() {
     return (
       <Drawer.Navigator>
+        <Drawer.Screen name="TestApI SAGA" component={TestSagaApi} />
         <Drawer.Screen name="Settings">
           {() => (
             <Tab.Navigator

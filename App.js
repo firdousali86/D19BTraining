@@ -7,14 +7,16 @@ import 'react-native-gesture-handler';
 import {LogBox, Text, View} from 'react-native';
 import {SetLoginContext} from './src/components/master/contextApi/LoginContext';
 import {ThemeContext} from './src/components/master/contextApi/SettingContextApi';
-import {Store, store} from './src/components/practices/redux/store';
+import {store, persistor} from './src/components/practices/redux/store';
 import {Provider} from 'react-redux';
+import {PersistGate} from 'redux-persist/integration/react';
+
 import Toast, {
   BaseToast,
   ErrorToast,
   SuccessToast,
 } from 'react-native-toast-message';
-import { KeyChainStorageHelper } from './src/components/master/Helper';
+import {KeyChainStorageHelper} from './src/components/master/Helper';
 
 const toastConfig = {
   /*
@@ -82,24 +84,33 @@ const toastConfig = {
 };
 
 function App() {
-
   console.log(KeyChainStorageHelper.getData('user_session'));
   LogBox.ignoreLogs(['Warning: ...']); // Ignore log notification by message
   LogBox.ignoreAllLogs(); //Ignore all log notifications
+  const [isLoading, setIsLoading] = useState(true);
 
   const [isLogin, setIsLogin] = useState('');
   return (
     <>
       <Provider store={store}>
-        <ThemeContext>
-          <SetLoginContext isLogin={isLogin} setIsLogin={setIsLogin}>
-            <NavigationContainer>
-              {/* <FireBaseScreen /> */}
-              <ReduxScreens />
-              {/* <Screens /> */}
-            </NavigationContainer>
-          </SetLoginContext>
-        </ThemeContext>
+        <PersistGate
+          persistor={persistor}
+          onBeforeLift={() => {
+            console.log('store is loaded');
+            // DataHelper.setStore(store);
+
+            setIsLoading(false);
+          }}>
+          <ThemeContext>
+            <SetLoginContext isLogin={isLogin} setIsLogin={setIsLogin}>
+              <NavigationContainer>
+                {/* <FireBaseScreen /> */}
+                <ReduxScreens />
+                {/* <Screens /> */}
+              </NavigationContainer>
+            </SetLoginContext>
+          </ThemeContext>
+        </PersistGate>
       </Provider>
 
       <Toast config={toastConfig} />
