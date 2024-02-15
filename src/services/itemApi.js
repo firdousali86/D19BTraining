@@ -5,9 +5,11 @@ export const itemApi = createApi({
   baseQuery: fetchBaseQuery({
     baseUrl: 'http://localhost:3000/api/',
   }),
+  tagTypes: ['Item'],
   endpoints: builder => ({
     getAllItems: builder.query({
       query: name => 'items',
+      providesTags: ['Item'],
     }),
     postItem: builder.mutation({
       query: newItem => ({
@@ -23,6 +25,7 @@ export const itemApi = createApi({
             'ZopHp4TC4ousbqoVSV3uZYFgBszCowcx5jrwRFqGe5BX1Cnb8qbV8aGUpssDFlrh',
         },
       }),
+      invalidatesTags: ['Item'],
     }),
   }),
 });

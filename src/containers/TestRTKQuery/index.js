@@ -14,13 +14,15 @@ const TestRTKQuery = () => {
   const [description, setDescription] = useState('');
   const [image, setImage] = useState('');
 
+  console.log('i got rerenderd');
+
   const {data, error, isLoading} = useGetAllItemsQuery();
   const [postItem, {isLoading: isPosting}] = usePostItemMutation();
 
   console.log(data);
 
   return (
-    <View>
+    <View style={{flex: 1}}>
       <Text>index</Text>
       {isLoading && <Text>Loading</Text>}
 
@@ -50,6 +52,19 @@ const TestRTKQuery = () => {
         title={'Post item'}
         onPress={() => {
           postItem({title, description, image});
+        }}
+      />
+      <FlatList
+        style={{flex: 1}}
+        data={data}
+        renderItem={({item, index}) => {
+          return (
+            <View style={{margin: 5, backgroundColor: 'orange'}}>
+              <Text>{item.title}</Text>
+              <Text>{item.details}</Text>
+              <Text>{item.image}</Text>
+            </View>
+          );
         }}
       />
     </View>
