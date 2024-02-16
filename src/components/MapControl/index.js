@@ -1,9 +1,10 @@
-import {StyleSheet, Text, View, Platform} from 'react-native';
+import {StyleSheet, Text, View, Platform, Image} from 'react-native';
 import React from 'react';
 import MapView, {
   PROVIDER_GOOGLE,
   PROVIDER_DEFAULT,
   Marker,
+  Callout,
 } from 'react-native-maps';
 
 const mylocations = [
@@ -18,6 +19,7 @@ const MapControl = () => {
       <MapView
         provider={PROVIDER_GOOGLE}
         style={styles.map}
+        showsUserLocation
         region={{
           latitude: 37.78825,
           longitude: -122.4324,
@@ -32,7 +34,30 @@ const MapControl = () => {
               coordinate={{
                 latitude: thisEl.lat,
                 longitude: thisEl.lon,
-              }}></Marker>
+              }}>
+              <View
+                style={{
+                  width: 40,
+                  height: 40,
+                  borderRadius: 20,
+                  backgroundColor: 'blue',
+                }}>
+                <Text>Test</Text>
+              </View>
+              <Callout>
+                <View>
+                  <Text>{thisEl.title}</Text>
+                  <Text style={{backgroundColor: 'red'}}>test</Text>
+                  <Image
+                    resizeMode={'center'}
+                    style={{width: 60, height: 40}}
+                    source={{
+                      uri: 'https://www.thedrive.com/uploads/2022/04/24/NGAD-F22.jpg',
+                    }}
+                  />
+                </View>
+              </Callout>
+            </Marker>
           );
         })}
       </MapView>
