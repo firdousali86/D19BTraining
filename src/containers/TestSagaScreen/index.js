@@ -5,6 +5,7 @@ import {
   Button,
   TextInput,
   FlatList,
+  Alert,
 } from 'react-native';
 import React, {useEffect, useState} from 'react';
 // import {ApiHelper} from '../../helpers';
@@ -19,7 +20,16 @@ const TestSagaScreen = () => {
   const [image, setImage] = useState('');
   const [details, setDetails] = useState('');
 
+  const [count, setCount] = useState(0);
+
   const dispatch = useDispatch();
+
+  function handleAlertClick() {
+    setTimeout(() => {
+      // alert('You clicked on: ' + count);
+      Alert.alert('You clicked on: ' + count, '');
+    }, 3000);
+  }
 
   useEffect(() => {
     dispatch(request({url: 'http://localhost:3000/api/items'}));
@@ -34,7 +44,16 @@ const TestSagaScreen = () => {
 
   return (
     <View>
-      <Text>index</Text>
+      <Text style={{fontSize: 32}}>{count}</Text>
+
+      <Button
+        title={'Click me'}
+        onPress={() => {
+          setCount(count + 1);
+        }}
+      />
+      <Button title={'Show Alert'} onPress={handleAlertClick} />
+
       <Button
         title={'Logout'}
         onPress={() => {
