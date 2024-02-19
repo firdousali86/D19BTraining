@@ -13,7 +13,7 @@ const mylocations = [
   {lat: 17.368989, lon: -95.394287, title: 'location 3'},
 ];
 
-const MapControl = () => {
+const MapControl = props => {
   return (
     <View style={{flex: 1}}>
       <MapView
@@ -26,19 +26,19 @@ const MapControl = () => {
           latitudeDelta: 0.015,
           longitudeDelta: 0.0121,
         }}>
-        {mylocations.map(thisEl => {
+        {props.data.map(thisEl => {
           return (
             <Marker
               draggable
               title={thisEl.title}
               coordinate={{
-                latitude: thisEl.lat,
-                longitude: thisEl.lon,
+                latitude: thisEl.coords.latitude,
+                longitude: thisEl.coords.longitude,
               }}>
               <View
                 style={{
-                  width: 40,
-                  height: 40,
+                  width: 10,
+                  height: 10,
                   borderRadius: 20,
                   backgroundColor: 'blue',
                 }}>
