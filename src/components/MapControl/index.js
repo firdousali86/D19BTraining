@@ -1,5 +1,5 @@
 import {StyleSheet, Text, View, Platform, Image} from 'react-native';
-import React from 'react';
+import React, {useRef, useEffect} from 'react';
 import MapView, {
   PROVIDER_GOOGLE,
   PROVIDER_DEFAULT,
@@ -14,9 +14,35 @@ const mylocations = [
 ];
 
 const MapControl = props => {
+  const mapRef = useRef(null);
+
+  useEffect(() => {
+    if (props.data.length > 0) {
+      const lastPoint = props.data[props.data.length - 1];
+
+      mapRef.current.animateToRegion({
+        latitude: lastPoint.coords.latitude,
+        longitude: lastPoint.coords.longitude,
+        latitudeDelta: 0.015,
+        longitudeDelta: 0.0121,
+      });
+    }
+  }, [props.data]);
+
+  const myimplementationofanimatetoregion = () => {
+    console.log('is my method calling?');
+    // mapRef.current.animateToRegion({
+    //   latitude: 0, //my home coords
+    //   longitude: 0, //myhome corrds
+    //   latitudeDelta: 0.015,
+    //   longitudeDelta: 0.0121,
+    // });
+  };
+
   return (
     <View style={{flex: 1}}>
       <MapView
+        ref={mapRef}
         provider={PROVIDER_GOOGLE}
         style={styles.map}
         showsUserLocation

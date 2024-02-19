@@ -117,7 +117,6 @@ const Navigation = props => {
   const getMainStack = () => {
     return (
       <Stack.Group>
-        <Stack.Screen name="TestSagaScreen" component={TestSagaScreen} />
         <Stack.Screen name="MapScreen" component={MapScreen} />
         <Stack.Screen
           name="ProductListClass"
@@ -136,7 +135,7 @@ const Navigation = props => {
             },
           }}
         />
-
+        <Stack.Screen name="TestSagaScreen" component={TestSagaScreen} />
         <Stack.Screen name="TestRTKQuery" component={TestRTKQuery} />
         <Stack.Screen
           name="ProductList"
