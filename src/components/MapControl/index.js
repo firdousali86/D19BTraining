@@ -1,5 +1,5 @@
 import {StyleSheet, Text, View, Platform, Image} from 'react-native';
-import React, {useRef, useEffect} from 'react';
+import React, {useRef, useEffect, forwardRef, useImperativeHandle} from 'react';
 import MapView, {
   PROVIDER_GOOGLE,
   PROVIDER_DEFAULT,
@@ -13,8 +13,20 @@ const mylocations = [
   {lat: 17.368989, lon: -95.394287, title: 'location 3'},
 ];
 
-const MapControl = props => {
+const MapControl = forwardRef((props, ref) => {
   const mapRef = useRef(null);
+
+  useImperativeHandle(ref, () => ({
+    myimplementationofanimatetoregion: () => {
+      // console.log('is my method calling?');
+      mapRef.current.animateToRegion({
+        latitude: 0, //my home coords
+        longitude: 0, //myhome corrds
+        latitudeDelta: 0.015,
+        longitudeDelta: 0.0121,
+      });
+    },
+  }));
 
   useEffect(() => {
     if (props.data.length > 0) {
@@ -28,16 +40,6 @@ const MapControl = props => {
       });
     }
   }, [props.data]);
-
-  const myimplementationofanimatetoregion = () => {
-    console.log('is my method calling?');
-    // mapRef.current.animateToRegion({
-    //   latitude: 0, //my home coords
-    //   longitude: 0, //myhome corrds
-    //   latitudeDelta: 0.015,
-    //   longitudeDelta: 0.0121,
-    // });
-  };
 
   return (
     <View style={{flex: 1}}>
@@ -89,7 +91,7 @@ const MapControl = props => {
       </MapView>
     </View>
   );
-};
+});
 
 export default MapControl;
 
