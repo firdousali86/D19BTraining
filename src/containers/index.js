@@ -21,6 +21,7 @@ import TestRefScreen from './TestRefScreen';
 import TestSagaScreen from './TestSagaScreen';
 import TestRTKQuery from './TestRTKQuery';
 import MapScreen from './MapScreen';
+import TestHOC from './TestHOC';
 
 export {
   DashboardScreen,
@@ -46,4 +47,5 @@ export {
   TestSagaScreen,
   TestRTKQuery,
   MapScreen,
+  TestHOC,
 };
