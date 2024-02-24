@@ -1,4 +1,4 @@
-import {take, put, call, fork} from 'redux-saga/effects';
+import {take, put, call, fork, select} from 'redux-saga/effects';
 import {request, success, failure} from '../features/items/itemsSlice';
 
 import {ApiHelper} from '../helpers';
@@ -19,12 +19,15 @@ function* watchRequest() {
       let response;
 
       if (payload.method === 'POST') {
+        //to get accesstoken from user reducer
+        // const accessToken = yield select(state => state.user.data.accessToken);
+
         response = yield call(callPostRequest, payload.url, payload.data);
       } else {
         response = yield call(callGetRequest, payload.url, {});
       }
 
-      yield put(success(response));
+      yield put(success(response.data));
     } catch (ex) {
       yield put(failure(ex));
     }
