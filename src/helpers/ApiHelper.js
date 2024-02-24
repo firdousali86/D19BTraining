@@ -14,16 +14,17 @@ class ApiHelper {
   accessToken = undefined;
 
   getUpdatedHeader = headers => {
-    if (this.accessToken) {
-      return {...headers, 'X-Access-Token': this.accessToken};
-    } else {
-      return headers;
-    }
+    return {};
+    // if (this.accessToken) {
+    //   return {...headers, 'X-Access-Token': this.accessToken};
+    // } else {
+    //   return headers;
+    // }
   };
 
   get = async (url, data, headers) => {
     const updatedHeader = this.getUpdatedHeader(headers);
-    const response = await api.get(url, data, {headers: updatedHeader});
+    const response = await api.get(url, data);
 
     return new Promise((resolve, reject) => {
       this.handleErrors(resolve, reject, response);
@@ -43,7 +44,7 @@ class ApiHelper {
     //   body: JSON.stringify(data),
     // });
 
-    const response = await api.post(url, data, {headers: updatedHeader});
+    const response = await api.post(url, data);
 
     return new Promise((resolve, reject) => {
       this.handleErrors(resolve, reject, response);

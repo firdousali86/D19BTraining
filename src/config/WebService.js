@@ -1,4 +1,4 @@
-const baseURL = 'http://localhost:3000/api'; //'https://jsonplaceholder.typicode.com';
+const baseURL = 'https://jsonplaceholder.typicode.com'; //'http://localhost:3000/api'; //'https://jsonplaceholder.typicode.com';
 
 const kApiTodos = '/todos';
 const kApiSignup = '/Users';

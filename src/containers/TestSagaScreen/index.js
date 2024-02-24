@@ -9,10 +9,14 @@ import {
 } from 'react-native';
 import React, {useEffect, useState} from 'react';
 // import {ApiHelper} from '../../helpers';
-import {request} from '../../features/items/itemsSlice';
+import {
+  request,
+  requestEvery,
+  requestLatest,
+} from '../../features/items/itemsSlice';
 import {logout} from '../../features/user/userSlice';
 import {useDispatch, useSelector} from 'react-redux';
-import {kApiPostItems} from '../../config/WebService';
+import {kApiPostItems, kApiTodos} from '../../config/WebService';
 
 const TestSagaScreen = () => {
   const items = useSelector(state => state.items);
@@ -32,7 +36,7 @@ const TestSagaScreen = () => {
   }
 
   useEffect(() => {
-    dispatch(request({url: 'http://localhost:3000/api/items'}));
+    // dispatch(request({url: kApiTodos}));
     // ApiHelper.get('http://localhost:3000/api/items')
     //   .then(data => {
     //     console.log(data);
@@ -104,6 +108,25 @@ const TestSagaScreen = () => {
               <Text>test</Text>
             </View>
           );
+        }}
+      />
+
+      <Button
+        title={'Fetch items'}
+        onPress={() => {
+          dispatch(request({url: kApiTodos}));
+        }}
+      />
+      <Button
+        title={'Fetch Latest'}
+        onPress={() => {
+          dispatch(requestLatest({url: kApiTodos}));
+        }}
+      />
+      <Button
+        title={'Fetch Every'}
+        onPress={() => {
+          dispatch(requestEvery({url: kApiTodos}));
         }}
       />
     </View>
